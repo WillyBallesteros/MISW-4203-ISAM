@@ -1,0 +1,709 @@
+{
+	"info": {
+		"_postman_id": "6b23179f-e8db-4e64-98d9-e486a44fe216",
+		"name": "MusicianAlbum Tests",
+		"description": "Colección de pruebas sobre el recurso MusicianAlbum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear un album",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_a\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Buscando América\",\n    \"cover\": \"https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg\",\n    \"releaseDate\": \"1984-08-01T00:00:00-05:00\",\n    \"description\": \"Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.\",\n    \"genre\": \"Salsa\",\n    \"recordLabel\": \"Elektra\"\n}"
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/albums",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"albums"
+					]
+				},
+				"description": "Crea un nuevo album. El Id es inicializado por la BD y se debe ver en la respuesta. \r\n\r\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\r\n\r\n**Código http esperado: 200**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"name\": \"Buscando América\",\r\n    \"cover\": \"https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg\",\r\n    \"releaseDate\": \"1984-08-01T00:00:00-05:00\",\r\n    \"description\": \"Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.\",\r\n    \"genre\": \"Salsa\",\r\n    \"recordLabel\": \"Elektra\",\r\n    \"id\": 9\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un album 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_a2\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Poeta del Pueblo\",\n    \"cover\": \"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg\",\n    \"releaseDate\": \"2011-08-01T00:00:00-05:00\",\n    \"description\": \"Recopilación de 27 composiciones del cosmos Blades que los bailadores y melómanos han hecho suyas en estos 40 años de presencia de los ritmos y concordias afrocaribeños en múltiples escenarios internacionales. Grabaciones de Blades para la Fania con las orquestas de Pete Rodríguez, Ray Barreto, Fania All Stars y, sobre todo, los grandes éxitos con la Banda de Willie Colón\",\n\t\"genre\": \"Salsa\",\n    \"recordLabel\": \"Fania Records\"\n}"
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/albums",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"albums"
+					]
+				},
+				"description": "Crea otro album. \r\n\r\nEl Id es inicializado por la BD y se debe ver en la respuesta. \r\n\r\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\r\n\r\n**Código http esperado: 200**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"name\": \"Poeta del Pueblo\",\r\n    \"cover\": \"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg\",\r\n    \"releaseDate\": \"2011-08-01T00:00:00-05:00\",\r\n    \"description\": \"Recopilación de 27 composiciones del cosmos Blades que los bailadores y melómanos han hecho suyas en estos 40 años de presencia de los ritmos y concordias afrocaribeños en múltiples escenarios internacionales. Grabaciones de Blades para la Fania con las orquestas de Pete Rodríguez, Ray Barreto, Fania All Stars y, sobre todo, los grandes éxitos con la Banda de Willie Colón\",\r\n    \"genre\": \"Salsa\",\r\n    \"recordLabel\": \"Fania Records\",\r\n    \"id\": 10\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_m\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Rubén Blades Bellido de Luna\",\n    \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Ruben_Blades_by_Gage_Skidmore.jpg/800px-Ruben_Blades_by_Gage_Skidmore.jpg\",\n    \"description\": \"Es un cantante, compositor, músico, actor, abogado, político y activista panameño. Ha desarrollado gran parte de su carrera artística en la ciudad de Nueva York.\",\n    \"birthDate\": \"1948-07-16T00:00:00-05:00\"\n}"
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians"
+					]
+				},
+				"description": "Crea un nuevo músico. El Id es inicializado por la BD y se debe ver en la respuesta.\r\n\r\nPara la prueba, se guarda el id en una variable que será utilizada en otras peticiones de la colección.\r\n\r\n**Código http esperado: 200**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"name\": \"Rubén Blades Bellido de Luna\",\r\n    \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Ruben_Blades_by_Gage_Skidmore.jpg/800px-Ruben_Blades_by_Gage_Skidmore.jpg\",\r\n    \"description\": \"Es un cantante, compositor, músico, actor, abogado, político y activista panameño. Ha desarrollado gran parte de su carrera artística en la ciudad de Nueva York.\",\r\n    \"birthDate\": \"1948-07-16T00:00:00-05:00\",\r\n    \"id\": 15\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar un álbum a un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums/{{new_id_a}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums",
+						"{{new_id_a}}"
+					]
+				},
+				"description": "Asocia un álbum a un músico en la aplicación. \r\n\r\nSe envía el Id del álbum y el del músico a asociar en la URL de la petición.\r\n\r\n**Código http esperado: 200**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"id\": 9,\r\n    \"name\": \"Buscando América\",\r\n    \"cover\": \"https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg\",\r\n    \"releaseDate\": \"1984-08-01T05:00:00.000Z\",\r\n    \"description\": \"Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.\",\r\n    \"genre\": \"Salsa\",\r\n    \"recordLabel\": \"Elektra\",\r\n    \"performers\": [\r\n        {\r\n            \"id\": 15,\r\n            \"name\": \"Rubén Blades Bellido de Luna\",\r\n            \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Ruben_Blades_by_Gage_Skidmore.jpg/800px-Ruben_Blades_by_Gage_Skidmore.jpg\",\r\n            \"description\": \"Es un cantante, compositor, músico, actor, abogado, político y activista panameño. Ha desarrollado gran parte de su carrera artística en la ciudad de Nueva York.\",\r\n            \"birthDate\": \"1948-07-16T05:00:00.000Z\"\r\n        }\r\n    ]\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar un álbum que no existe a un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se deberia asociar el músico ya que el álbum no existe.\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The album with the given id was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums/0",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums",
+						"0"
+					]
+				},
+				"description": "Asocia un álbum que no existe a un músico en la aplicación. \r\n\r\nSe envía el Id del músico y el del álbum a asociar en la URL de la petición.\r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"The album with the given id was not found\".\r\n\r\n**Código http esperado: 404**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The album with the given id was not found\"\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un álbum de un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums/{{new_id_a}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums",
+						"{{new_id_a}}"
+					]
+				},
+				"description": "Consulta un álbum de un músico en la aplicación. \r\n\r\nLa petición no tiene cuerpo.\r\n\r\nSe envía el Id del músico y del álbum a consultar en la URL de la petición.\r\n\r\n**Código http esperado: 200**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"id\": 9,\r\n    \"name\": \"Buscando América\",\r\n    \"cover\": \"https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg\",\r\n    \"releaseDate\": \"1984-08-01T05:00:00.000Z\",\r\n    \"description\": \"Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.\",\r\n    \"genre\": \"Salsa\",\r\n    \"recordLabel\": \"Elektra\"\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un álbum que no existe de un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se deberia obtener ningun álbum ya que el álbum no existe.\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The album with the given id was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums/0",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums",
+						"0"
+					]
+				},
+				"description": "Consulta un álbum que no existe de un músico en la aplicación.  \r\n\r\nPara la prueba se verifica que se genera el error.\r\n\r\n**Código http esperado: 404**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The album with the given id was not found\"\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un álbum no asociado de un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se puede obtener un álbum que no esta asociado\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The album with the given id is not associated to the musician\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums/{{new_id_a2}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums",
+						"{{new_id_a2}}"
+					]
+				},
+				"description": "Consulta un álbum que no esta asociado a un músico en la aplicación.  \r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"The album with the given id is not associated to the musician\".\r\n\r\n**Código http esperado: 412**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"statusCode\": 412,\r\n    \"message\": \"The album with the given id is not associated to the musician\"\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar álbumes a un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No genera error en el Put\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\n    \"name\": \"Buscando América\",\n    \"cover\": \"https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg\",\n    \"releaseDate\": \"1984-08-01T00:00:00-05:00\",\n    \"description\": \"Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.\",\n    \"genre\": \"Salsa\",\n    \"recordLabel\": \"Elektra\",\n    \"id\": {{new_id_a}}\n},\n{\n    \"name\": \"Poeta del Pueblo\",\n    \"cover\": \"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg\",\n    \"releaseDate\": \"2011-08-01T00:00:00-05:00\",\n    \"description\": \"Recopilación de 27 composiciones del cosmos Blades que los bailadores y melómanos han hecho suyas en estos 40 años de presencia de los ritmos y concordias afrocaribeños en múltiples escenarios internacionales. Grabaciones de Blades para la Fania con las orquestas de Pete Rodríguez, Ray Barreto, Fania All Stars y, sobre todo, los grandes éxitos con la Banda de Willie Colón\",\n\t\"genre\": \"Salsa\",\n    \"recordLabel\": \"Fania Records\",\n    \"id\": {{new_id_a2}}\n}]"
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums"
+					]
+				},
+				"description": "Actualiza la lista de álbumes de un músico existente.\r\n\r\nSe envía el Id en la URL de la petición.\r\n\r\n**Código http esperado: 200**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"id\": 15,\r\n    \"name\": \"Rubén Blades Bellido de Luna\",\r\n    \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Ruben_Blades_by_Gage_Skidmore.jpg/800px-Ruben_Blades_by_Gage_Skidmore.jpg\",\r\n    \"description\": \"Es un cantante, compositor, músico, actor, abogado, político y activista panameño. Ha desarrollado gran parte de su carrera artística en la ciudad de Nueva York.\",\r\n    \"birthDate\": \"1948-07-16T05:00:00.000Z\",\r\n    \"albums\": [\r\n        {\r\n            \"id\": 9,\r\n            \"name\": \"Buscando América\",\r\n            \"cover\": \"https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg\",\r\n            \"description\": \"Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.\",\r\n            \"releaseDate\": \"1984-08-01T00:00:00-05:00\",\r\n            \"genre\": \"Salsa\",\r\n            \"recordLabel\": \"Elektra\"\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Poeta del Pueblo\",\r\n            \"cover\": \"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg\",\r\n            \"description\": \"Recopilación de 27 composiciones del cosmos Blades que los bailadores y melómanos han hecho suyas en estos 40 años de presencia de los ritmos y concordias afrocaribeños en múltiples escenarios internacionales. Grabaciones de Blades para la Fania con las orquestas de Pete Rodríguez, Ray Barreto, Fania All Stars y, sobre todo, los grandes éxitos con la Banda de Willie Colón\",\r\n            \"releaseDate\": \"2011-08-01T00:00:00-05:00\",\r\n            \"genre\": \"Salsa\",\r\n            \"recordLabel\": \"Fania Records\"\r\n        }\r\n    ]\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener los álbumes de un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;",
+							"tests[\"vinyls count - artists\"] = data.length >= 1;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums"
+					]
+				},
+				"description": "Consulta los álbumes de un músico en la aplicación. \r\n\r\nLa petición no tiene cuerpo.\r\n\r\nSe envía el Id del músico y el del álbum a consultar en la URL de la petición.\r\n\r\n**Código http esperado: 200**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n[\r\n    {\r\n        \"id\": 9,\r\n        \"name\": \"Buscando América\",\r\n        \"cover\": \"https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg\",\r\n        \"releaseDate\": \"1984-08-01T05:00:00.000Z\",\r\n        \"description\": \"Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.\",\r\n        \"genre\": \"Salsa\",\r\n        \"recordLabel\": \"Elektra\"\r\n    },\r\n    {\r\n        \"id\": 10,\r\n        \"name\": \"Poeta del Pueblo\",\r\n        \"cover\": \"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg\",\r\n        \"releaseDate\": \"2011-08-01T05:00:00.000Z\",\r\n        \"description\": \"Recopilación de 27 composiciones del cosmos Blades que los bailadores y melómanos han hecho suyas en estos 40 años de presencia de los ritmos y concordias afrocaribeños en múltiples escenarios internacionales. Grabaciones de Blades para la Fania con las orquestas de Pete Rodríguez, Ray Barreto, Fania All Stars y, sobre todo, los grandes éxitos con la Banda de Willie Colón\",\r\n        \"genre\": \"Salsa\",\r\n        \"recordLabel\": \"Fania Records\"\r\n    }\r\n]\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar álbumes que no existen a un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se pueden asociar los álbumes ya que estos no existen\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The album with the given id was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\n    \"name\": \"Buscando América\",\n    \"cover\": \"https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg\",\n    \"releaseDate\": \"1984-08-01T00:00:00-05:00\",\n    \"description\": \"Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.\",\n    \"genre\": \"Salsa\",\n    \"recordLabel\": \"Elektra\",\n    \"id\": 0\n}\n]"
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums"
+					]
+				},
+				"description": "Actualiza la lista de álbumes de un artista existente con álbumes que no existen. \r\n\r\nSe envía el Id en la URL de la petición.\r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"The album with the given id was not found\".\r\n\r\n**Código http esperado: 404**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The album with the given id was not found\"\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrarle un álbum a un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums/{{new_id_a}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums",
+						"{{new_id_a}}"
+					]
+				},
+				"description": "Borra la asociación entre un álbum y un músico. Se envían los ids del músico y del álbum creados anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrarle un álbum 2 a un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums/{{new_id_a2}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums",
+						"{{new_id_a2}}"
+					]
+				},
+				"description": "Borra la asociación entre un álbum y un músico. Se envían los ids del músico y del álbum creados anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrarle un álbum a un músico que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se deberia eliminar ninguna asociacion ya que el músico no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The musician with the given id was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/0/albums/{{new_id_a}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"0",
+						"albums",
+						"{{new_id_a}}"
+					]
+				},
+				"description": "Borra la asociación entre un álbum y un músico que no existe en la aplicación.  \r\n\r\nPara la prueba se verifica que se genera el error y el mensaje \"The musician with the given id was not found\".\r\n\r\n**Código http esperado: 404**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The musician with the given id was not found\"\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un álbum que no existe a un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se deberia eliminar ninguna asociacion ya que el álbum no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The album with the given id was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}/albums/0",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}",
+						"albums",
+						"0"
+					]
+				},
+				"description": "Borra la asociación entre un álbum que no existe y un músico en la aplicación.  \r\n\r\nPara la prueba se verifica que se genera el error.\r\n\r\n**Código http esperado: 404**\r\n\r\n**JSON de salida**\r\n\r\n```\r\n{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The album with the given id was not found\"\r\n}\r\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un álbum",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/albums/{{new_id_a}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"albums",
+						"{{new_id_a}}"
+					]
+				},
+				"description": "Borra un álbum. Se envía el id del álbum creado anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un álbum 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/albums/{{new_id_a2}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"albums",
+						"{{new_id_a2}}"
+					]
+				},
+				"description": "Borra un álbum. Se envía el id del álbum creado anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un músico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{ip}}/musicians/{{new_id_m}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"musicians",
+						"{{new_id_m}}"
+					]
+				},
+				"description": "Borra un músico. Se envía el id del músico creado anteriormente.\n\n**Código HTTP esperado: 204**"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
