@@ -4,8 +4,8 @@ WORKDIR /usr/src/app
 
 COPY package.json .
 
-RUN npm install --quiet
-
 COPY . .
 
-CMD ["npm", "run", "start"]
+RUN npm install --quiet
+
+ENTRYPOINT [ "sh", "./docker/entrypoint.sh" ]
