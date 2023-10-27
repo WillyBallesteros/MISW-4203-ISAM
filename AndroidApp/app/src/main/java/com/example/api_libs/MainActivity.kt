@@ -8,7 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
-import com.android.volley.Response
+import androidx.appcompat.widget.Toolbar
 import com.example.api_libs.brokers.VolleyBroker
 import com.google.android.material.textfield.TextInputEditText
 import org.json.JSONObject
@@ -21,17 +21,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+
         volleyBroker = VolleyBroker(this.applicationContext)
 
         val getButton: Button = findViewById(R.id.fetch_button)
         val getResultTextView : TextView = findViewById(R.id.get_result_text)
         getButton.setOnClickListener {
             volleyBroker.instance.add(VolleyBroker.getRequest("collectors",
-                Response.Listener<String> { response ->
+                { response ->
                     // Display the first 500 characters of the response string.
-                    getResultTextView.text = "Response is: ${response}"
+                    getResultTextView.text = buildString {
+                                                            append("Response is: ")
+                                                            append(response)
+                                                        }
                 },
-                Response.ErrorListener {
+                {
                     Log.d("TAG", it.toString())
                     getResultTextView.text = "That didn't work!"
                 }
@@ -50,11 +57,14 @@ class MainActivity : AppCompatActivity() {
                 "email" to mailTxt.text.toString()
             )
             volleyBroker.instance.add(VolleyBroker.postRequest("collectors", JSONObject(postParams),
-                Response.Listener<JSONObject> { response ->
+                { response ->
                     // Display the first 500 characters of the response string.
-                    postResultTextView.text = "Response is: ${response.toString()}"
+                    postResultTextView.text = buildString {
+                                                            append("Response is: ")
+                                                            append(response.toString())
+                                                        }
                 },
-                Response.ErrorListener {
+                {
                     Log.d("TAG", it.toString())
                     postResultTextView.text = "That didn't work!"
                 }

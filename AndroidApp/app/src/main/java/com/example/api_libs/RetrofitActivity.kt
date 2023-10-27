@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import com.example.api_libs.brokers.RetrofitBroker
 import com.google.android.material.textfield.TextInputEditText
 
@@ -15,6 +16,9 @@ class RetrofitActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_retrofit)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         val getButton: Button = findViewById(R.id.fetch_button_2)
         val getResultTextView : TextView = findViewById(R.id.get_result_text_2)
