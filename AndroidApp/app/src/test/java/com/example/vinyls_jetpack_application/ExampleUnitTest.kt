@@ -1,4 +1,4 @@
-package com.example.api_libs
+package com.example.vinyls_jetpack_application
 
 import org.junit.Test
 
