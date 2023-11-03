@@ -1,24 +1,23 @@
 package com.example.vinyls_jetpack_application.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.vinyls_jetpack_application.models.Comment
-import com.example.vinyls_jetpack_application.network.NetworkServiceAdapter
-import com.example.vinyls_jetpack_application.repositories.CollectorsRepository
-import com.example.vinyls_jetpack_application.repositories.CommentsRepository
+import com.example.vinyls_jetpack_application.models.Album
+import com.example.vinyls_jetpack_application.repositories.AlbumDetailRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CommentViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
+class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
-    private val commentsRepository = CommentsRepository(application)
+    private val albumDetailRepository = AlbumDetailRepository(application)
 
-    private val _comments = MutableLiveData<List<Comment>>()
+    private var _album: MutableLiveData<Album> = MutableLiveData<Album>()
 
-    val comments: LiveData<List<Comment>>
-        get() = _comments
+            //  Album(0, "", "",     "",     "",     "",     "" )
+
+    val album: LiveData<Album>
+        get() = _album!!
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -40,8 +39,8 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
         try {
             viewModelScope.launch (Dispatchers.Default){
                 withContext(Dispatchers.IO){
-                    var data = commentsRepository.refreshData(id)
-                    _comments.postValue(data)
+                    var data: Album = albumDetailRepository.refreshData(id)
+                    _album?.postValue(data)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
@@ -52,17 +51,20 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
         }
     }
 
+
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
 
     class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(CommentViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(AlbumDetailViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return CommentViewModel(app, albumId) as T
+                return AlbumDetailViewModel(app, albumId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
+
+
     }
 }

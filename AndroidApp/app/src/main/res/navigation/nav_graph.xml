@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/collectorFragment">
+    app:startDestination="@id/albumFragment">
     <fragment
         android:id="@+id/collectorFragment"
         android:name="com.example.vinyls_jetpack_application.ui.CollectorFragment"
@@ -20,7 +20,16 @@
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/action_albumFragment_to_commentFragment"
-            app:destination="@id/commentFragment" />
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.vinyls_jetpack_application.ui.AlbumDetailFragment"
+        android:label="album_detail_fragment"
+        tools:layout="@layout/album_detail_fragment" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/commentFragment"

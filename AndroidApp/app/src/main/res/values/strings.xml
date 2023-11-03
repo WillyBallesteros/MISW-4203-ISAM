@@ -20,4 +20,6 @@
     <string name="title_albums">Albums</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="album_detail_title">Álbum</string>
 </resources>

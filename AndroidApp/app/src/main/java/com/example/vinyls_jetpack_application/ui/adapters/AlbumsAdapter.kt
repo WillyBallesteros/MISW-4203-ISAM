@@ -3,9 +3,12 @@ package com.example.vinyls_jetpack_application.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_jetpack_application.R
 import com.example.vinyls_jetpack_application.databinding.AlbumItemBinding
 import com.example.vinyls_jetpack_application.models.Album
@@ -32,6 +35,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         holder.viewDataBinding.also {
             it.album = albums[position]
         }
+        holder.bind(albums[position])
         holder.viewDataBinding.root.setOnClickListener {
             val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
             // Navigate using that action
@@ -50,6 +54,17 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             @LayoutRes
             val LAYOUT = R.layout.album_item
         }
+        fun bind(album: Album) {
+            Glide.with(itemView)
+                .load(album.cover.toUri().buildUpon().scheme("https").build())
+                .apply(
+                    RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+
+                    .error(R.drawable.ic_broken_image))
+                .into(viewDataBinding.albumCover)
+        }
+
     }
 
 
