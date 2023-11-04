@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.vinyls_jetpack_application"
+        applicationId "com.example.vinyls_equipo_16"
         minSdk 24
         targetSdk 33
         versionCode 1

@@ -6,7 +6,7 @@
     app:startDestination="@id/albumFragment">
     <fragment
         android:id="@+id/collectorFragment"
-        android:name="com.example.vinyls_jetpack_application.ui.CollectorFragment"
+        android:name="com.example.vinyls_equipo_16.ui.CollectorFragment"
         android:label="collector_fragment"
         tools:layout="@layout/collector_fragment" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
-        android:name="com.example.vinyls_jetpack_application.ui.AlbumFragment"
+        android:name="com.example.vinyls_equipo_16.ui.AlbumFragment"
         android:label="album_fragment"
         tools:layout="@layout/album_fragment" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/albumDetailFragment"
-        android:name="com.example.vinyls_jetpack_application.ui.AlbumDetailFragment"
+        android:name="com.example.vinyls_equipo_16.ui.AlbumDetailFragment"
         android:label="album_detail_fragment"
         tools:layout="@layout/album_detail_fragment" >
         <argument
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/commentFragment"
-        android:name="com.example.vinyls_jetpack_application.ui.CommentFragment"
+        android:name="com.example.vinyls_equipo_16.ui.CommentFragment"
         android:label="comment_fragment"
         tools:layout="@layout/comment_fragment" >
         <argument
