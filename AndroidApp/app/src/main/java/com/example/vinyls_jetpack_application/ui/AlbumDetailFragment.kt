@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_jetpack_application.R
 import com.example.vinyls_jetpack_application.databinding.AlbumDetailFragmentBinding
 import com.example.vinyls_jetpack_application.databinding.CommentFragmentBinding
-import com.example.vinyls_jetpack_application.models.Album
+import com.example.vinyls_jetpack_application.models.AlbumDetail
 import com.example.vinyls_jetpack_application.models.Comment
 import com.example.vinyls_jetpack_application.ui.adapters.AlbumsAdapter
 import com.example.vinyls_jetpack_application.ui.adapters.CommentsAdapter
@@ -82,7 +82,7 @@ class AlbumDetailFragment : Fragment() {
         Log.d("Args", args.albumId.toString())
 
         viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, param1)).get(AlbumDetailViewModel::class.java)
-        viewModel.album.observe(viewLifecycleOwner, Observer<Album> {
+        viewModel.album.observe(viewLifecycleOwner, Observer<AlbumDetail> {
             binding.idAlbum.text = it.description
             Glide.with(this)
                 .load(it.cover.toUri().buildUpon().scheme("https").build())

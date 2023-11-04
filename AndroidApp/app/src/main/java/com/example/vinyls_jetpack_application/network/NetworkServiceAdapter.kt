@@ -10,8 +10,10 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinyls_jetpack_application.models.Album
+import com.example.vinyls_jetpack_application.models.AlbumDetail
 import com.example.vinyls_jetpack_application.models.Collector
 import com.example.vinyls_jetpack_application.models.Comment
+import com.example.vinyls_jetpack_application.models.Track
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -48,11 +50,28 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
-    suspend fun getAlbum(albumId:Int) = suspendCoroutine<Album>{ cont->
+    suspend fun getAlbum(albumId:Int) = suspendCoroutine<AlbumDetail>{ cont->
         requestQueue.add(getRequest("albums/$albumId",
             { response ->
                 val item = JSONObject(response)
-                val album = Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"))
+                val tracks = mutableListOf<Track>()
+                val trackItemArray = item.getJSONArray("tracks")
+                var trackItem:JSONObject? = null
+                for (i in 0 until trackItemArray.length()) {
+                    trackItem = trackItemArray.getJSONObject(i)
+                    val track = Track( id = trackItem.getInt("id"), name = trackItem.getString("name"), duration = trackItem.getString("duration"))
+                    tracks.add(track)
+                }
+                
+                val album = AlbumDetail(
+                    albumId = item.getInt("id"),
+                    name = item.getString("name"), 
+                    cover = item.getString("cover"), 
+                    recordLabel = item.getString("recordLabel"), 
+                    releaseDate = item.getString("releaseDate"), 
+                    genre = item.getString("genre"), 
+                    description = item.getString("description"), 
+                    tracks = tracks )
 
                 cont.resume(album)
             },

@@ -2,7 +2,7 @@ package com.example.vinyls_jetpack_application.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.vinyls_jetpack_application.models.Album
+import com.example.vinyls_jetpack_application.models.AlbumDetail
 import com.example.vinyls_jetpack_application.repositories.AlbumDetailRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,11 +12,11 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
 
     private val albumDetailRepository = AlbumDetailRepository(application)
 
-    private var _album: MutableLiveData<Album> = MutableLiveData<Album>()
+    private var _album: MutableLiveData<AlbumDetail> = MutableLiveData<AlbumDetail>()
 
             //  Album(0, "", "",     "",     "",     "",     "" )
 
-    val album: LiveData<Album>
+    val album: LiveData<AlbumDetail>
         get() = _album!!
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
@@ -39,7 +39,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
         try {
             viewModelScope.launch (Dispatchers.Default){
                 withContext(Dispatchers.IO){
-                    var data: Album = albumDetailRepository.refreshData(id)
+                    var data: AlbumDetail = albumDetailRepository.refreshData(id)
                     _album?.postValue(data)
                 }
                 _eventNetworkError.postValue(false)
@@ -57,7 +57,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
     }
 
     class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(AlbumDetailViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return AlbumDetailViewModel(app, albumId) as T
