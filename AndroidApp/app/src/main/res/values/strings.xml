@@ -22,4 +22,10 @@
     <string name="title_comments">Comentarios del álbum</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="album_detail_title">Álbum</string>
+    <string name="album_detail_name">Nombre</string>
+    <string name="album_detail_release_date">Lanzamiento</string>
+    <string name="album_detail_genre">Genero</string>
+    <string name="album_detail_record_label">Record</string>
+    <string name="album_detail_record_songs">Canciones</string>
+    <string name="album_detail_record_no_songs">Sin canciones registradas</string>
 </resources>

@@ -1,8 +1,11 @@
 package com.example.vinyls_equipo_16.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinyls_equipo_16.models.Comment
+import com.example.vinyls_equipo_16.network.NetworkServiceAdapter
+import com.example.vinyls_equipo_16.repositories.CollectorsRepository
 import com.example.vinyls_equipo_16.repositories.CommentsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -54,7 +57,7 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
     }
 
     class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CommentViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return CommentViewModel(app, albumId) as T
