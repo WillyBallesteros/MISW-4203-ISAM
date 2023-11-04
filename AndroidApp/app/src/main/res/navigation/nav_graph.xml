@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinyls_equipo_16.ui.AlbumFragment"
-        android:label="album_fragment"
+        android:label="Catálogo"
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/action_albumFragment_to_commentFragment"
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.example.vinyls_equipo_16.ui.AlbumDetailFragment"
-        android:label="album_detail_fragment"
+        android:label="Álbum"
         tools:layout="@layout/album_detail_fragment" >
         <argument
             android:name="albumId"
