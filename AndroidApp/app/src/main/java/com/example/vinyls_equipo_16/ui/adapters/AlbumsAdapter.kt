@@ -38,7 +38,6 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         holder.bind(albums[position])
         holder.viewDataBinding.root.setOnClickListener {
             val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
-            // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
@@ -59,9 +58,9 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
                 .load(album.cover.toUri().buildUpon().scheme("https").build())
                 .apply(
                     RequestOptions()
-                    .placeholder(R.drawable.loading_animation)
+                        .placeholder(R.drawable.loading_animation)
 
-                    .error(R.drawable.ic_broken_image))
+                        .error(R.drawable.ic_broken_image))
                 .into(viewDataBinding.albumCover)
         }
 

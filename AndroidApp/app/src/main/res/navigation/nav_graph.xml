@@ -5,15 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/albumFragment">
     <fragment
-        android:id="@+id/collectorFragment"
-        android:name="com.example.vinyls_equipo_16.ui.CollectorFragment"
-        android:label="collector_fragment"
-        tools:layout="@layout/collector_fragment" >
-        <action
-            android:id="@+id/action_collectorFragment_to_albumFragment"
-            app:destination="@id/albumFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinyls_equipo_16.ui.AlbumFragment"
         android:label="Catálogo"
@@ -27,15 +18,6 @@
         android:name="com.example.vinyls_equipo_16.ui.AlbumDetailFragment"
         android:label="Álbum"
         tools:layout="@layout/album_detail_fragment" >
-        <argument
-            android:name="albumId"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/commentFragment"
-        android:name="com.example.vinyls_equipo_16.ui.CommentFragment"
-        android:label="comment_fragment"
-        tools:layout="@layout/comment_fragment" >
         <argument
             android:name="albumId"
             app:argType="integer" />
