@@ -30,7 +30,7 @@
                 android:id="@+id/album_cover" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/album_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
