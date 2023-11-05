@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         // Instantiate the navController using the NavHostFragment
         navController = navHostFragment.navController
         // Make sure actions in the ActionBar get propagated to the NavController
-Log.d("act", navController.toString())
+        Log.d("act", navController.toString())
         setSupportActionBar(findViewById(R.id.my_toolbar))
         setupActionBarWithNavController(navController)
 

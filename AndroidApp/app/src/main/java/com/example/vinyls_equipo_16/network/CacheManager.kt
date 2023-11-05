@@ -23,25 +23,4 @@ class CacheManager(context: Context) {
     fun getComments(albumId: Int) : List<Comment>{
         return if (comments.containsKey(albumId)) comments[albumId]!! else listOf<Comment>()
     }
-
-    /*private var comments: SparseArray<List<Comment>> = SparseArray()
-    fun addComments(albumId: Int, comment: List<Comment>){
-       if (comments[albumId]==null){
-           comments.setValueAt(albumId, comment)
-       }
-    }
-    fun getComments(albumId: Int) : List<Comment>{
-       return if (comments[albumId]!=null) comments[albumId]!! else listOf<Comment>()
-    }
-    */
-
-    /*private var comments: LruCache<Int, List<Comment>> = LruCache(3)
-    fun addComments(albumId: Int, comment: List<Comment>){
-        if (comments[albumId] == null){
-            comments.put(albumId, comment)
-        }
-    }
-    fun getComments(albumId: Int) : List<Comment>{
-        return if (comments[albumId]!=null) comments[albumId]!! else listOf<Comment>()
-    }*/
 }

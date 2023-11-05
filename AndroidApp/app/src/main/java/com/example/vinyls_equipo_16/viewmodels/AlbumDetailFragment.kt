@@ -14,7 +14,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
 
     private var _album: MutableLiveData<AlbumDetail> = MutableLiveData<AlbumDetail>()
 
-            //  Album(0, "", "",     "",     "",     "",     "" )
+    //  Album(0, "", "",     "",     "",     "",     "" )
 
     val album: LiveData<AlbumDetail>
         get() = _album!!

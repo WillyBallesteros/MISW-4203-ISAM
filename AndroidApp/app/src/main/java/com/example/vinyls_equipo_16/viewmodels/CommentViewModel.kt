@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinyls_equipo_16.models.Comment
 import com.example.vinyls_equipo_16.network.NetworkServiceAdapter
-import com.example.vinyls_equipo_16.repositories.CollectorsRepository
 import com.example.vinyls_equipo_16.repositories.CommentsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
