@@ -14,18 +14,22 @@
     <string name="collector_phone_placeholder">Número telefónico</string>
     <string name="comment_rating_placeholder">##</string>
     <string name="comment_description_placeholder">Descripción del comentario</string>
-    <string name="album_name_placeholder">Nombre del album</string>
-    <string name="album_description_placeholder">Descripcion del album</string>
+    <string name="album_name_placeholder">Nombre del álbum</string>
+    <string name="album_description_placeholder">Descripción del álbum</string>
     <string name="txt_no_comments">No hay comentarios para este álbum</string>
     <string name="title_albums">Albums</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="album_detail_title">Álbum</string>
-    <string name="album_detail_name">Nombre</string>
-    <string name="album_detail_release_date">Lanzamiento</string>
-    <string name="album_detail_genre">Genero</string>
-    <string name="album_detail_record_label">Record</string>
-    <string name="album_detail_record_songs">Canciones</string>
-    <string name="album_detail_record_no_songs">Sin canciones registradas</string>
+    <string name="album_detail_name">Nombre:</string>
+    <string name="album_detail_release_date">Lanzamiento:</string>
+    <string name="album_detail_genre">Género:</string>
+    <string name="album_detail_record_label">Record:</string>
+    <string name="album_detail_record_songs">Canciones:</string>
+    <string name="album_detail_record_no_songs">\u0020\u0020\u0020\u0020Sin canciones registradas</string>
+    <string name="album_detail_record_list">\u0020\u0020\u0020\u0020•\u0020</string>
+    <string name="album_detail_record_separator">\u0020-\u0020</string>
+    <string name="text_void">N/A</string>
+
 </resources>

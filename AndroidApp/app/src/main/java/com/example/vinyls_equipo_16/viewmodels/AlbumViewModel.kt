@@ -5,10 +5,15 @@ import androidx.lifecycle.*
 import com.example.vinyls_equipo_16.models.Album
 import com.example.vinyls_equipo_16.repositories.AlbumRepository
 import kotlinx.coroutines.*
+import java.util.concurrent.atomic.AtomicBoolean
 
 class AlbumViewModel(application: Application) : AndroidViewModel(application) {
 
     private val albumsRepository = AlbumRepository(application)
+    private val _dataLoaded = MutableLiveData<Boolean>(false)
+    val dataLoaded: LiveData<Boolean>
+        get() = _dataLoaded
+
 
     private val _albums = MutableLiveData<List<Album>>()
     val albums: LiveData<List<Album>>
@@ -29,11 +34,11 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
     private fun refreshDataFromNetwork() {
         viewModelScope.launch {
             try {
-                // It's safe to call Dispatchers.IO immediately because it's a background operation
                 val data = withContext(Dispatchers.IO) {
                     albumsRepository.refreshData()
                 }
                 _albums.postValue(data)
+                _dataLoaded.postValue(true)
                 _eventNetworkError.postValue(false)
             } catch (e: Exception) {
                 _eventNetworkError.postValue(true)
