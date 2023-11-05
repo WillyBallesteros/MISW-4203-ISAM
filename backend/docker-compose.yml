@@ -1,30 +1,30 @@
 version: "3.8"
-
+   
 services:
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ".:/usr/src/app"
-    env_file:
-      - .env
+  web:
+    build: .
+    command: npm run start:prod
+    environment:
+      DB_HOST: db
     ports:
       - "3000:3000"
     depends_on:
-      - db
-    links:
       - db
     networks:
       - default
 
   db:
     image: postgres
-    env_file:
-      - .env.db
-    volumes:
-      - "./data/postgres:/var/lib/postgresql"
+    environment:
+      - POSTGRES_DB=vinyls
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     networks:
       - default
+
+volumes:
+  pgdata:
