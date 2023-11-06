@@ -86,7 +86,7 @@ psql -h localhost -p 5432 -U postgres -d vinyls -a -f sql/data.sql
 - Abrir la carpeta AndroidApp con Android Studio.
 - Establecer la IP del servidor de backend en la variable *BASE_URL* de la clase *NetworkServiceAdapter*
 - Ejecutar File -> Sync Project with Grale File
-- Agregar configuraciones para ejecución y pruebas
+- Agregar configuraciones para ejecución y pruebas [Ejemplo](https://github.com/WillyBallesteros/MISW-4203-ISAM/assets/124172912/74012624-8536-4b83-9661-8a92bd5205c5)
 - Ejecutar la aplicación o los escenarios de prueba presionando F5
 
 ## Ejecución directa en móviles físicos
