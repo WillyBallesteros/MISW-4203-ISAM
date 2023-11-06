@@ -13,5 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "API_Libs"
+rootProject.name = "Vinyls_Equipo_16"
 include(":app")
+ 
