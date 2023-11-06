@@ -91,6 +91,6 @@ psql -h localhost -p 5432 -U postgres -d vinyls -a -f sql/data.sql
 
 ## Ejecución directa en móviles físicos
 - Descargar el archivo APK en el móvil
-- Habilitar la opción de instalar aplicaciónes fuera de App Store
+- Habilitar la opción de instalar aplicaciones fuera de App Store
 - Instalar el APK
 - Ejecutar
