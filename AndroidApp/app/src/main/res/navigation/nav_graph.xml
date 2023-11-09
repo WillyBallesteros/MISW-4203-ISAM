@@ -28,7 +28,16 @@
         android:label="Artistas"
         tools:layout="@layout/musician_fragment" >
         <action
-            android:id="@+id/action_albumFragment_to_albumDetailFragment"
-            app:destination="@id/albumDetailFragment" />
+            android:id="@+id/action_musicianFragment_to_musicianDetailFragment"
+            app:destination="@id/musicianDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicianDetailFragment"
+        android:name="com.example.vinyls_equipo_16.ui.MusicianDetailFragment"
+        android:label="Musician"
+        tools:layout="@layout/musician_detail_fragment" >
+        <argument
+            android:name="musicianId"
+            app:argType="integer" />
     </fragment>
 </navigation>
