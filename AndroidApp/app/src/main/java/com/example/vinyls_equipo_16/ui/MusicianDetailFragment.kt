@@ -1,16 +1,12 @@
 package com.example.vinyls_equipo_16.ui
 
-
-import java.text.SimpleDateFormat
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,24 +14,25 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.AlbumDetailFragmentBinding
+import com.example.vinyls_equipo_16.databinding.MusicianDetailFragmentBinding
 import com.example.vinyls_equipo_16.models.AlbumDetail
+import com.example.vinyls_equipo_16.ui.adapters.PrizesAdapter
 import com.example.vinyls_equipo_16.ui.adapters.TracksAdapter
 import com.example.vinyls_equipo_16.viewmodels.AlbumDetailViewModel
+import java.text.SimpleDateFormat
 import java.util.Date
 
 
-private const val ARG_PARAM1 = "albumId"
-
-
-class AlbumDetailFragment : Fragment() {
+private const val ARG_PARAM1 = "musicianId"
+class MusicianDetailFragment : Fragment() {
 
     private var _param1: Int? = null
     private val param1 get() = _param1!!
     private lateinit var recyclerView: RecyclerView
-    private var _binding: AlbumDetailFragmentBinding? = null
+    private var _binding: MusicianDetailFragmentBinding? = null
     private val binding get() = _binding!!
-    private var viewModelAdapter: TracksAdapter? = null
-    private lateinit var viewModel: AlbumDetailViewModel
+    private var viewModelAdapter: PrizesAdapter? = null
+    private lateinit var viewModel: MusicianDetailV
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +42,6 @@ class AlbumDetailFragment : Fragment() {
             _param1 = it.getInt(ARG_PARAM1)
             print(param1)
         }
-
-
     }
 
     override fun onCreateView(

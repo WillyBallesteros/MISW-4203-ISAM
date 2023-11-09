@@ -34,5 +34,13 @@
     <string name="text_void">N/A</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="musician_detail_name">Nombre</string>
+    <string name="musician_detail_description">Descripcion:</string>
+    <string name="musician_detail_birthdate">Nacimiento:</string>
+    <string name="musician_detail_prizes">Premios:</string>
+    <string name="musician_detail_albums">Álbumes:</string>
+    <string name="musician_detail_no_prizes">\u0020\u0020\u0020\u0020Sin premios registrados</string>
+    <string name="musician_detail_space">\u0020\u0020\u0020\u0020•\u0020</string>
+
 
 </resources>

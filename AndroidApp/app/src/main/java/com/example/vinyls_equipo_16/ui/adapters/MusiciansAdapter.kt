@@ -5,12 +5,14 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.MusicianItemBinding
 import com.example.vinyls_equipo_16.models.Musician
+import com.example.vinyls_equipo_16.ui.MusicianFragmentDirections
 
 class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolder>(){
 
@@ -35,8 +37,8 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
         }
         holder.bind(musicians[position])
         holder.viewDataBinding.root.setOnClickListener {
-           // val action = MusicianFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
-           // holder.viewDataBinding.root.findNavController().navigate(action)
+           val action = MusicianFragmentDirections.actionMusicianFragmentToMusicianDetailFragment(musicians[position].musicianId)
+           holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 
