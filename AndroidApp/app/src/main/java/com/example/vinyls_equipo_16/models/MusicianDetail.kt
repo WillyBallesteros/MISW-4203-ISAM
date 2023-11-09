@@ -5,7 +5,7 @@ data class MusicianDetail(
     val name:String,
     val image:String,
     val description: String,
-    val birthdate:String,
+    val birthDate:String,
     val performerPrizes:List<Prize>,
     val albums:List<Album>
 )

@@ -41,6 +41,7 @@
     <string name="musician_detail_albums">Álbumes:</string>
     <string name="musician_detail_no_prizes">\u0020\u0020\u0020\u0020Sin premios registrados</string>
     <string name="musician_detail_space">\u0020\u0020\u0020\u0020•\u0020</string>
+    <string name="musician_detail_prize_tittle">Premios del Artista</string>
 
 
 </resources>
