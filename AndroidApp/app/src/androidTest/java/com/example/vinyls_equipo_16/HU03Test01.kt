@@ -14,7 +14,9 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.ui.MainActivity
 import com.example.vinyls_equipo_16.ui.adapters.AlbumsAdapter
+import com.example.vinyls_equipo_16.ui.adapters.MusiciansAdapter
 import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
+import com.example.vinyls_equipo_16.viewmodels.MusicianViewModel
 import junit.framework.TestCase.assertEquals
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -27,7 +29,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class HU01Test01 {
+class HU03Test01 {
 
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
@@ -37,7 +39,7 @@ class HU01Test01 {
     @Before
     fun setUp() {
         activityScenarioRule.scenario.onActivity { activity ->
-            val viewModel = ViewModelProvider(activity).get(AlbumViewModel::class.java)
+            val viewModel = ViewModelProvider(activity).get(MusicianViewModel::class.java)
             idlingResource = GenericIdlingResource(viewModel.dataLoaded)
             IdlingRegistry.getInstance().register(idlingResource)
         }
@@ -45,21 +47,21 @@ class HU01Test01 {
 
     @Test
     fun scrollToItem_clicksOnFirstItem() {
-        onView(withId(R.id.albumsRv)).perform(
-            RecyclerViewActions.scrollToPosition<AlbumsAdapter.AlbumViewHolder>(0)
+        onView(withId(R.id.musiciansRv)).perform(
+            RecyclerViewActions.scrollToPosition<MusiciansAdapter.MusicianViewHolder>(0)
         )
-        onView(allOf(withId(R.id.album_cover), isDescendantOfA(nthChildOf(withId(R.id.albumsRv), 0))))
+        onView(allOf(withId(R.id.musician_image), isDescendantOfA(nthChildOf(withId(R.id.musiciansRv), 0))))
             .check(matches(isDisplayed()))
 
-        onView(allOf(withId(R.id.album_name), isDescendantOfA(nthChildOf(withId(R.id.albumsRv), 0))))
+        onView(allOf(withId(R.id.musician_name), isDescendantOfA(nthChildOf(withId(R.id.musiciansRv), 0))))
             .check(matches(isDisplayed()))
-
-        onView(withId(R.id.albumsRv))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<AlbumsAdapter.AlbumViewHolder>(0, click()))
+        /*
+        onView(withId(R.id.musiciansRv))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<MusiciansAdapter.MusicianViewHolder>(0, click()))
 
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment)
-            assertEquals(navController.currentDestination?.id, R.id.albumDetailFragment)
+            assertEquals(navController.currentDestination?.id, R.id.musicianDetailFragment)
         }
 
         pressBack()
@@ -68,7 +70,9 @@ class HU01Test01 {
             val navController = activity.findNavController(R.id.nav_host_fragment)
             assertEquals(navController.currentDestination?.id, R.id.albumFragment)
         }
+        */
     }
+
 
     @After
     fun tearDown() {

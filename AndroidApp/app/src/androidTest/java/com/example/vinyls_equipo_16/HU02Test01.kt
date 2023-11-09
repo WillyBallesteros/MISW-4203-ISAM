@@ -31,13 +31,13 @@ class HU02Test01 {
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
-    private lateinit var idlingResource: AlbumIdlingResource
+    private lateinit var idlingResource: GenericIdlingResource
 
     @Before
     fun setUp() {
         activityScenarioRule.scenario.onActivity { activity ->
             val viewModel = ViewModelProvider(activity).get(AlbumViewModel::class.java)
-            idlingResource = AlbumIdlingResource(viewModel.dataLoaded)
+            idlingResource = GenericIdlingResource(viewModel.dataLoaded)
             IdlingRegistry.getInstance().register(idlingResource)
         }
     }
