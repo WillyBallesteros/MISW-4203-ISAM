@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.test.espresso.IdlingResource
 
-class AlbumIdlingResource(private val dataLoaded: LiveData<Boolean>) :
+class GenericIdlingResource(private val dataLoaded: LiveData<Boolean>) :
     IdlingResource, Observer<Boolean> {
 
     @Volatile
@@ -14,7 +14,7 @@ class AlbumIdlingResource(private val dataLoaded: LiveData<Boolean>) :
         dataLoaded.observeForever(this)
     }
 
-    override fun getName(): String = AlbumIdlingResource::class.java.name
+    override fun getName(): String = GenericIdlingResource::class.java.name
 
     override fun isIdleNow(): Boolean {
         val idleNow = dataLoaded.value == true
