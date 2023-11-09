@@ -11,6 +11,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinyls_equipo_16.models.Album
 import com.example.vinyls_equipo_16.models.AlbumDetail
+import com.example.vinyls_equipo_16.models.Musician
 import com.example.vinyls_equipo_16.models.Track
 import org.json.JSONArray
 import org.json.JSONObject
@@ -33,9 +34,25 @@ class NetworkServiceAdapter constructor(context: Context) {
         // applicationContext keeps you from leaking the Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)
     }
+
+    suspend fun getMusicians()= suspendCoroutine<List<Musician>>{ cont ->
+        requestQueue.add(getRequest("musicians",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Musician>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Musician(musicianId = item.getInt("id"),name = item.getString("name"), image = item.getString("image")))
+                }
+                cont.resume(list)
+            },
+            {
+                cont.resumeWithException(it)
+            }))
+    }
     suspend fun getAlbums()= suspendCoroutine<List<Album>>{ cont ->
         requestQueue.add(getRequest("albums",
-            Response.Listener<String> { response ->
+            { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
                 for (i in 0 until resp.length()) {
@@ -44,7 +61,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 }
                 cont.resume(list)
             },
-            Response.ErrorListener {
+            {
                 cont.resumeWithException(it)
             }))
     }
