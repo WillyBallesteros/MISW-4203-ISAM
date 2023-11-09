@@ -18,6 +18,7 @@
     <string name="album_description_placeholder">Descripción del álbum</string>
     <string name="txt_no_comments">No hay comentarios para este álbum</string>
     <string name="title_albums">Albums</string>
+    <string name="title_musicians">Cantantes</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -31,5 +32,7 @@
     <string name="album_detail_record_list">\u0020\u0020\u0020\u0020•\u0020</string>
     <string name="album_detail_record_separator">\u0020-\u0020</string>
     <string name="text_void">N/A</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
