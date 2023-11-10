@@ -44,4 +44,12 @@
     <string name="musician_detail_prize_tittle">Premios del Artista</string>
 
 
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_catalog">Home</string>
+    <string name="menu_collectors">Coleccionistas</string>
+    <string name="menu_artists">Artistas</string>
+
 </resources>

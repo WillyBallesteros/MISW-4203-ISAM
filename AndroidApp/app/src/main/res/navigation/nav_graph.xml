@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/musicianFragment">
+    app:startDestination="@id/albumFragment">
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinyls_equipo_16.ui.AlbumFragment"
