@@ -1,3 +1,4 @@
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
@@ -7,6 +8,8 @@ import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.DrawerActions
+import androidx.test.espresso.contrib.DrawerMatchers
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -47,6 +50,16 @@ class HU03Test01 {
 
     @Test
     fun scrollToItem_clicksOnFirstItem() {
+
+        // Open Drawer to click on navigation.
+        onView(withId(R.id.drawer_layout))
+            .check(matches(DrawerMatchers.isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+            .perform(DrawerActions.open()); // Open Drawer
+
+        // Click on the first menu item
+        onView(withId(R.id.musicianFragment)).perform(click())
+
+
         onView(withId(R.id.musiciansRv)).perform(
             RecyclerViewActions.scrollToPosition<MusiciansAdapter.MusicianViewHolder>(0)
         )
@@ -55,7 +68,7 @@ class HU03Test01 {
 
         onView(allOf(withId(R.id.musician_name), isDescendantOfA(nthChildOf(withId(R.id.musiciansRv), 0))))
             .check(matches(isDisplayed()))
-        /*
+
         onView(withId(R.id.musiciansRv))
             .perform(RecyclerViewActions.actionOnItemAtPosition<MusiciansAdapter.MusicianViewHolder>(0, click()))
 
@@ -68,9 +81,9 @@ class HU03Test01 {
 
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
-            assertEquals(navController.currentDestination?.id, R.id.albumFragment)
+            assertEquals(navController.currentDestination?.id, R.id.musicianFragment)
         }
-        */
+
     }
 
 
