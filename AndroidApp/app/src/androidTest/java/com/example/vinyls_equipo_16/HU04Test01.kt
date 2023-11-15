@@ -32,7 +32,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class HU03Test01 {
+class HU04Test01 {
 
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
@@ -77,12 +77,9 @@ class HU03Test01 {
             assertEquals(navController.currentDestination?.id, R.id.musicianDetailFragment)
         }
 
-        pressBack()
-
-        activityScenarioRule.scenario.onActivity { activity ->
-            val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
-            assertEquals(navController.currentDestination?.id, R.id.musicianFragment)
-        }
+        onView(withId(R.id.name)).check(matches(isDisplayed()))
+        onView(withId(R.id.description)).check(matches(isDisplayed()))
+        onView(withId(R.id.birthdate)).check(matches(isDisplayed()))
 
     }
 
