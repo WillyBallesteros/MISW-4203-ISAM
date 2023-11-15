@@ -60,14 +60,14 @@ class HU03Test01 {
             .perform(RecyclerViewActions.actionOnItemAtPosition<MusiciansAdapter.MusicianViewHolder>(0, click()))
 
         activityScenarioRule.scenario.onActivity { activity ->
-            val navController = activity.findNavController(R.id.nav_host_fragment)
+            val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             assertEquals(navController.currentDestination?.id, R.id.musicianDetailFragment)
         }
 
         pressBack()
 
         activityScenarioRule.scenario.onActivity { activity ->
-            val navController = activity.findNavController(R.id.nav_host_fragment)
+            val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             assertEquals(navController.currentDestination?.id, R.id.albumFragment)
         }
         */
