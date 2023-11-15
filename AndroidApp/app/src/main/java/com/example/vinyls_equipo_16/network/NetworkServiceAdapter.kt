@@ -8,6 +8,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinyls_equipo_16.models.Album
 import com.example.vinyls_equipo_16.models.AlbumDetail
+import com.example.vinyls_equipo_16.models.Collector
 import com.example.vinyls_equipo_16.models.Musician
 import com.example.vinyls_equipo_16.models.MusicianDetail
 import com.example.vinyls_equipo_16.models.Prize
@@ -20,7 +21,8 @@ import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object{
-        const val BASE_URL=  "http://34.69.222.171/"
+        //const val BASE_URL=  "http://34.69.222.171/"
+        const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -64,6 +66,23 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
+
+    suspend fun getCollectors()= suspendCoroutine<List<Collector>>{ cont ->
+        requestQueue.add(getRequest("collectors",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Collector>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Collector(collectorId = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email")))
+                }
+                cont.resume(list)
+            },
+            {
+                cont.resumeWithException(it)
+            }))
+    }
+
     suspend fun getAlbum(albumId:Int) = suspendCoroutine<AlbumDetail>{ cont->
         requestQueue.add(getRequest("albums/$albumId",
             { response ->

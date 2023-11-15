@@ -40,4 +40,13 @@
             android:name="musicianId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/collectorFragment"
+        android:name="com.example.vinyls_equipo_16.ui.CollectorFragment"
+        android:label="Collector"
+        tools:layout="@layout/collector_fragment" >
+        <argument
+            android:name="collectorId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
