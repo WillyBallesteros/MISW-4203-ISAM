@@ -12,5 +12,9 @@
             android:id="@+id/musicianFragment"
             android:icon="@drawable/baseline_interpreter_mode_24"
             android:title="@string/title_musicians" />
+        <item
+            android:id="@+id/collectorFragment"
+            android:icon="@drawable/baseline_interpreter_mode_24"
+            android:title="@string/title_collectors" />
     </group>
 </menu>
