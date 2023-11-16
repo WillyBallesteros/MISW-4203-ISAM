@@ -2,9 +2,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.swipeDown
+import androidx.test.espresso.action.ViewActions.swipeUp
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -63,8 +66,9 @@ class HU02Test01 {
 
         onView(withId(R.id.name)).check(matches(isDisplayed()))
         onView(withId(R.id.release_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.description)).check(matches(isDisplayed()))
         onView(withId(R.id.genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.album_scroll)).perform(swipeUp())
+        onView(withId(R.id.description)).check(matches(isDisplayed()))
 
     }
 
