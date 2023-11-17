@@ -68,6 +68,7 @@
     <string name="collector_detail_record_separator">\u0020-\u0020</string>
 
     <string name="comment_detail_record_list">Descripción:</string>
+    <string name="comment_detail_record_rating">Calificación:</string>
     <string name="comment_detail_record_separator">\u0020\u0020\u0020\u0020•\u0020</string>
 
     <string name="favorite_performer_name">Nombre:</string>

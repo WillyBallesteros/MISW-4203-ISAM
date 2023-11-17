@@ -176,7 +176,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     commentItem = commentsItemArray.getJSONObject(i)
                     val comment = Comment( commentId = commentItem.getInt("id"),
                         description = commentItem.getString("description"),
-                        rating = commentItem.getInt("rating"))
+                        rating = commentItem.getString("rating"))
                     comments.add(comment)
                 }
                 //favoritePerformers

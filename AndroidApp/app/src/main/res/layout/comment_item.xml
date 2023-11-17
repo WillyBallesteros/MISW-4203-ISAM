@@ -23,7 +23,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView8"
@@ -46,6 +46,13 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:text="@string/comment_detail_record_separator" />
+                <TextView
+                    android:id="@+id/textView99"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:text="@string/comment_detail_record_rating" />
                 <TextView
                     android:id="@+id/album_name"
                     android:layout_width="wrap_content"
