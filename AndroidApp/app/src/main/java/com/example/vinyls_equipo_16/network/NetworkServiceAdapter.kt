@@ -185,12 +185,13 @@ class NetworkServiceAdapter constructor(context: Context) {
                 var favoritePerformerItem:JSONObject? = null
                 for (i in 0 until favoritePerformersItemArray.length()) {
                     favoritePerformerItem = favoritePerformersItemArray.getJSONObject(i)
+
                     val favoritePerformer = FavoritePerformer( favoritePerformerId = favoritePerformerItem.getInt("id"),
                         name = favoritePerformerItem.getString("name"),
                         image = favoritePerformerItem.getString("image"),
                         description = favoritePerformerItem.getString("description"),
-                        birthDate = favoritePerformerItem.getString("birthDate") ?: "" ,
-                        creationDate = favoritePerformerItem.getString("creationDate") ?: "")
+                        birthDate = if (favoritePerformerItem.has("birthDate")) favoritePerformerItem.getString("birthDate") else "",
+                        creationDate = if (favoritePerformerItem.has("creationDate"))  favoritePerformerItem.getString("creationDate") else "")
                     favoritePerformers.add(favoritePerformer)
                 }
                 //collectorAlbums

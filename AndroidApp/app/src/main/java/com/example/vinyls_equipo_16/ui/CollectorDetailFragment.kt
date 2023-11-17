@@ -70,7 +70,7 @@ class CollectorDetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
         }
-        activity.actionBar?.title = getString(R.string.title_comments)
+        activity.actionBar?.title = getString(R.string.comment_detail_record_list)
         //val args: CommentFragmentArgs by navArgs()
         //Log.d("Args", args.collectorId.toString())
 
