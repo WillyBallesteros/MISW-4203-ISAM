@@ -45,6 +45,15 @@
         android:name="com.example.vinyls_equipo_16.ui.CollectorFragment"
         android:label="Collector"
         tools:layout="@layout/collector_fragment" >
+        <action
+            android:id="@+id/action_collectorFragment_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.example.vinyls_equipo_16.ui.CollectorDetailFragment"
+        android:label="Collector"
+        tools:layout="@layout/collector_detail_fragment" >
         <argument
             android:name="collectorId"
             app:argType="integer" />
