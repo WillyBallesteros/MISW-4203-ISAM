@@ -78,6 +78,7 @@ dependencies {
     implementation("androidx.databinding:databinding-runtime:8.1.2")
     implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
     implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("androidx.annotation:annotation:1.7.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))

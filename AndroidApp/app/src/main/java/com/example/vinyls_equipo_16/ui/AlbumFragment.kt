@@ -14,7 +14,10 @@ import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.AlbumFragmentBinding
 import com.example.vinyls_equipo_16.models.Album
 import com.example.vinyls_equipo_16.ui.adapters.AlbumsAdapter
+import com.example.vinyls_equipo_16.ui.AlbumNewFragment
 import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.navigation.fragment.findNavController
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -40,6 +43,10 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.albumsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            findNavController().navigate(R.id.action_albumFragment_to_albumNewFragment)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
