@@ -4,6 +4,7 @@ import android.content.Context
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinyls_equipo_16.models.Album
@@ -14,6 +15,7 @@ import com.example.vinyls_equipo_16.models.MusicianDetail
 import com.example.vinyls_equipo_16.models.Prize
 import com.example.vinyls_equipo_16.models.Track
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -162,4 +164,43 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
+
+    suspend fun createAlbum(name: String, cover: String, releaseDate: String, description: String, genre: String, recordLabel: String) = suspendCoroutine<Unit> { cont ->
+        val postData = JSONObject().apply {
+            put("name", name)
+            put("cover", cover)
+            put("releaseDate", releaseDate + "T00:00:00.000Z")
+            put("description", description)
+            put("genre", genre)
+            put("recordLabel", recordLabel)
+        }
+
+        val jsonRequest = object : JsonObjectRequest(
+            Request.Method.POST, BASE_URL + "albums", postData,
+            Response.Listener {
+                cont.resume(Unit)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.networkResponse?.let { networkResponse ->
+                    val responseBody = String(networkResponse.data, Charsets.UTF_8)
+                    try {
+                        JSONObject(responseBody).getString("message")
+                    } catch (e: JSONException) {
+                        "Error desconocido: ${networkResponse.statusCode}"
+                    }
+                } ?: error.localizedMessage ?: "Error desconocido"
+
+                cont.resumeWithException(Exception(errorMessage))
+            }
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+        }
+
+        requestQueue.add(jsonRequest)
+    }
+
 }
