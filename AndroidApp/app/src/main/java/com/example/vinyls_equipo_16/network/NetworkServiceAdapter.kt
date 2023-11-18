@@ -15,6 +15,7 @@ import com.example.vinyls_equipo_16.models.MusicianDetail
 import com.example.vinyls_equipo_16.models.Prize
 import com.example.vinyls_equipo_16.models.Track
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -179,8 +180,17 @@ class NetworkServiceAdapter constructor(context: Context) {
             Response.Listener {
                 cont.resume(Unit)
             },
-            Response.ErrorListener {
-                cont.resumeWithException(it)
+            Response.ErrorListener { error ->
+                val errorMessage = error.networkResponse?.let { networkResponse ->
+                    val responseBody = String(networkResponse.data, Charsets.UTF_8)
+                    try {
+                        JSONObject(responseBody).getString("message")
+                    } catch (e: JSONException) {
+                        "Error desconocido: ${networkResponse.statusCode}"
+                    }
+                } ?: error.localizedMessage ?: "Error desconocido"
+
+                cont.resumeWithException(Exception(errorMessage))
             }
         ) {
             override fun getHeaders(): MutableMap<String, String> {

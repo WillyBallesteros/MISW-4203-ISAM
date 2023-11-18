@@ -73,4 +73,11 @@
         <item>Elektra</item>
         <item>Fania Records</item>
     </string-array>
+    <string name="name">Nombre</string>
+    <string name="cover">Carátula</string>
+    <string name="releaseDate">Lanzamiento</string>
+    <string name="description">Descripción</string>
+    <string name="genre">Género</string>
+    <string name="recordLabel">Disquera</string>
+    <string name="create">Crear</string>
 </resources>

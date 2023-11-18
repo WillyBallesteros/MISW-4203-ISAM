@@ -2,6 +2,7 @@ package com.example.vinyls_equipo_16.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.AlbumNewFragmentBinding
 import com.example.vinyls_equipo_16.network.NetworkServiceAdapter
 import kotlinx.coroutines.launch
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -64,7 +66,7 @@ class AlbumNewFragment : Fragment() {
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-            val datePickerDialog = DatePickerDialog(requireContext(),android.R.style.Theme_DeviceDefault_Light_DarkActionBar,  { _, selectedYear, selectedMonth, selectedDay ->
+            val datePickerDialog = DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(selectedYear, selectedMonth, selectedDay)
 
@@ -84,6 +86,9 @@ class AlbumNewFragment : Fragment() {
     }
 
     private fun attemptCreateAlbum() {
+        if (!validateFields()) {
+            return
+        }
         val name = binding.etName.text.toString()
         val cover = binding.etCoverUrl.text.toString()
         val releaseDate = binding.etReleaseDate.text.toString()
@@ -101,6 +106,55 @@ class AlbumNewFragment : Fragment() {
             } catch (e: Exception) {
                 Toast.makeText(context, "Error al crear el álbum: ${e.message}", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun validateFields(): Boolean {
+        if (binding.etName.text.toString().trim().isEmpty()) {
+            binding.etName.error = "Este campo es requerido"
+            return false
+        }
+
+        if (binding.etCoverUrl.text.toString().trim().isEmpty()) {
+            binding.etCoverUrl.error = "Este campo es requerido"
+            return false
+        }
+
+        if (binding.etReleaseDate.text.toString().trim().isEmpty()) {
+            binding.etReleaseDate.error = "Este campo es requerido"
+            return false
+        }
+
+        if (binding.etDescription.text.toString().trim().isEmpty()) {
+            binding.etDescription.error = "Este campo es requerido"
+            return false
+        }
+
+        if (!isValidUrl(binding.etCoverUrl.text.toString().trim())) {
+            binding.etCoverUrl.error = "Debe ser una URL válida"
+            return false
+        }
+
+        if (!isValidDate(binding.etReleaseDate.text.toString().trim())) {
+            binding.etReleaseDate.error = "Formato de fecha inválido (yyyy-mm-dd)"
+            return false
+        }
+
+        return true
+    }
+
+    private fun isValidUrl(url: String): Boolean {
+        return Patterns.WEB_URL.matcher(url).matches()
+    }
+
+    private fun isValidDate(date: String): Boolean {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        dateFormat.isLenient = false
+        try {
+            dateFormat.parse(date)
+            return true
+        } catch (e: ParseException) {
+            return false
         }
     }
 
