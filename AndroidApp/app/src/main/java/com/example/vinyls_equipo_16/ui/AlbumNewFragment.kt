@@ -20,23 +20,14 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class AlbumNewFragment : Fragment() {
     private var _binding: AlbumNewFragmentBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = AlbumNewFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -150,11 +141,11 @@ class AlbumNewFragment : Fragment() {
     private fun isValidDate(date: String): Boolean {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         dateFormat.isLenient = false
-        try {
+        return try {
             dateFormat.parse(date)
-            return true
+            true
         } catch (e: ParseException) {
-            return false
+            false
         }
     }
 

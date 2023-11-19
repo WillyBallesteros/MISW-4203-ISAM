@@ -1,6 +1,6 @@
+package com.example.vinyls_equipo_16
+
 import android.view.Gravity
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
@@ -10,18 +10,14 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.contrib.DrawerMatchers
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.example.vinyls_equipo_16.R
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.vinyls_equipo_16.ui.MainActivity
 import com.example.vinyls_equipo_16.ui.adapters.CollectorsAdapter
 import com.example.vinyls_equipo_16.viewmodels.CollectorViewModel
 import junit.framework.TestCase.assertEquals
-import org.hamcrest.Description
-import org.hamcrest.Matcher
-import org.hamcrest.TypeSafeMatcher
-import org.hamcrest.CoreMatchers.allOf
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -51,7 +47,7 @@ class HU06Test01 {
         // Open Drawer to click on navigation.
         onView(withId(R.id.drawer_layout))
             .check(matches(DrawerMatchers.isClosed(Gravity.LEFT))) // Left Drawer should be closed.
-            .perform(DrawerActions.open()); // Open Drawer
+            .perform(DrawerActions.open()) // Open Drawer
 
         // Click on the first menu item
         onView(withId(R.id.collectorFragment)).perform(click())
@@ -82,22 +78,5 @@ class HU06Test01 {
     fun tearDown() {
         IdlingRegistry.getInstance().unregister(idlingResource)
         idlingResource.cleanup()
-    }
-
-    private fun nthChildOf(parentMatcher: Matcher<View>, childPosition: Int): Matcher<View> {
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description) {
-                description.appendText("with $childPosition child view of type parentMatcher")
-            }
-
-            override fun matchesSafely(view: View): Boolean {
-                if (view.parent !is ViewGroup) {
-                    return parentMatcher.matches(view.parent)
-                }
-
-                val group = view.parent as ViewGroup
-                return parentMatcher.matches(view.parent) && group.getChildAt(childPosition) == view
-            }
-        }
     }
 }

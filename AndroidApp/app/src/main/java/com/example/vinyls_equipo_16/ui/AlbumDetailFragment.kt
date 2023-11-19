@@ -1,16 +1,14 @@
 package com.example.vinyls_equipo_16.ui
 
 
-import java.text.SimpleDateFormat
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,10 +16,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.AlbumDetailFragmentBinding
-import com.example.vinyls_equipo_16.models.AlbumDetail
 import com.example.vinyls_equipo_16.ui.adapters.TracksAdapter
 import com.example.vinyls_equipo_16.viewmodels.AlbumDetailViewModel
-import java.util.Date
+import java.text.SimpleDateFormat
 
 
 private const val ARG_PARAM1 = "albumId"
@@ -53,7 +50,7 @@ class AlbumDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -71,6 +68,8 @@ class AlbumDetailFragment : Fragment() {
         recyclerView.adapter = viewModelAdapter
     }
 
+    @SuppressLint("SimpleDateFormat")
+    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
         super.onActivityCreated(savedInstanceState)
@@ -84,13 +83,11 @@ class AlbumDetailFragment : Fragment() {
         val sdfOutput = SimpleDateFormat("yyyy-MM-dd")
 
         viewModel =
-            ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, param1)).get(
-                AlbumDetailViewModel::class.java
-            )
-        viewModel.album.observe(viewLifecycleOwner, Observer<AlbumDetail> {
+            ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, param1))[AlbumDetailViewModel::class.java]
+        viewModel.album.observe(viewLifecycleOwner) {
 
             binding.name.text = it.name
-            val date = sdfInput.parse(it.releaseDate.toString())
+            val date = sdfInput.parse(it.releaseDate)
             val formattedDate: String = sdfOutput.format(date!!)
             binding.releaseDate.text = formattedDate
             binding.genre.text = it.genre
@@ -125,12 +122,12 @@ class AlbumDetailFragment : Fragment() {
                 }
                 print(this)
             }*/
-        })
+        }
         viewModel.eventNetworkError.observe(
-            viewLifecycleOwner,
-            Observer<Boolean> { isNetworkError ->
-                if (isNetworkError) onNetworkError()
-            })
+            viewLifecycleOwner
+        ) { isNetworkError ->
+            if (isNetworkError) onNetworkError()
+        }
 
     }
 
@@ -141,21 +138,5 @@ class AlbumDetailFragment : Fragment() {
         }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @return A new instance of fragment AlbumDetailFragment.
-         */
-// TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String) =
-            AlbumDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                }
-            }
-    }
+
 }

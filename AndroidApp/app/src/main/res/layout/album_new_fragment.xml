@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.AlbumNewFragment">
 
-    <ScrollView
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.AlbumNewFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -34,7 +32,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/input_background" />
+                    android:background="@drawable/input_background"
+                    android:autofillHints="@string/album_new_fragment_autofillHints_name"
+                    android:inputType="textNoSuggestions"
+                    android:hint="@string/album_new_fragment_autofillHints_name"/>
             </LinearLayout>
 
             <LinearLayout
@@ -55,7 +56,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/input_background" />
+                    android:background="@drawable/input_background"
+                    android:hint="@string/album_new_fragment_autofillHints_cover"
+                    android:autofillHints="@string/album_new_fragment_autofillHints_cover"
+                    android:inputType="textUri"/>
             </LinearLayout>
 
             <LinearLayout
@@ -76,7 +80,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/input_background" />
+                    android:background="@drawable/input_background"
+                    android:autofillHints="@string/album_new_fragment_autofillHints_release_date"
+                    android:hint="@string/album_new_fragment_autofillHints_release_date"
+                    android:inputType="date"/>
             </LinearLayout>
 
             <LinearLayout
@@ -97,7 +104,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/input_background" />
+                    android:background="@drawable/input_background"
+                    android:autofillHints="@string/album_new_fragment_autofillHints_description"
+                    android:hint="@string/album_new_fragment_autofillHints_description"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <LinearLayout
@@ -151,4 +161,3 @@
                 style="@style/ButtonRounded" />
         </LinearLayout>
     </ScrollView>
-</FrameLayout>

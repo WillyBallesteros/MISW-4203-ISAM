@@ -1,3 +1,5 @@
+package com.example.vinyls_equipo_16
+
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
@@ -11,7 +13,6 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.ui.MainActivity
 import com.example.vinyls_equipo_16.ui.adapters.AlbumsAdapter
 import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel

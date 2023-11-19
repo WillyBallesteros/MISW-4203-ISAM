@@ -1,4 +1,5 @@
 package com.example.vinyls_equipo_16.ui.adapters
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -6,12 +7,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.PrizeItemBinding
-import com.example.vinyls_equipo_16.databinding.TrackItemBinding
 import com.example.vinyls_equipo_16.models.Prize
-import com.example.vinyls_equipo_16.models.Track
 
 class PrizesAdapter : RecyclerView.Adapter<PrizesAdapter.PrizesViewHolder>(){
 
+    @SuppressLint("NotifyDataSetChanged")
     var prizes :List<Prize> = emptyList()
         set(value) {
             field = value

@@ -25,11 +25,11 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class NetworkServiceAdapter constructor(context: Context) {
+class NetworkServiceAdapter(context: Context) {
     companion object{
         //const val BASE_URL=  "http://34.69.222.171/"
         const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
-        var instance: NetworkServiceAdapter? = null
+        private var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: NetworkServiceAdapter(context).also {
@@ -89,7 +89,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    suspend fun getAlbum(albumId:Int) = suspendCoroutine<AlbumDetail>{ cont->
+    suspend fun getAlbum(albumId:Int) = suspendCoroutine{ cont->
         requestQueue.add(getRequest("albums/$albumId",
             { response ->
                 val item = JSONObject(response)
@@ -119,7 +119,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    suspend fun getMusician(musicianId:Int) = suspendCoroutine<MusicianDetail>{ cont->
+    suspend fun getMusician(musicianId:Int) = suspendCoroutine{ cont->
         requestQueue.add(getRequest("musicians/$musicianId",
             { response ->
                 val item = JSONObject(response)
@@ -166,7 +166,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    suspend fun getCollector(collectorId:Int) = suspendCoroutine<CollectorDetail>{ cont->
+    suspend fun getCollector(collectorId:Int) = suspendCoroutine{ cont->
         requestQueue.add(getRequest("collectors/$collectorId",
             { response ->
                 val item = JSONObject(response)
@@ -228,7 +228,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
 
-    suspend fun createAlbum(name: String, cover: String, releaseDate: String, description: String, genre: String, recordLabel: String) = suspendCoroutine<Unit> { cont ->
+    suspend fun createAlbum(name: String, cover: String, releaseDate: String, description: String, genre: String, recordLabel: String) = suspendCoroutine { cont ->
         val postData = JSONObject().apply {
             put("name", name)
             put("cover", cover)
@@ -239,7 +239,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         }
 
         val jsonRequest = object : JsonObjectRequest(
-            Request.Method.POST, BASE_URL + "albums", postData,
+            Method.POST, BASE_URL + "albums", postData,
             Response.Listener {
                 cont.resume(Unit)
             },

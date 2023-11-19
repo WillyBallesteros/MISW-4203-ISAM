@@ -1,4 +1,5 @@
 package com.example.vinyls_equipo_16.ui.adapters
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -11,6 +12,7 @@ import com.example.vinyls_equipo_16.models.CollectorAlbum
 class CollectorAlbumsAdapter : RecyclerView.Adapter<CollectorAlbumsAdapter.CollectorAlbumsViewHolder>(){
 
     var collectorAlbums :List<CollectorAlbum> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
