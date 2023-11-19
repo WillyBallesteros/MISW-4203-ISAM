@@ -84,8 +84,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="collector_detail_title">Coleccionistas</string>
     <string name="collector_detail_name">Nombre:</string>
-    <string name="collector_detail_telephone">Telefono:</string>
-    <string name="collector_detail_email">Correo Eléctonico:</string>
+    <string name="collector_detail_telephone">Teléfono:</string>
+    <string name="collector_detail_email">Correo Electrónico:</string>
     <string name="collector_detail_comments">Comentarios:</string>
     <string name="collector_detail_favorite_performers">Intérpretes favoritos:</string>
     <string name="collector_detail_collector_albums">Álbumes de coleccionista:</string>
