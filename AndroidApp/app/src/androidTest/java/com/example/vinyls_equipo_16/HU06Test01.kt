@@ -29,7 +29,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class HU05Test01 {
+class HU06Test01 {
 
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
@@ -60,26 +60,20 @@ class HU05Test01 {
         onView(withId(R.id.collectorsRv)).perform(
             RecyclerViewActions.scrollToPosition<CollectorsAdapter.CollectorViewHolder>(0)
         )
-        onView(allOf(withId(R.id.collector_name), isDescendantOfA(nthChildOf(withId(R.id.collectorsRv), 0))))
-            .check(matches(isDisplayed()))
 
-        onView(allOf(withId(R.id.collector_telephone), isDescendantOfA(nthChildOf(withId(R.id.collectorsRv), 0))))
-            .check(matches(isDisplayed()))
 
-        onView(allOf(withId(R.id.collector_email), isDescendantOfA(nthChildOf(withId(R.id.collectorsRv), 0))))
-            .check(matches(isDisplayed()))
 
         onView(withId(R.id.collectorsRv))
             .perform(RecyclerViewActions.actionOnItemAtPosition<CollectorsAdapter.CollectorViewHolder>(0, click()))
 
-/*        activityScenarioRule.scenario.onActivity { activity ->
+        activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
-            assertEquals(navController.currentDestination?.id, R.id.musicianDetailFragment)
+            assertEquals(navController.currentDestination?.id, R.id.collectorDetailFragment)
         }
 
         onView(withId(R.id.name)).check(matches(isDisplayed()))
-        onView(withId(R.id.description)).check(matches(isDisplayed()))
-        onView(withId(R.id.birthdate)).check(matches(isDisplayed()))*/
+        onView(withId(R.id.telephone)).check(matches(isDisplayed()))
+        onView(withId(R.id.email)).check(matches(isDisplayed()))
 
     }
 
