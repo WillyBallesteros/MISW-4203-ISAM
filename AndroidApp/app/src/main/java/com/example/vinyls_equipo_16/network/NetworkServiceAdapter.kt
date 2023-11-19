@@ -203,7 +203,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 for (i in 0 until collectorAlbumsItemArray.length()) {
                     collectorAlbumItem = collectorAlbumsItemArray.getJSONObject(i)
                     val collectorAlbum = CollectorAlbum( collectorAlbumId = collectorAlbumItem.getInt("id"),
-                        price = collectorAlbumItem.getInt("price"),
+                        price = collectorAlbumItem.getString("price"),
                         status = collectorAlbumItem.getString("status"))
                     collectorAlbums.add(collectorAlbum)
                 }
