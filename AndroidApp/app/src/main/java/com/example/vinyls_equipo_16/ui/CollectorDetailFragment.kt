@@ -18,7 +18,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.CollectorDetailFragmentBinding
 import com.example.vinyls_equipo_16.models.CollectorDetail
+import com.example.vinyls_equipo_16.ui.adapters.CollectorAlbumsAdapter
 import com.example.vinyls_equipo_16.ui.adapters.CommentsAdapter
+import com.example.vinyls_equipo_16.ui.adapters.FavoritePerformersAdapter
 import com.example.vinyls_equipo_16.viewmodels.CollectorDetailViewModel
 
 private const val ARG_PARAM1 = "collectorId"
@@ -26,10 +28,14 @@ private const val ARG_PARAM1 = "collectorId"
 class CollectorDetailFragment : Fragment() {
     private var _param1: Int? = null
     private val param1 get() = _param1!!
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerViewComments: RecyclerView
+    private lateinit var recyclerViewFavoritePerformers: RecyclerView
+    private lateinit var recyclerViewCollectorAlbums: RecyclerView
     private var _binding: CollectorDetailFragmentBinding? = null
     private val binding get() = _binding!!
-    private var viewModelAdapter: CommentsAdapter? = null
+    private var viewModelAdapterComments: CommentsAdapter? = null
+    private var viewModelAdapterFavoritePerformers: FavoritePerformersAdapter? = null
+    private var viewModelAdapterCollectorAlbums: CollectorAlbumsAdapter? = null
     private lateinit var viewModel: CollectorDetailViewModel
 
 
@@ -51,7 +57,9 @@ class CollectorDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = CollectorDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = CommentsAdapter()
+        viewModelAdapterComments = CommentsAdapter()
+        viewModelAdapterFavoritePerformers = FavoritePerformersAdapter()
+        viewModelAdapterCollectorAlbums = CollectorAlbumsAdapter()
         // binding.description.text = param1.toString()
 
 
@@ -60,9 +68,19 @@ class CollectorDetailFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.commentRv
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = viewModelAdapter
+        recyclerViewComments = binding.commentRv
+        recyclerViewComments.layoutManager = LinearLayoutManager(context)
+        recyclerViewComments.adapter = viewModelAdapterComments
+
+        recyclerViewFavoritePerformers = binding.favoritePerformerRv
+        recyclerViewFavoritePerformers.layoutManager = LinearLayoutManager(context)
+        recyclerViewFavoritePerformers.adapter = viewModelAdapterFavoritePerformers
+
+        recyclerViewCollectorAlbums = binding.collectorAlbumRv
+        recyclerViewCollectorAlbums.layoutManager = LinearLayoutManager(context)
+        recyclerViewCollectorAlbums.adapter = viewModelAdapterCollectorAlbums
+
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -84,12 +102,28 @@ class CollectorDetailFragment : Fragment() {
             binding.telephone.text = it.telephone
             binding.email.text = it.email
 
-            viewModelAdapter!!.comments = it.comments
+            viewModelAdapterComments!!.comments = it.comments
             if (it.comments.isEmpty()) {
                 binding.noComments.visibility = View.VISIBLE
             } else {
                 binding.noComments.visibility = View.GONE
             }
+
+            viewModelAdapterFavoritePerformers!!.favoritePerformers = it.favoritePerformers
+            if (it.favoritePerformers.isEmpty()) {
+                binding.noFavoritePerformers.visibility = View.VISIBLE
+            } else {
+                binding.noFavoritePerformers.visibility = View.GONE
+            }
+
+            viewModelAdapterCollectorAlbums!!.collectorAlbums = it.collectorAlbums
+            if (it.collectorAlbums.isEmpty()) {
+                binding.noCollectorsAlbums.visibility = View.VISIBLE
+            } else {
+                binding.noCollectorsAlbums.visibility = View.GONE
+            }
+
+
 
             /*it.apply {
                 viewModelAdapter!!.collector = this
