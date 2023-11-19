@@ -80,4 +80,35 @@
     <string name="genre">Género</string>
     <string name="recordLabel">Disquera</string>
     <string name="create">Crear</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="collector_detail_title">Coleccionistas</string>
+    <string name="collector_detail_name">Nombre:</string>
+    <string name="collector_detail_telephone">Telefono:</string>
+    <string name="collector_detail_email">Correo Eléctonico:</string>
+    <string name="collector_detail_comments">Comentarios:</string>
+    <string name="collector_detail_favorite_performers">Intérpretes favoritos:</string>
+    <string name="collector_detail_collector_albums">Álbumes de coleccionista:</string>
+
+    <string name="collector_detail_no_comments">\u0020\u0020\u0020\u0020Sin comentarios</string>
+    <string name="collector_detail_no_favorite_performers">\u0020\u0020\u0020\u0020Sin intérpretes favoritos</string>
+    <string name="collector_detail_no_collector_albums">\u0020\u0020\u0020\u0020Sin álbumes de coleccionista</string>
+    <string name="collector_detail_record_list">\u0020\u0020\u0020\u0020•\u0020</string>
+    <string name="collector_detail_record_separator">\u0020-\u0020</string>
+
+    <string name="comment_detail_record_list">Descripción:</string>
+    <string name="comment_detail_record_rating">Calificación:</string>
+    <string name="comment_detail_record_separator">\u0020\u0020\u0020\u0020•\u0020</string>
+
+    <string name="favorite_performer_name">Nombre:</string>
+    <string name="favorite_performer_image">Image:</string>
+    <string name="favorite_performer_description">Descripción:</string>
+    <string name="favorite_performer_birthDate">Fecha Nacimiento:</string>
+    <string name="favorite_performer_record_separator">\u0020\u0020\u0020\u0020•\u0020</string>
+
+    <string name="collector_album_price">Precio:</string>
+    <string name="collector_album_status">Estado:</string>
+    <string name="collector_album_separator">\u0020\u0020\u0020\u0020•\u0020</string>
+
+
 </resources>

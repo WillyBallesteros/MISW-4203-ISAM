@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
+import com.example.vinyls_equipo_16.databinding.AlbumItemBinding
 import com.example.vinyls_equipo_16.databinding.CollectorItemBinding
+import com.example.vinyls_equipo_16.models.Album
 import com.example.vinyls_equipo_16.models.Collector
+import com.example.vinyls_equipo_16.ui.CollectorFragmentDirections
 
 class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>(){
 
@@ -30,15 +33,14 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
         return CollectorViewHolder(withDataBinding)
     }
 
-    override fun onBindViewHolder(holder: CollectorViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CollectorsAdapter.CollectorViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.collector = collectors[position]
         }
-/*        holder.bind(collectors[position])
         holder.viewDataBinding.root.setOnClickListener {
             val action = CollectorFragmentDirections.actionCollectorFragmentToCollectorDetailFragment(collectors[position].collectorId)
             holder.viewDataBinding.root.findNavController().navigate(action)
-        }*/
+        }
     }
 
     override fun getItemCount(): Int {

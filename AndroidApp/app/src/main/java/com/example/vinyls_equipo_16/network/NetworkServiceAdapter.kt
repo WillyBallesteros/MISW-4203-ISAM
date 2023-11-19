@@ -10,6 +10,10 @@ import com.android.volley.toolbox.Volley
 import com.example.vinyls_equipo_16.models.Album
 import com.example.vinyls_equipo_16.models.AlbumDetail
 import com.example.vinyls_equipo_16.models.Collector
+import com.example.vinyls_equipo_16.models.CollectorAlbum
+import com.example.vinyls_equipo_16.models.CollectorDetail
+import com.example.vinyls_equipo_16.models.Comment
+import com.example.vinyls_equipo_16.models.FavoritePerformer
 import com.example.vinyls_equipo_16.models.Musician
 import com.example.vinyls_equipo_16.models.MusicianDetail
 import com.example.vinyls_equipo_16.models.Prize
@@ -161,6 +165,65 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
+
+    suspend fun getCollector(collectorId:Int) = suspendCoroutine<CollectorDetail>{ cont->
+        requestQueue.add(getRequest("collectors/$collectorId",
+            { response ->
+                val item = JSONObject(response)
+                //comments
+                val comments = mutableListOf<Comment>()
+                val commentsItemArray = item.getJSONArray("comments")
+                var commentItem:JSONObject? = null
+                for (i in 0 until commentsItemArray.length()) {
+                    commentItem = commentsItemArray.getJSONObject(i)
+                    val comment = Comment( commentId = commentItem.getInt("id"),
+                        description = commentItem.getString("description"),
+                        rating = commentItem.getString("rating"))
+                    comments.add(comment)
+                }
+                //favoritePerformers
+                val favoritePerformers = mutableListOf<FavoritePerformer>()
+                val favoritePerformersItemArray = item.getJSONArray("favoritePerformers")
+                var favoritePerformerItem:JSONObject? = null
+                for (i in 0 until favoritePerformersItemArray.length()) {
+                    favoritePerformerItem = favoritePerformersItemArray.getJSONObject(i)
+
+                    val favoritePerformer = FavoritePerformer( favoritePerformerId = favoritePerformerItem.getInt("id"),
+                        name = favoritePerformerItem.getString("name"),
+                        image = favoritePerformerItem.getString("image"),
+                        description = favoritePerformerItem.getString("description"),
+                        birthDate = if (favoritePerformerItem.has("birthDate")) favoritePerformerItem.getString("birthDate") else "",
+                        creationDate = if (favoritePerformerItem.has("creationDate"))  favoritePerformerItem.getString("creationDate") else "")
+                    favoritePerformers.add(favoritePerformer)
+                }
+                //collectorAlbums
+                val collectorAlbums = mutableListOf<CollectorAlbum>()
+                val collectorAlbumsItemArray = item.getJSONArray("collectorAlbums")
+                var collectorAlbumItem:JSONObject? = null
+                for (i in 0 until collectorAlbumsItemArray.length()) {
+                    collectorAlbumItem = collectorAlbumsItemArray.getJSONObject(i)
+                    val collectorAlbum = CollectorAlbum( collectorAlbumId = collectorAlbumItem.getInt("id"),
+                        price = collectorAlbumItem.getInt("price"),
+                        status = collectorAlbumItem.getString("status"))
+                    collectorAlbums.add(collectorAlbum)
+                }
+
+                val collector = CollectorDetail(
+                    collectorId = item.getInt("id"),
+                    name = item.getString("name"),
+                    telephone = item.getString("telephone"),
+                    email = item.getString("email"),
+                    comments = comments,
+                    favoritePerformers = favoritePerformers,
+                    collectorAlbums = collectorAlbums)
+
+                cont.resume(collector)
+            },
+            {
+                cont.resumeWithException(it)
+            }))
+    }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
