@@ -95,7 +95,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 val item = JSONObject(response)
                 val tracks = mutableListOf<Track>()
                 val trackItemArray = item.getJSONArray("tracks")
-                var trackItem:JSONObject? = null
+                var trackItem:JSONObject?
                 for (i in 0 until trackItemArray.length()) {
                     trackItem = trackItemArray.getJSONObject(i)
                     val track = Track( id = trackItem.getInt("id"), name = trackItem.getString("name"), duration = trackItem.getString("duration"))
@@ -125,7 +125,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 val item = JSONObject(response)
                 val albums = mutableListOf<Album>()
                 val albumsItemArray = item.getJSONArray("albums")
-                var albumItem:JSONObject? = null
+                var albumItem:JSONObject?
                 for (i in 0 until albumsItemArray.length()) {
                     albumItem = albumsItemArray.getJSONObject(i)
                     val album = Album( albumId = albumItem.getInt("id"),
@@ -140,7 +140,7 @@ class NetworkServiceAdapter constructor(context: Context) {
 
                 val prizes = mutableListOf<Prize>()
                 val prizesItemArray = item.getJSONArray("performerPrizes")
-                var prizeItem:JSONObject? = null
+                var prizeItem:JSONObject?
                 for (i in 0 until prizesItemArray.length()) {
                     prizeItem = prizesItemArray.getJSONObject(i)
                     val prize = Prize( prizeId = prizeItem.getInt("id"),
@@ -173,7 +173,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 //comments
                 val comments = mutableListOf<Comment>()
                 val commentsItemArray = item.getJSONArray("comments")
-                var commentItem:JSONObject? = null
+                var commentItem:JSONObject?
                 for (i in 0 until commentsItemArray.length()) {
                     commentItem = commentsItemArray.getJSONObject(i)
                     val comment = Comment( commentId = commentItem.getInt("id"),
@@ -184,7 +184,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 //favoritePerformers
                 val favoritePerformers = mutableListOf<FavoritePerformer>()
                 val favoritePerformersItemArray = item.getJSONArray("favoritePerformers")
-                var favoritePerformerItem:JSONObject? = null
+                var favoritePerformerItem:JSONObject?
                 for (i in 0 until favoritePerformersItemArray.length()) {
                     favoritePerformerItem = favoritePerformersItemArray.getJSONObject(i)
 
@@ -199,7 +199,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 //collectorAlbums
                 val collectorAlbums = mutableListOf<CollectorAlbum>()
                 val collectorAlbumsItemArray = item.getJSONArray("collectorAlbums")
-                var collectorAlbumItem:JSONObject? = null
+                var collectorAlbumItem:JSONObject?
                 for (i in 0 until collectorAlbumsItemArray.length()) {
                     collectorAlbumItem = collectorAlbumsItemArray.getJSONObject(i)
                     val collectorAlbum = CollectorAlbum( collectorAlbumId = collectorAlbumItem.getInt("id"),

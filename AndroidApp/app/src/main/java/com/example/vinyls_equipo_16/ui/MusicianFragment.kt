@@ -19,6 +19,7 @@ import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
 import com.example.vinyls_equipo_16.viewmodels.MusicianViewModel
 
 
+@Suppress("DEPRECATION")
 class MusicianFragment : Fragment() {
     private var _binding: MusicianFragmentBinding? = null
     private val binding get() = _binding!!

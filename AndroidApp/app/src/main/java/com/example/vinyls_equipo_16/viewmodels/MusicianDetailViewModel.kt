@@ -14,7 +14,7 @@ class MusicianDetailViewModel(application: Application, musicianId: Int) :  Andr
 
     private var _musician: MutableLiveData<MusicianDetail> = MutableLiveData<MusicianDetail>()
     val musician: LiveData<MusicianDetail>
-        get() = _musician!!
+        get() = _musician
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 

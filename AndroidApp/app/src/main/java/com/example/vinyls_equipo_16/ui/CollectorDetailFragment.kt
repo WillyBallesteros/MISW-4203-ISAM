@@ -25,6 +25,7 @@ import com.example.vinyls_equipo_16.viewmodels.CollectorDetailViewModel
 
 private const val ARG_PARAM1 = "collectorId"
 
+@Suppress("DEPRECATION")
 class CollectorDetailFragment : Fragment() {
     private var _param1: Int? = null
     private val param1 get() = _param1!!
@@ -156,12 +157,11 @@ class CollectorDetailFragment : Fragment() {
          * this fragment using the provided parameters.
          *
          * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
          * @return A new instance of fragment CollectorDetailFragment.
          */
 // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: String) =
             CollectorDetailFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)

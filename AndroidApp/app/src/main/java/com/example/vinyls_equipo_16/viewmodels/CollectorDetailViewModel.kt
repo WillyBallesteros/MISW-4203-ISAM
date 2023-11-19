@@ -17,7 +17,7 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) :  An
     //  Collector(0, "", "",     "",     "",     "",     "" )
 
     val collector: LiveData<CollectorDetail>
-        get() = _collector!!
+        get() = _collector
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -40,7 +40,7 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) :  An
             viewModelScope.launch (Dispatchers.Default){
                 withContext(Dispatchers.IO){
                     var data: CollectorDetail = collectorDetailRepository.refreshData(id)
-                    _collector?.postValue(data)
+                    _collector.postValue(data)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)

@@ -17,7 +17,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
     //  Album(0, "", "",     "",     "",     "",     "" )
 
     val album: LiveData<AlbumDetail>
-        get() = _album!!
+        get() = _album
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -40,7 +40,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
             viewModelScope.launch (Dispatchers.Default){
                 withContext(Dispatchers.IO){
                     var data: AlbumDetail = albumDetailRepository.refreshData(id)
-                    _album?.postValue(data)
+                    _album.postValue(data)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)

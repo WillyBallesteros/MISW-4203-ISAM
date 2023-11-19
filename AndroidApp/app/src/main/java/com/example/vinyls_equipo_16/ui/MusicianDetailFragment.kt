@@ -23,6 +23,7 @@ import java.util.Date
 
 
 private const val ARG_PARAM1 = "musicianId"
+@Suppress("DEPRECATION")
 class MusicianDetailFragment : Fragment() {
 
     private var _param1: Int? = null
@@ -80,8 +81,8 @@ class MusicianDetailFragment : Fragment() {
         viewModel.musician.observe(viewLifecycleOwner, Observer<MusicianDetail> {
 
             binding.name.text = it.name
-            val date: Date = sdfInput.parse(it.birthDate.toString())
-            val formattedDate: String = sdfOutput.format(date)
+            val date: Date? = sdfInput.parse(it.birthDate.toString())
+            val formattedDate: String = sdfOutput.format(date!!)
             binding.birthdate.text = formattedDate
             binding.description.text = it.description
             binding.description.text = it.description
@@ -136,12 +137,11 @@ class MusicianDetailFragment : Fragment() {
          * this fragment using the provided parameters.
          *
          * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
          * @return A new instance of fragment AlbumDetailFragment.
          */
 // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: String) =
             MusicianDetailFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)

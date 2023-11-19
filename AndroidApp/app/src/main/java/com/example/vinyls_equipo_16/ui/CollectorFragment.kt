@@ -17,6 +17,7 @@ import com.example.vinyls_equipo_16.ui.adapters.CollectorsAdapter
 import com.example.vinyls_equipo_16.viewmodels.CollectorViewModel
 
 
+@Suppress("DEPRECATION")
 class CollectorFragment : Fragment() {
     private var _binding: CollectorFragmentBinding? = null
     private val binding get() = _binding!!
