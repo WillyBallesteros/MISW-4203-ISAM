@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
+        <action
+            android:id="@+id/action_albumFragment_to_albumNewFragment"
+            app:destination="@id/albumNewFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumDetailFragment"
@@ -21,6 +24,15 @@
         <argument
             android:name="albumId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumNewFragment"
+        android:name="com.example.vinyls_equipo_16.ui.AlbumNewFragment"
+        android:label="Crear Álbum"
+        tools:layout="@layout/album_new_fragment" >
+        <action
+            android:id="@+id/action_albumNewFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
     </fragment>
     <fragment
         android:id="@+id/musicianFragment"
@@ -45,6 +57,15 @@
         android:name="com.example.vinyls_equipo_16.ui.CollectorFragment"
         android:label="Collector"
         tools:layout="@layout/collector_fragment" >
+        <action
+            android:id="@+id/action_collectorFragment_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.example.vinyls_equipo_16.ui.CollectorDetailFragment"
+        android:label="Collector"
+        tools:layout="@layout/collector_detail_fragment" >
         <argument
             android:name="collectorId"
             app:argType="integer" />
