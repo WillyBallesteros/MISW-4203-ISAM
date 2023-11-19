@@ -1,0 +1,155 @@
+(base) nhug@MacBook-Pro-de-Ricardo MISW-4203-ISAM % ~/Library/Android/sdk/platform-tools/adb shell monkey -p com.example.vinyls_equipo_16 -v 500 --throttle 2000
+  bash arg: -p
+  bash arg: com.example.vinyls_equipo_16
+  bash arg: -v
+  bash arg: 500
+  bash arg: --throttle
+  bash arg: 2000
+args: [-p, com.example.vinyls_equipo_16, -v, 500, --throttle, 2000]
+ arg: "-p"
+ arg: "com.example.vinyls_equipo_16"
+ arg: "-v"
+ arg: "500"
+ arg: "--throttle"
+ arg: "2000"
+data="com.example.vinyls_equipo_16"
+:Monkey: seed=1699426703906 count=500
+:AllowPackage: com.example.vinyls_equipo_16
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Event percentages:
+//   0: 15.0%
+//   1: 10.0%
+//   2: 2.0%
+//   3: 15.0%
+//   4: -0.0%
+//   5: -0.0%
+//   6: 25.0%
+//   7: 15.0%
+//   8: 2.0%
+//   9: 2.0%
+//   10: 1.0%
+//   11: 13.0%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.MONKEY;launchFlags=0x10200000;component=com.example.vinyls_equipo_16/.ui.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.MONKEY] cmp=com.example.vinyls_equipo_16/.ui.MainActivity } in package com.example.vinyls_equipo_16
+:Sending Touch (ACTION_DOWN): 0:(1078.0,1984.0)
+:Sending Touch (ACTION_UP): 0:(1080.0,2023.9742)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,-2.0)
+:Sending Touch (ACTION_DOWN): 0:(189.0,1552.0)
+:Sending Touch (ACTION_UP): 0:(185.7918,1554.3333)
+:Sending Touch (ACTION_DOWN): 0:(331.0,1865.0)
+:Sending Touch (ACTION_UP): 0:(340.6014,1873.4072)
+:Sending Touch (ACTION_DOWN): 0:(778.0,117.0)
+:Sending Touch (ACTION_UP): 0:(780.86835,113.318016)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,-5.0)
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,-5.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Sending Touch (ACTION_DOWN): 0:(158.0,938.0)
+:Sending Touch (ACTION_UP): 0:(174.15782,938.5742)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,-5.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,2.0)
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,-1.0)
+    //[calendar_time:2023-11-06 02:01:09.195  system_uptime:77160810]
+    // Sending event #100
+:Sending Touch (ACTION_DOWN): 0:(632.0,39.0)
+:Sending Touch (ACTION_UP): 0:(634.69,34.115677)
+:Sending Touch (ACTION_DOWN): 0:(412.0,858.0)
+:Sending Touch (ACTION_UP): 0:(446.85385,829.14435)
+:Sending Touch (ACTION_DOWN): 0:(932.0,925.0)
+:Sending Touch (ACTION_UP): 0:(944.26337,917.26434)
+:Sending Touch (ACTION_DOWN): 0:(140.0,332.0)
+:Sending Touch (ACTION_UP): 0:(150.28114,348.1644)
+:Sending Touch (ACTION_DOWN): 0:(436.0,770.0)
+:Sending Touch (ACTION_UP): 0:(430.78384,772.4025)
+:Sending Touch (ACTION_DOWN): 0:(536.0,1817.0)
+:Sending Touch (ACTION_UP): 0:(539.5778,1820.0266)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,-2.0)
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.MONKEY;launchFlags=0x10200000;component=com.example.vinyls_equipo_16/.ui.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.MONKEY] cmp=com.example.vinyls_equipo_16/.ui.MainActivity } in package com.example.vinyls_equipo_16
+:Sending Touch (ACTION_DOWN): 0:(363.0,1584.0)
+:Sending Touch (ACTION_UP): 0:(302.3135,1526.5413)
+:Sending Touch (ACTION_DOWN): 0:(310.0,381.0)
+:Sending Touch (ACTION_UP): 0:(248.35783,311.63144)
+:Sending Touch (ACTION_DOWN): 0:(618.0,1858.0)
+:Sending Touch (ACTION_UP): 0:(621.96124,1872.3857)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,3.0)
+    //[calendar_time:2023-11-06 02:01:10.523  system_uptime:77162111]
+    // Sending event #200
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.MONKEY;launchFlags=0x10200000;component=com.example.vinyls_equipo_16/.ui.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.MONKEY] cmp=com.example.vinyls_equipo_16/.ui.MainActivity } in package com.example.vinyls_equipo_16
+:Sending Touch (ACTION_DOWN): 0:(252.0,1739.0)
+:Sending Touch (ACTION_UP): 0:(252.46034,1739.4673)
+:Sending Touch (ACTION_DOWN): 0:(942.0,367.0)
+:Sending Touch (ACTION_UP): 0:(947.9012,367.86707)
+:Sending Touch (ACTION_DOWN): 0:(478.0,1531.0)
+:Sending Touch (ACTION_UP): 0:(492.64795,1521.0254)
+:Sending Touch (ACTION_DOWN): 0:(565.0,439.0)
+:Sending Touch (ACTION_UP): 0:(565.64655,473.134)
+:Sending Touch (ACTION_DOWN): 0:(701.0,570.0)
+:Sending Touch (ACTION_UP): 0:(687.655,556.0573)
+:Sending Touch (ACTION_DOWN): 0:(818.0,348.0)
+:Sending Touch (ACTION_UP): 0:(788.0508,307.07425)
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,-4.0)
+:Sending Touch (ACTION_DOWN): 0:(668.0,332.0)
+:Sending Touch (ACTION_UP): 0:(639.75903,343.431)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,-4.0)
+    //[calendar_time:2023-11-06 02:01:11.016  system_uptime:77162605]
+    // Sending event #300
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,4.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Sending Touch (ACTION_DOWN): 0:(70.0,1215.0)
+:Sending Touch (ACTION_UP): 0:(74.67088,1194.2964)
+:Sending Touch (ACTION_DOWN): 0:(612.0,661.0)
+:Sending Touch (ACTION_UP): 0:(654.0607,744.9959)
+:Sending Touch (ACTION_DOWN): 0:(490.0,561.0)
+:Sending Touch (ACTION_UP): 0:(487.90866,558.90594)
+:Sending Touch (ACTION_DOWN): 0:(675.0,1628.0)
+:Sending Touch (ACTION_UP): 0:(676.2495,1643.6132)
+:Sending Touch (ACTION_DOWN): 0:(111.0,1978.0)
+:Sending Touch (ACTION_UP): 0:(111.05623,1977.3468)
+:Sending Touch (ACTION_DOWN): 0:(913.0,1206.0)
+:Sending Touch (ACTION_UP): 0:(923.07996,1220.9923)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,-3.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Sending Touch (ACTION_DOWN): 0:(247.0,110.0)
+:Sending Touch (ACTION_UP): 0:(243.39586,109.86501)
+:Sending Touch (ACTION_DOWN): 0:(485.0,108.0)
+:Sending Touch (ACTION_UP): 0:(445.7652,74.37385)
+:Sending Touch (ACTION_DOWN): 0:(210.0,1129.0)
+:Sending Touch (ACTION_UP): 0:(209.25064,1129.2993)
+    // activityResuming(com.example.vinyls_equipo_16)
+:Sending Touch (ACTION_DOWN): 0:(355.0,1329.0)
+:Sending Touch (ACTION_UP): 0:(358.673,1310.018)
+:Sending Touch (ACTION_DOWN): 0:(46.0,923.0)
+:Sending Touch (ACTION_UP): 0:(82.60653,997.6725)
+:Sending Touch (ACTION_DOWN): 0:(7.0,2151.0)
+:Sending Touch (ACTION_UP): 0:(0.0,2147.31)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-2.0)
+    //[calendar_time:2023-11-06 02:01:11.099  system_uptime:77162687]
+    // Sending event #400
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,3.0)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-5.0)
+:Sending Trackball (ACTION_MOVE): 0:(-2.0,-1.0)
+:Sending Touch (ACTION_DOWN): 0:(797.0,22.0)
+:Sending Touch (ACTION_UP): 0:(802.3125,33.073174)
+:Sending Touch (ACTION_DOWN): 0:(102.0,725.0)
+:Sending Touch (ACTION_UP): 0:(110.55971,726.3409)
+:Sending Touch (ACTION_DOWN): 0:(1040.0,1535.0)
+:Sending Touch (ACTION_UP): 0:(1030.6243,1526.4366)
+:Sending Touch (ACTION_DOWN): 0:(76.0,1036.0)
+:Sending Touch (ACTION_UP): 0:(76.42314,1052.4257)
+:Sending Touch (ACTION_DOWN): 0:(114.0,1052.0)
+:Sending Touch (ACTION_UP): 0:(90.19718,1048.3098)
+:Sending Touch (ACTION_DOWN): 0:(208.0,1677.0)
+:Sending Touch (ACTION_UP): 0:(203.63673,1676.0422)
+:Sending Touch (ACTION_DOWN): 0:(939.0,1084.0)
+Events injected: 500
+:Sending rotation degree=0, persist=false
+:Dropped: keys=0 pointers=0 trackballs=0 flips=0 rotations=0
+## Network stats: elapsed time=4056ms (0ms mobile, 0ms wifi, 4056ms not connected)
+// Monkey finished
+(base) nhug@MacBook-Pro-de-Ricardo MISW-4203-ISAM % 
+
