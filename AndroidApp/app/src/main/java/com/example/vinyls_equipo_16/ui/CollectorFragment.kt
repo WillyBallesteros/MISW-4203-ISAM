@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.CollectorFragmentBinding
 import com.example.vinyls_equipo_16.ui.adapters.CollectorsAdapter
@@ -22,6 +23,7 @@ class CollectorFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: CollectorViewModel
     private var viewModelAdapter: CollectorsAdapter? = null
+    private var swipeRefreshLayout: SwipeRefreshLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,11 @@ class CollectorFragment : Fragment() {
         recyclerView = binding.collectorsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout?.setOnRefreshListener {
+            viewModel.RefreshData()
+        }
     }
 
     @Deprecated("Deprecated in Java")
@@ -55,6 +62,9 @@ class CollectorFragment : Fragment() {
         }
         viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
+        }
+        viewModel.dataLoaded.observe(viewLifecycleOwner) { isDataLoaded ->
+            swipeRefreshLayout?.isRefreshing = !isDataLoaded;
         }
     }
     override fun onDestroyView() {

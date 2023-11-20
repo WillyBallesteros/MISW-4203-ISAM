@@ -30,6 +30,10 @@ class MusicianViewModel(application: Application) : AndroidViewModel(application
         refreshDataFromNetwork()
     }
 
+    fun RefreshData() {
+        refreshDataFromNetwork()
+    }
+
     private fun refreshDataFromNetwork() {
         viewModelScope.launch {
             try {
