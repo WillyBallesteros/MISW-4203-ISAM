@@ -71,7 +71,6 @@ class AlbumFragment : Fragment() {
         viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
         }
-
         viewModel.dataLoaded.observe(viewLifecycleOwner) { isDataLoaded ->
             swipeRefreshLayout?.isRefreshing = !isDataLoaded;
         }
