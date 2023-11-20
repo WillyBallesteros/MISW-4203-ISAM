@@ -10,11 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.AlbumFragmentBinding
 import com.example.vinyls_equipo_16.ui.adapters.AlbumsAdapter
 import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -26,6 +28,7 @@ class AlbumFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: AlbumViewModel
     private var viewModelAdapter: AlbumsAdapter? = null
+    private var swipeRefreshLayout: SwipeRefreshLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,11 @@ class AlbumFragment : Fragment() {
         view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             findNavController().navigate(R.id.action_albumFragment_to_albumNewFragment)
         }
+
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout?.setOnRefreshListener {
+            viewModel.RefreshData()
+        }
     }
 
     @Deprecated("Deprecated in Java")
@@ -62,6 +70,10 @@ class AlbumFragment : Fragment() {
         }
         viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
+        }
+
+        viewModel.dataLoaded.observe(viewLifecycleOwner) { isDataLoaded ->
+            swipeRefreshLayout?.isRefreshing = !isDataLoaded;
         }
     }
     override fun onDestroyView() {

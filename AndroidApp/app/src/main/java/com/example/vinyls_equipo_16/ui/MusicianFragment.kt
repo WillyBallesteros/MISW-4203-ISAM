@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.MusicianFragmentBinding
 import com.example.vinyls_equipo_16.ui.adapters.MusiciansAdapter
@@ -22,6 +23,7 @@ class MusicianFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: MusicianViewModel
     private var viewModelAdapter: MusiciansAdapter? = null
+    private var swipeRefreshLayout: SwipeRefreshLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,10 @@ class MusicianFragment : Fragment() {
         recyclerView = binding.musiciansRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout?.setOnRefreshListener {
+            viewModel.RefreshData()
+        }
     }
 
     @Deprecated("Deprecated in Java")
@@ -55,6 +61,9 @@ class MusicianFragment : Fragment() {
         }
         viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
+        }
+        viewModel.dataLoaded.observe(viewLifecycleOwner) { isDataLoaded ->
+            swipeRefreshLayout?.isRefreshing = !isDataLoaded;
         }
     }
 

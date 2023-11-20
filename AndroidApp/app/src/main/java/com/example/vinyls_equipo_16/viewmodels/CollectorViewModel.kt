@@ -37,6 +37,10 @@ class CollectorViewModel(application: Application) : AndroidViewModel(applicatio
         refreshDataFromNetwork()
     }
 
+    fun RefreshData() {
+        refreshDataFromNetwork()
+    }
+
     private fun refreshDataFromNetwork() {
         viewModelScope.launch {
             try {
