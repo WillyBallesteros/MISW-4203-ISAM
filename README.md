@@ -95,8 +95,8 @@ psql -h localhost -p 5432 -U postgres -d vinyls -a -f sql/data.sql
 - Instalar el APK
 - Ejecutar
 
-## Pruebas Exploratorias (Monkey)
-En la carpeta pruebas\monkey se encuentran las evidencias de las pruebas realizadas, el video se encuentra en el siguiente [link](https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EUPN9BbsN-hIl42g1M6FTK4BlYhhQFm2pmakun97UVzeug?e=aEaA4I), debe estar logueado en office 365 de la Universidad de los Andes.
+## Pruebas Exploratorias Sprint 2 (Monkey)
+En la carpeta pruebas\monkey se encuentran las evidencias de las pruebas realizadas, el video se encuentra en el siguiente [link](https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EQymNuFpzqBLsLsm9qUgIxUBiaeVSQcCzhs5ghcURTJr0g?e=xWGZZ5), debe estar logueado en office 365 de la Universidad de los Andes.
 
 ## Pruebas e2e Sprint 2
-En la carpeta pruebas\e2e se encuentran las evidencias de las pruebas realizadas, el video se encuentra en el siguiente [link](https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EVKlx8HWXBpHgN8TdvYr89MBmsKQ959k3JIYSCwyScsFTQ?e=vhtXev), debe estar logueado en office 365 de la Universidad de los Andes.
+En la carpeta pruebas\e2e se encuentran las evidencias de las pruebas realizadas, el video se encuentra en el siguiente [link](https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EVKlx8HWXBpHgN8TdvYr89MBmsKQ959k3JIYSCwyScsFTQ?e=OFipKm), debe estar logueado en office 365 de la Universidad de los Andes.
