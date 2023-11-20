@@ -1,3 +1,5 @@
+package com.example.vinyls_equipo_16
+
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
@@ -5,12 +7,12 @@ import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.swipeUp
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.ui.MainActivity
 import com.example.vinyls_equipo_16.ui.adapters.AlbumsAdapter
 import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
@@ -31,13 +33,13 @@ class HU02Test01 {
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
-    private lateinit var idlingResource: AlbumIdlingResource
+    private lateinit var idlingResource: GenericIdlingResource
 
     @Before
     fun setUp() {
         activityScenarioRule.scenario.onActivity { activity ->
             val viewModel = ViewModelProvider(activity).get(AlbumViewModel::class.java)
-            idlingResource = AlbumIdlingResource(viewModel.dataLoaded)
+            idlingResource = GenericIdlingResource(viewModel.dataLoaded)
             IdlingRegistry.getInstance().register(idlingResource)
         }
     }
@@ -57,14 +59,15 @@ class HU02Test01 {
             .perform(RecyclerViewActions.actionOnItemAtPosition<AlbumsAdapter.AlbumViewHolder>(0, click()))
 
         activityScenarioRule.scenario.onActivity { activity ->
-            val navController = activity.findNavController(R.id.nav_host_fragment)
+            val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             assertEquals(navController.currentDestination?.id, R.id.albumDetailFragment)
         }
 
         onView(withId(R.id.name)).check(matches(isDisplayed()))
         onView(withId(R.id.release_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.description)).check(matches(isDisplayed()))
         onView(withId(R.id.genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.album_scroll)).perform(swipeUp())
+        onView(withId(R.id.description)).check(matches(isDisplayed()))
 
     }
 
