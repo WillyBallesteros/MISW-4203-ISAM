@@ -239,7 +239,7 @@ class NetworkServiceAdapter(context: Context) {
         }
 
         val jsonRequest = object : JsonObjectRequest(
-            Method.POST, BASE_URL + "albums", postData,
+            Request.Method.POST, BASE_URL + "albums", postData,
             Response.Listener {
                 cont.resume(Unit)
             },
