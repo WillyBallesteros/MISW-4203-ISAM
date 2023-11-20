@@ -98,5 +98,5 @@ psql -h localhost -p 5432 -U postgres -d vinyls -a -f sql/data.sql
 ## Pruebas Exploratorias (Monkey)
 En la carpeta pruebas\monkey se encuentran las evidencias de las pruebas realizadas, el video se encuentra en el siguiente [link](https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EUPN9BbsN-hIl42g1M6FTK4BlYhhQFm2pmakun97UVzeug?e=aEaA4I), debe estar logueado en office 365 de la Universidad de los Andes.
 
-## Pruebas e2e 
-En la carpeta pruebas\e2e se encuentran las evidencias de las pruebas realizadas, el video se encuentra en el siguiente [link](https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EW3udSUtbj9OinbMXLqIpWQBFaDxTXRNF0a0lEo4bgHlMg?e=bqGu6J), debe estar logueado en office 365 de la Universidad de los Andes.
+## Pruebas e2e Sprint 2
+En la carpeta pruebas\e2e se encuentran las evidencias de las pruebas realizadas, el video se encuentra en el siguiente [link]([https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EW3udSUtbj9OinbMXLqIpWQBFaDxTXRNF0a0lEo4bgHlMg?e=bqGu6J](https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EVKlx8HWXBpHgN8TdvYr89MBmsKQ959k3JIYSCwyScsFTQ?e=vhtXev)https://uniandes-my.sharepoint.com/:v:/g/personal/o_ramirezb_uniandes_edu_co/EVKlx8HWXBpHgN8TdvYr89MBmsKQ959k3JIYSCwyScsFTQ?e=vhtXev), debe estar logueado en office 365 de la Universidad de los Andes.
