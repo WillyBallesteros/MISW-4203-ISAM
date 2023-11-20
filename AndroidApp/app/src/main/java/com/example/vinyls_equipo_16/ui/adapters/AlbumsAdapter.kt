@@ -1,5 +1,6 @@
 package com.example.vinyls_equipo_16.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -17,6 +18,7 @@ import com.example.vinyls_equipo_16.ui.AlbumFragmentDirections
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
 
     var albums :List<Album> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

@@ -1,3 +1,5 @@
+package com.example.vinyls_equipo_16
+
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +16,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.ui.MainActivity
-import com.example.vinyls_equipo_16.ui.adapters.AlbumsAdapter
 import com.example.vinyls_equipo_16.ui.adapters.MusiciansAdapter
-import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
 import com.example.vinyls_equipo_16.viewmodels.MusicianViewModel
 import junit.framework.TestCase.assertEquals
 import org.hamcrest.Description
@@ -54,7 +53,7 @@ class HU03Test01 {
         // Open Drawer to click on navigation.
         onView(withId(R.id.drawer_layout))
             .check(matches(DrawerMatchers.isClosed(Gravity.LEFT))) // Left Drawer should be closed.
-            .perform(DrawerActions.open()); // Open Drawer
+            .perform(DrawerActions.open()) // Open Drawer
 
         // Click on the first menu item
         onView(withId(R.id.musicianFragment)).perform(click())

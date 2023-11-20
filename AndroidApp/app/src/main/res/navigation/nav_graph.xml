@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinyls_equipo_16.ui.AlbumFragment"
-        android:label="Catálogo"
+        android:label="@string/album_title"
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.example.vinyls_equipo_16.ui.AlbumDetailFragment"
-        android:label="Álbum"
+        android:label="@string/album_detail_title"
         tools:layout="@layout/album_detail_fragment" >
         <argument
             android:name="albumId"
@@ -29,6 +29,7 @@
         android:id="@+id/albumNewFragment"
         android:name="com.example.vinyls_equipo_16.ui.AlbumNewFragment"
         android:label="Crear Álbum"
+        android:label="@string/album_new_title"
         tools:layout="@layout/album_new_fragment" >
         <action
             android:id="@+id/action_albumNewFragment_to_albumFragment"
@@ -37,7 +38,7 @@
     <fragment
         android:id="@+id/musicianFragment"
         android:name="com.example.vinyls_equipo_16.ui.MusicianFragment"
-        android:label="Artistas"
+        android:label="@string/artistas_title"
         tools:layout="@layout/musician_fragment" >
         <action
             android:id="@+id/action_musicianFragment_to_musicianDetailFragment"
@@ -46,7 +47,7 @@
     <fragment
         android:id="@+id/musicianDetailFragment"
         android:name="com.example.vinyls_equipo_16.ui.MusicianDetailFragment"
-        android:label="Musician"
+        android:label="@string/artistas_title"
         tools:layout="@layout/musician_detail_fragment" >
         <argument
             android:name="musicianId"
@@ -55,8 +56,17 @@
     <fragment
         android:id="@+id/collectorFragment"
         android:name="com.example.vinyls_equipo_16.ui.CollectorFragment"
-        android:label="Collector"
+        android:label="@string/collector_title"
         tools:layout="@layout/collector_fragment" >
+        <action
+            android:id="@+id/action_collectorFragment_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.example.vinyls_equipo_16.ui.CollectorDetailFragment"
+        android:label="@string/collector_detail_title"
+        tools:layout="@layout/collector_detail_fragment" >
         <argument
             android:name="collectorId"
             app:argType="integer" />

@@ -1,13 +1,13 @@
 package com.example.vinyls_equipo_16.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +15,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.MusicianDetailFragmentBinding
-import com.example.vinyls_equipo_16.models.MusicianDetail
 import com.example.vinyls_equipo_16.ui.adapters.PrizesAdapter
 import com.example.vinyls_equipo_16.viewmodels.MusicianDetailViewModel
 import java.text.SimpleDateFormat
@@ -23,6 +22,7 @@ import java.util.Date
 
 
 private const val ARG_PARAM1 = "musicianId"
+@Suppress("DEPRECATION")
 class MusicianDetailFragment : Fragment() {
 
     private var _param1: Int? = null
@@ -46,7 +46,7 @@ class MusicianDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = MusicianDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -61,6 +61,8 @@ class MusicianDetailFragment : Fragment() {
         recyclerView.adapter = viewModelAdapter
     }
 
+    @SuppressLint("SimpleDateFormat")
+    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
         super.onActivityCreated(savedInstanceState)
@@ -77,11 +79,11 @@ class MusicianDetailFragment : Fragment() {
             ViewModelProvider(this, MusicianDetailViewModel.Factory(activity.application, param1)).get(
                 MusicianDetailViewModel::class.java
             )
-        viewModel.musician.observe(viewLifecycleOwner, Observer<MusicianDetail> {
+        viewModel.musician.observe(viewLifecycleOwner) {
 
             binding.name.text = it.name
-            val date: Date = sdfInput.parse(it.birthDate.toString())
-            val formattedDate: String = sdfOutput.format(date)
+            val date: Date? = sdfInput.parse(it.birthDate)
+            val formattedDate: String = sdfOutput.format(date!!)
             binding.birthdate.text = formattedDate
             binding.description.text = it.description
             binding.description.text = it.description
@@ -114,12 +116,12 @@ class MusicianDetailFragment : Fragment() {
                 }
                 print(this)
             }*/
-        })
+        }
         viewModel.eventNetworkError.observe(
-            viewLifecycleOwner,
-            Observer<Boolean> { isNetworkError ->
+            viewLifecycleOwner)
+            { isNetworkError ->
                 if (isNetworkError) onNetworkError()
-            })
+            }
 
     }
 
@@ -130,22 +132,5 @@ class MusicianDetailFragment : Fragment() {
         }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AlbumDetailFragment.
-         */
-// TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MusicianDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                }
-            }
-    }
+
 }

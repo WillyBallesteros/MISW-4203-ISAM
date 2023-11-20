@@ -20,11 +20,6 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class AlbumNewFragment : Fragment() {
     private var _binding: AlbumNewFragmentBinding? = null
     private val binding get() = _binding!!
