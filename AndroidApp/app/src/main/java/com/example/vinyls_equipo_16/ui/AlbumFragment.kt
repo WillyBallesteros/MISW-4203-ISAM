@@ -17,11 +17,6 @@ import com.example.vinyls_equipo_16.ui.adapters.AlbumsAdapter
 import com.example.vinyls_equipo_16.ui.AlbumNewFragment
 import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-<<<<<<< HEAD
-import androidx.navigation.fragment.findNavController
-=======
-
->>>>>>> develop
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.

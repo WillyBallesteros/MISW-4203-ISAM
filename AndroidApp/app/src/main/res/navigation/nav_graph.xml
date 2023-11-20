@@ -29,7 +29,6 @@
         android:id="@+id/albumNewFragment"
         android:name="com.example.vinyls_equipo_16.ui.AlbumNewFragment"
         android:label="Crear Álbum"
-        android:label="@string/album_new_title"
         tools:layout="@layout/album_new_fragment" >
         <action
             android:id="@+id/action_albumNewFragment_to_albumFragment"
