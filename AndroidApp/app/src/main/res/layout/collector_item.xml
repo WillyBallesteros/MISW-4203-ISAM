@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable name="collector" type="com.example.vinyls_equipo_16.models.Collector"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:strokeColor="@color/stroke_color"
+        app:checkedIcon="@drawable/ic_dashboard_black_24dp"
+        app:strokeWidth="0dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/collector_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{collector.name}"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"/>
+
+
+                <TextView
+                    android:id="@+id/collector_telephone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{collector.telephone}"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:layout_marginEnd="8dp"
+                     />
+                <TextView
+                    android:id="@+id/collector_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@{collector.email}"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                     />
+
+            </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
+
