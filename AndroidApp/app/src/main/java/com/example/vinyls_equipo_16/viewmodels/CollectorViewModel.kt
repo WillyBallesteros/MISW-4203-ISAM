@@ -1,16 +1,22 @@
 package com.example.vinyls_equipo_16.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.vinyls_equipo_16.models.Collector
 import com.example.vinyls_equipo_16.repositories.CollectorRepository
-import kotlinx.coroutines.*
-import java.util.concurrent.atomic.AtomicBoolean
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CollectorViewModel(application: Application) : AndroidViewModel(application) {
 
     private val collectorsRepository = CollectorRepository(application)
-    private val _dataLoaded = MutableLiveData<Boolean>(false)
+    private val _dataLoaded = MutableLiveData(false)
     val dataLoaded: LiveData<Boolean>
         get() = _dataLoaded
 
@@ -19,11 +25,11 @@ class CollectorViewModel(application: Application) : AndroidViewModel(applicatio
     val collectors: LiveData<List<Collector>>
         get() = _collectors
 
-    private val _eventNetworkError = MutableLiveData<Boolean>(false)
+    private val _eventNetworkError = MutableLiveData(false)
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
 
-    private val _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private val _isNetworkErrorShown = MutableLiveData(false)
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 

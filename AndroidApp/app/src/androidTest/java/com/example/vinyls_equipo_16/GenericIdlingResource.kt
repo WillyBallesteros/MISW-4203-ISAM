@@ -1,3 +1,5 @@
+package com.example.vinyls_equipo_16
+
 import android.os.Handler
 import android.os.Looper
 import androidx.lifecycle.LiveData
@@ -28,8 +30,8 @@ class GenericIdlingResource(private val dataLoaded: LiveData<Boolean>) :
         this.callback = callback
     }
 
-    override fun onChanged(isDataLoaded: Boolean) { // Asegúrate de que no hay un signo de interrogación aquí
-        if (isDataLoaded) { // Usamos el valor directamente ya que sabemos que no es nulo
+    override fun onChanged(value: Boolean) {
+        if (value) {
             callback?.onTransitionToIdle()
         }
     }

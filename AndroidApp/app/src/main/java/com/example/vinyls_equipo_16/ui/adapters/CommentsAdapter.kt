@@ -1,4 +1,5 @@
 package com.example.vinyls_equipo_16.ui.adapters
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -10,6 +11,7 @@ import com.example.vinyls_equipo_16.models.Comment
 
 class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentsViewHolder>(){
 
+    @SuppressLint("NotifyDataSetChanged")
     var comments :List<Comment> = emptyList()
         set(value) {
             field = value

@@ -2,16 +2,14 @@ package com.example.vinyls_equipo_16.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.vinyls_equipo_16.models.Album
 import com.example.vinyls_equipo_16.models.Musician
-import com.example.vinyls_equipo_16.repositories.AlbumRepository
 import com.example.vinyls_equipo_16.repositories.MusicianRepository
 import kotlinx.coroutines.*
 
 class MusicianViewModel(application: Application) : AndroidViewModel(application) {
 
     private val musiciansRepository = MusicianRepository(application)
-    private val _dataLoaded = MutableLiveData<Boolean>(false)
+    private val _dataLoaded = MutableLiveData(false)
     val dataLoaded: LiveData<Boolean>
         get() = _dataLoaded
 
@@ -20,11 +18,11 @@ class MusicianViewModel(application: Application) : AndroidViewModel(application
     val musicians: LiveData<List<Musician>>
         get() = _musicians
 
-    private val _eventNetworkError = MutableLiveData<Boolean>(false)
+    private val _eventNetworkError = MutableLiveData(false)
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
 
-    private val _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private val _isNetworkErrorShown = MutableLiveData(false)
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    >
     <data>
         <variable name="album" type="com.example.vinyls_equipo_16.models.Album"/>
     </data>
@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:id="@+id/album_cover" />
+                android:id="@+id/album_cover"
+                android:contentDescription="@string/album_item_content_descriptor" />
 
             <LinearLayout
                 android:layout_width="match_parent"

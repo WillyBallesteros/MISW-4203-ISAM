@@ -1,4 +1,5 @@
 package com.example.vinyls_equipo_16.ui.adapters
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -9,11 +10,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.FavoritePerformerItemBinding
-import com.example.vinyls_equipo_16.models.Album
 import com.example.vinyls_equipo_16.models.FavoritePerformer
 
 class FavoritePerformersAdapter : RecyclerView.Adapter<FavoritePerformersAdapter.FavoritePerformersViewHolder>(){
 
+    @SuppressLint("NotifyDataSetChanged")
     var favoritePerformers :List<FavoritePerformer> = emptyList()
         set(value) {
             field = value

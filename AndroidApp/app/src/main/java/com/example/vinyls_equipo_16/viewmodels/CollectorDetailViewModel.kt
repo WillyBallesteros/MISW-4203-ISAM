@@ -17,14 +17,14 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) :  An
     //  Collector(0, "", "",     "",     "",     "",     "" )
 
     val collector: LiveData<CollectorDetail>
-        get() = _collector!!
+        get() = _collector
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData(false)
 
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
 
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private var _isNetworkErrorShown = MutableLiveData(false)
 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
@@ -39,8 +39,8 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) :  An
         try {
             viewModelScope.launch (Dispatchers.Default){
                 withContext(Dispatchers.IO){
-                    var data: CollectorDetail = collectorDetailRepository.refreshData(id)
-                    _collector?.postValue(data)
+                    val data: CollectorDetail = collectorDetailRepository.refreshData(id)
+                    _collector.postValue(data)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
@@ -56,7 +56,7 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) :  An
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val collectorId: Int) : ViewModelProvider.Factory {
+    class Factory(val app: Application, private val collectorId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CollectorDetailViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")

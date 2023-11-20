@@ -1,24 +1,21 @@
 package com.example.vinyls_equipo_16.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.MusicianFragmentBinding
-import com.example.vinyls_equipo_16.models.Album
-import com.example.vinyls_equipo_16.models.Musician
 import com.example.vinyls_equipo_16.ui.adapters.MusiciansAdapter
-import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
 import com.example.vinyls_equipo_16.viewmodels.MusicianViewModel
 
 
+@Suppress("DEPRECATION")
 class MusicianFragment : Fragment() {
     private var _binding: MusicianFragmentBinding? = null
     private val binding get() = _binding!!
@@ -29,7 +26,7 @@ class MusicianFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = MusicianFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = MusiciansAdapter()
@@ -42,6 +39,7 @@ class MusicianFragment : Fragment() {
         recyclerView.adapter = viewModelAdapter
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
@@ -50,14 +48,14 @@ class MusicianFragment : Fragment() {
         activity.actionBar?.title = getString(R.string.title_musicians)
         viewModel = ViewModelProvider(this, MusicianViewModel.Factory(activity.application)).get(
             MusicianViewModel::class.java)
-        viewModel.musicians.observe(viewLifecycleOwner, Observer<List<Musician>> {
+        viewModel.musicians.observe(viewLifecycleOwner) {
             it.apply {
                 viewModelAdapter!!.musicians = this
             }
-        })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+        }
+        viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
-        })
+        }
     }
 
     override fun onDestroyView() {

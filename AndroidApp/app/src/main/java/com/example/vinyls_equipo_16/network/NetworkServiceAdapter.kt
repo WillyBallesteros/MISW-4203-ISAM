@@ -25,11 +25,11 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class NetworkServiceAdapter constructor(context: Context) {
+class NetworkServiceAdapter(context: Context) {
     companion object{
-        //const val BASE_URL=  "http://34.69.222.171/"
-        const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
-        var instance: NetworkServiceAdapter? = null
+        const val BASE_URL=  "http://34.70.255.46/"
+        // const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
+        private var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: NetworkServiceAdapter(context).also {
@@ -89,13 +89,13 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    suspend fun getAlbum(albumId:Int) = suspendCoroutine<AlbumDetail>{ cont->
+    suspend fun getAlbum(albumId:Int) = suspendCoroutine{ cont->
         requestQueue.add(getRequest("albums/$albumId",
             { response ->
                 val item = JSONObject(response)
                 val tracks = mutableListOf<Track>()
                 val trackItemArray = item.getJSONArray("tracks")
-                var trackItem:JSONObject? = null
+                var trackItem:JSONObject?
                 for (i in 0 until trackItemArray.length()) {
                     trackItem = trackItemArray.getJSONObject(i)
                     val track = Track( id = trackItem.getInt("id"), name = trackItem.getString("name"), duration = trackItem.getString("duration"))
@@ -119,13 +119,13 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    suspend fun getMusician(musicianId:Int) = suspendCoroutine<MusicianDetail>{ cont->
+    suspend fun getMusician(musicianId:Int) = suspendCoroutine{ cont->
         requestQueue.add(getRequest("musicians/$musicianId",
             { response ->
                 val item = JSONObject(response)
                 val albums = mutableListOf<Album>()
                 val albumsItemArray = item.getJSONArray("albums")
-                var albumItem:JSONObject? = null
+                var albumItem:JSONObject?
                 for (i in 0 until albumsItemArray.length()) {
                     albumItem = albumsItemArray.getJSONObject(i)
                     val album = Album( albumId = albumItem.getInt("id"),
@@ -140,7 +140,7 @@ class NetworkServiceAdapter constructor(context: Context) {
 
                 val prizes = mutableListOf<Prize>()
                 val prizesItemArray = item.getJSONArray("performerPrizes")
-                var prizeItem:JSONObject? = null
+                var prizeItem:JSONObject?
                 for (i in 0 until prizesItemArray.length()) {
                     prizeItem = prizesItemArray.getJSONObject(i)
                     val prize = Prize( prizeId = prizeItem.getInt("id"),
@@ -166,14 +166,14 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    suspend fun getCollector(collectorId:Int) = suspendCoroutine<CollectorDetail>{ cont->
+    suspend fun getCollector(collectorId:Int) = suspendCoroutine{ cont->
         requestQueue.add(getRequest("collectors/$collectorId",
             { response ->
                 val item = JSONObject(response)
                 //comments
                 val comments = mutableListOf<Comment>()
                 val commentsItemArray = item.getJSONArray("comments")
-                var commentItem:JSONObject? = null
+                var commentItem:JSONObject?
                 for (i in 0 until commentsItemArray.length()) {
                     commentItem = commentsItemArray.getJSONObject(i)
                     val comment = Comment( commentId = commentItem.getInt("id"),
@@ -184,7 +184,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 //favoritePerformers
                 val favoritePerformers = mutableListOf<FavoritePerformer>()
                 val favoritePerformersItemArray = item.getJSONArray("favoritePerformers")
-                var favoritePerformerItem:JSONObject? = null
+                var favoritePerformerItem:JSONObject?
                 for (i in 0 until favoritePerformersItemArray.length()) {
                     favoritePerformerItem = favoritePerformersItemArray.getJSONObject(i)
 
@@ -199,7 +199,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 //collectorAlbums
                 val collectorAlbums = mutableListOf<CollectorAlbum>()
                 val collectorAlbumsItemArray = item.getJSONArray("collectorAlbums")
-                var collectorAlbumItem:JSONObject? = null
+                var collectorAlbumItem:JSONObject?
                 for (i in 0 until collectorAlbumsItemArray.length()) {
                     collectorAlbumItem = collectorAlbumsItemArray.getJSONObject(i)
                     val collectorAlbum = CollectorAlbum( collectorAlbumId = collectorAlbumItem.getInt("id"),
@@ -228,7 +228,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
 
-    suspend fun createAlbum(name: String, cover: String, releaseDate: String, description: String, genre: String, recordLabel: String) = suspendCoroutine<Unit> { cont ->
+    suspend fun createAlbum(name: String, cover: String, releaseDate: String, description: String, genre: String, recordLabel: String) = suspendCoroutine { cont ->
         val postData = JSONObject().apply {
             put("name", name)
             put("cover", cover)
@@ -239,7 +239,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         }
 
         val jsonRequest = object : JsonObjectRequest(
-            Request.Method.POST, BASE_URL + "albums", postData,
+            Method.POST, BASE_URL + "albums", postData,
             Response.Listener {
                 cont.resume(Unit)
             },
