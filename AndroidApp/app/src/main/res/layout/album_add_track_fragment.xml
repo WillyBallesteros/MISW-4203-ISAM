@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AlbumAddTrackFragment">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.AlbumNewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+                <TextView
+                    android:id="@+id/labelTrackName"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    style="@style/labelTextNew" />
+                <EditText
+                    android:id="@+id/textTrackName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_background"
+                    android:autofillHints="@string/album_new_fragment_autofillHints_name"
+                    android:inputType="textNoSuggestions"
+                    android:hint="@string/album_add_track_fragment_autofillHints_name"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+                <TextView
+                    android:id="@+id/labelTrackDuration"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/labelTrackDuration"
+                    style="@style/labelTextNew" />
+                <EditText
+                    android:id="@+id/textTrackDuration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_background"
+                    android:autofillHints="@string/album_add_track_fragment_autofillHints_duration"
+                    android:hint="@string/album_add_track_fragment_autofillHints_duration"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:cursorVisible="false"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_width="167dp"
+                android:layout_height="45dp"
+                android:text="@string/create"
+                android:layout_gravity="center_horizontal"
+                style="@style/ButtonRounded" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

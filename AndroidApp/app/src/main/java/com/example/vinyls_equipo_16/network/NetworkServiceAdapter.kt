@@ -27,8 +27,8 @@ import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter(context: Context) {
     companion object{
-        const val BASE_URL=  "http://34.70.255.46/"
-        // const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
+        //const val BASE_URL=  "http://34.70.255.46/"
+         const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
         private var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -265,5 +265,41 @@ class NetworkServiceAdapter(context: Context) {
 
         requestQueue.add(jsonRequest)
     }
+
+    suspend fun addTrackToAlbum(albumId: Int?, name: String, duration: String) = suspendCoroutine { cont ->
+        val postData = JSONObject().apply {
+            put("name", name)
+            put("duration", duration)
+        }
+
+        val jsonRequest = object : JsonObjectRequest(
+            //{{protocol}}://{{ip}}/albums/{{new_id_a}}/tracks
+            Request.Method.POST, BASE_URL + "albums/${albumId}/tracks", postData,
+            Response.Listener {
+                cont.resume(Unit)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.networkResponse?.let { networkResponse ->
+                    val responseBody = String(networkResponse.data, Charsets.UTF_8)
+                    try {
+                        JSONObject(responseBody).getString("message")
+                    } catch (e: JSONException) {
+                        "Error desconocido: ${networkResponse.statusCode}"
+                    }
+                } ?: error.localizedMessage ?: "Error desconocido"
+
+                cont.resumeWithException(Exception(errorMessage))
+            }
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+        }
+
+        requestQueue.add(jsonRequest)
+    }
+
 
 }
