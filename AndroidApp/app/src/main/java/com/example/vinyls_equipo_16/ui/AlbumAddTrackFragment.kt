@@ -126,10 +126,33 @@ class AlbumAddTrackFragment : Fragment() {
         dialog.show()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    @SuppressLint("SimpleDateFormat")
+    @Deprecated("Deprecated in Java")
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+
+        super.onActivityCreated(savedInstanceState)
+        val activity = requireNotNull(this.activity) {
+        }
+        activity.actionBar?.title = getString(R.string.title_addTrack)
+        val albumName = arguments?.getString("name")
+        val cover = arguments?.getString("cover")
+
+            binding.albumName.text = albumName
+
+            Glide.with(this)
+                .load(cover?.toUri()?.buildUpon()?.scheme("https")?.build())
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.loading_animation)
+
+                        .error(R.drawable.ic_broken_image)
+                )
+                .into(binding.albumCover)
+        }
+
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
     }
 
-
-}

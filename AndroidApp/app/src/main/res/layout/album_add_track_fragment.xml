@@ -22,9 +22,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/album_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:id="@+id/album_cover"
+                android:contentDescription="@string/album_item_content_descriptor" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginBottom="16dp">
                 <TextView
-                    android:id="@+id/labelTrackName"
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:text="@string/label_add_track" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+                <TextView
+                    android:id="@+id/label_track_name"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/name"
@@ -48,7 +86,7 @@
                     android:id="@+id/labelTrackDuration"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/labelTrackDuration"
+                    android:text="@string/label_track_duration"
                     style="@style/labelTextNew" />
                 <EditText
                     android:id="@+id/textTrackDuration"

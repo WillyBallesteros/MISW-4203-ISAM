@@ -99,6 +99,7 @@ class AlbumDetailFragment : Fragment() {
             binding.recordLabel.text = it.recordLabel
             binding.description.text = it.description
             bundle.putString("cover", it.cover)
+            bundle.putString("name", it.name)
 
 
             viewModelAdapter!!.tracks = it.tracks
