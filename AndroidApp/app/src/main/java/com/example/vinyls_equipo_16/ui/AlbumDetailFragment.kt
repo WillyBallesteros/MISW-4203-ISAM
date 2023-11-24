@@ -3,6 +3,7 @@ package com.example.vinyls_equipo_16.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -18,6 +20,7 @@ import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.AlbumDetailFragmentBinding
 import com.example.vinyls_equipo_16.ui.adapters.TracksAdapter
 import com.example.vinyls_equipo_16.viewmodels.AlbumDetailViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 
 
@@ -34,17 +37,15 @@ class AlbumDetailFragment : Fragment() {
     private val binding get() = _binding!!
     private var viewModelAdapter: TracksAdapter? = null
     private lateinit var viewModel: AlbumDetailViewModel
+    private val bundle = Bundle()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
             _param1 = it.getInt(ARG_PARAM1)
             print(param1)
         }
-
-
     }
 
     override fun onCreateView(
@@ -55,9 +56,6 @@ class AlbumDetailFragment : Fragment() {
         _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = TracksAdapter()
-        // binding.description.text = param1.toString()
-
-
         return view
     }
 
@@ -66,6 +64,13 @@ class AlbumDetailFragment : Fragment() {
         recyclerView = binding.trackRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        bundle.putString("albumId", arguments?.getInt("albumId").toString())
+
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            findNavController().navigate(R.id.action_albumDetailFragment_to_albumAddTrackFragment, bundle)
+        }
+
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -93,7 +98,8 @@ class AlbumDetailFragment : Fragment() {
             binding.genre.text = it.genre
             binding.recordLabel.text = it.recordLabel
             binding.description.text = it.description
-
+            bundle.putString("cover", it.cover)
+            bundle.putString("name", it.name)
 
 
             viewModelAdapter!!.tracks = it.tracks

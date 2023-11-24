@@ -24,6 +24,9 @@
         <argument
             android:name="albumId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_albumAddTrackFragment"
+            app:destination="@id/albumAddTrackFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumNewFragment"
@@ -33,6 +36,15 @@
         <action
             android:id="@+id/action_albumNewFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumAddTrackFragment"
+        android:name="com.example.vinyls_equipo_16.ui.AlbumAddTrackFragment"
+        android:label="Agregar Track a Álbum"
+        tools:layout="@layout/album_add_track_fragment" >
+        <action
+            android:id="@+id/action_albumAddTrackFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/musicianFragment"

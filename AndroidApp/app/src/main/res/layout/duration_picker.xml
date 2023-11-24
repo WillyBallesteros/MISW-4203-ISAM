@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <NumberPicker
+        android:id="@+id/numberPickerMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <NumberPicker
+        android:id="@+id/numberPickerSeconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar"/>
+</LinearLayout>
