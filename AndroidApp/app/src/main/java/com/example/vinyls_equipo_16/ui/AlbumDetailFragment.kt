@@ -3,6 +3,7 @@ package com.example.vinyls_equipo_16.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,13 +42,10 @@ class AlbumDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
             _param1 = it.getInt(ARG_PARAM1)
             print(param1)
         }
-
-
     }
 
     override fun onCreateView(
@@ -58,9 +56,6 @@ class AlbumDetailFragment : Fragment() {
         _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = TracksAdapter()
-        // binding.description.text = param1.toString()
-
-
         return view
     }
 

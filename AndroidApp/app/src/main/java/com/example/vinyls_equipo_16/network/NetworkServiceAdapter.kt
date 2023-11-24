@@ -1,6 +1,7 @@
 package com.example.vinyls_equipo_16.network
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -271,7 +272,6 @@ class NetworkServiceAdapter(context: Context) {
             put("name", name)
             put("duration", duration)
         }
-
         val jsonRequest = object : JsonObjectRequest(
             //{{protocol}}://{{ip}}/albums/{{new_id_a}}/tracks
             Request.Method.POST, BASE_URL + "albums/${albumId}/tracks", postData,

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.vinyls_equipo_16.R
+import com.example.vinyls_equipo_16.R.id.action_albumNewFragment_to_albumFragment
 import com.example.vinyls_equipo_16.databinding.AlbumNewFragmentBinding
 import com.example.vinyls_equipo_16.network.NetworkServiceAdapter
 import kotlinx.coroutines.launch
@@ -97,7 +98,7 @@ class AlbumNewFragment : Fragment() {
             try {
                 networkServiceAdapter.createAlbum(name, cover, releaseDate, description, genre, recordLabel)
                 Toast.makeText(context, "Álbum creado con éxito", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_albumNewFragment_to_albumFragment)
+                findNavController().navigate(action_albumNewFragment_to_albumFragment)
             } catch (e: Exception) {
                 Toast.makeText(context, "Error al crear el álbum: ${e.message}", Toast.LENGTH_LONG).show()
             }
