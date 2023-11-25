@@ -79,6 +79,10 @@ class AlbumDetailFragment : Fragment() {
             findNavController().navigate(R.id.action_albumDetailFragment_to_albumAddTrackFragment, bundle)
         }
 
+        view.findViewById<FloatingActionButton>(R.id.comment_icon).setOnClickListener {
+            findNavController().navigate(R.id.action_albumDetailFragment_to_albumAddCommentFragment, bundle)
+        }
+
     }
 
     @SuppressLint("SimpleDateFormat")

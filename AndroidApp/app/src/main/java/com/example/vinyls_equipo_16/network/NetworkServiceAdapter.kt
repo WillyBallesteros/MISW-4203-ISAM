@@ -311,5 +311,43 @@ class NetworkServiceAdapter(context: Context) {
         requestQueue.add(jsonRequest)
     }
 
+    suspend fun addCommentToAlbum(albumId: Int?, comment: String, rating: Int, collectorId: Int) = suspendCoroutine { cont ->
+        val collector = JSONObject().apply {
+            put("id", collectorId)
+        }
+        val postData = JSONObject().apply {
+            put("description", comment)
+            put("rating", rating)
+            put("collector", collector)
+        }
+        val jsonRequest = object : JsonObjectRequest(
+            //{{protocol}}://{{ip}}/albums/{{new_id_a}}/comments
+            Request.Method.POST, BASE_URL + "albums/${albumId}/comments", postData,
+            Response.Listener {
+                cont.resume(Unit)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.networkResponse?.let { networkResponse ->
+                    val responseBody = String(networkResponse.data, Charsets.UTF_8)
+                    try {
+                        JSONObject(responseBody).getString("message")
+                    } catch (e: JSONException) {
+                        "Error desconocido: ${networkResponse.statusCode}"
+                    }
+                } ?: error.localizedMessage ?: "Error desconocido"
+
+                cont.resumeWithException(Exception(errorMessage))
+            }
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+        }
+
+        requestQueue.add(jsonRequest)
+    }
+
 
 }
