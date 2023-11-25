@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_albumDetailFragment_to_albumAddTrackFragment"
             app:destination="@id/albumAddTrackFragment" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_albumAddCommentFragment"
+            app:destination="@id/albumAddCommentFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumNewFragment"
@@ -44,6 +47,15 @@
         tools:layout="@layout/album_add_track_fragment" >
         <action
             android:id="@+id/action_albumAddTrackFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumAddCommentFragment"
+        android:name="com.example.vinyls_equipo_16.ui.AlbumAddCommentFragment"
+        android:label="Agregar Comentario a Álbum"
+        tools:layout="@layout/album_add_comment_fragment" >
+        <action
+            android:id="@+id/action_albumAddCommentFragment_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
     </fragment>
     <fragment

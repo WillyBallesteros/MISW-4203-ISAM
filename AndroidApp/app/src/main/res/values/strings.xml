@@ -113,8 +113,14 @@
     <string name="label_track_duration">Duración</string>
     <string name="album_add_track_fragment_autofillHints_duration">Duración</string>
     <string name="label_add_track">Ingresa el Track:</string>
+    <string name="label_add_comment">Ingresa el Comentario:</string>
     <string name="add_comment">Agregar comentario</string>
     <string name="add_track">Agregar track</string>
+    <string name="label_comment_rating">Rating</string>
+    <string name="label_add_coment">Comentario</string>
+    <string name="album_add_comment_fragment_autofillHints_comment">Deja tu comentario</string>
+    <string name="album_add_comment_fragment_autofillHints_rating">Rating</string>
+
 
 
 </resources>
