@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.AlbumDetailFragmentBinding
+import com.example.vinyls_equipo_16.ui.adapters.CommentsAdapter
 import com.example.vinyls_equipo_16.ui.adapters.TracksAdapter
 import com.example.vinyls_equipo_16.viewmodels.AlbumDetailViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,9 +34,11 @@ class AlbumDetailFragment : Fragment() {
     private var _param1: Int? = null
     private val param1 get() = _param1!!
     private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerViewComments: RecyclerView
     private var _binding: AlbumDetailFragmentBinding? = null
     private val binding get() = _binding!!
     private var viewModelAdapter: TracksAdapter? = null
+    private var viewModelAdapterComments: CommentsAdapter? = null
     private lateinit var viewModel: AlbumDetailViewModel
     private val bundle = Bundle()
 
@@ -56,6 +59,7 @@ class AlbumDetailFragment : Fragment() {
         _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = TracksAdapter()
+        viewModelAdapterComments = CommentsAdapter()
         return view
     }
 
@@ -64,6 +68,10 @@ class AlbumDetailFragment : Fragment() {
         recyclerView = binding.trackRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        recyclerViewComments = binding.commentRv
+        recyclerViewComments.layoutManager = LinearLayoutManager(context)
+        recyclerViewComments.adapter = viewModelAdapterComments
 
         bundle.putString("albumId", arguments?.getInt("albumId").toString())
 
@@ -107,6 +115,12 @@ class AlbumDetailFragment : Fragment() {
                 binding.noSongs.visibility = View.VISIBLE
             } else {
                 binding.noSongs.visibility = View.GONE
+            }
+            viewModelAdapterComments!!.comments = it.comments
+            if (it.comments.isEmpty()) {
+                binding.noComments.visibility = View.VISIBLE
+            } else {
+                binding.noComments.visibility = View.GONE
             }
             Glide.with(this)
                 .load(it.cover.toUri().buildUpon().scheme("https").build())
