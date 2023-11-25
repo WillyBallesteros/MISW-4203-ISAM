@@ -95,12 +95,21 @@ class NetworkServiceAdapter(context: Context) {
             { response ->
                 val item = JSONObject(response)
                 val tracks = mutableListOf<Track>()
+                val comments = mutableListOf<Comment>()
                 val trackItemArray = item.getJSONArray("tracks")
                 var trackItem:JSONObject?
+                val commentItemArray = item.getJSONArray("comments")
+                var commentItem:JSONObject?
+
                 for (i in 0 until trackItemArray.length()) {
                     trackItem = trackItemArray.getJSONObject(i)
                     val track = Track( id = trackItem.getInt("id"), name = trackItem.getString("name"), duration = trackItem.getString("duration"))
                     tracks.add(track)
+                }
+                for (i in 0 until commentItemArray.length()) {
+                    commentItem = commentItemArray.getJSONObject(i)
+                    val comment = Comment( commentId = commentItem.getInt("id"), description = commentItem.getString("description"), rating = commentItem.getInt("rating"))
+                    comments.add(comment)
                 }
 
                 val album = AlbumDetail(
@@ -111,7 +120,8 @@ class NetworkServiceAdapter(context: Context) {
                     releaseDate = item.getString("releaseDate"),
                     genre = item.getString("genre"),
                     description = item.getString("description"),
-                    tracks = tracks )
+                    tracks = tracks,
+                    comments = comments)
 
                 cont.resume(album)
             },
@@ -179,7 +189,7 @@ class NetworkServiceAdapter(context: Context) {
                     commentItem = commentsItemArray.getJSONObject(i)
                     val comment = Comment( commentId = commentItem.getInt("id"),
                         description = commentItem.getString("description"),
-                        rating = commentItem.getString("rating"))
+                        rating = commentItem.getInt("rating"))
                     comments.add(comment)
                 }
                 //favoritePerformers
