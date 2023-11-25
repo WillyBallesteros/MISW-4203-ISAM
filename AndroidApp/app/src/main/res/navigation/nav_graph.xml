@@ -94,4 +94,22 @@
             android:name="collectorId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/prizeFragment"
+        android:name="com.example.vinyls_equipo_16.ui.PrizeFragment"
+        android:label="@string/title_prizes"
+        tools:layout="@layout/prize_fragment" >
+        <action
+            android:id="@+id/action_prizeFragment_to_prizeNewFragment"
+            app:destination="@id/prizeNewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/prizeNewFragment"
+        android:name="com.example.vinyls_equipo_16.ui.PrizeNewFragment"
+        android:label="Crear Premio"
+        tools:layout="@layout/prize_new_fragment" >
+        <action
+            android:id="@+id/action_prizeNewFragment_to_prizeFragment"
+            app:destination="@id/prizeFragment" />
+    </fragment>
 </navigation>

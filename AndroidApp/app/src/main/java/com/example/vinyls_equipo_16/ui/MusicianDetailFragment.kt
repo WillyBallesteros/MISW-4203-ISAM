@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.MusicianDetailFragmentBinding
-import com.example.vinyls_equipo_16.ui.adapters.PrizesAdapter
+import com.example.vinyls_equipo_16.ui.adapters.PerformerPrizeAdapter
 import com.example.vinyls_equipo_16.viewmodels.MusicianDetailViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -30,7 +30,7 @@ class MusicianDetailFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var _binding: MusicianDetailFragmentBinding? = null
     private val binding get() = _binding!!
-    private var viewModelAdapter: PrizesAdapter? = null
+    private var viewModelAdapter: PerformerPrizeAdapter? = null
     private lateinit var viewModel: MusicianDetailViewModel
 
 
@@ -50,7 +50,7 @@ class MusicianDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = MusicianDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = PrizesAdapter()
+        viewModelAdapter = PerformerPrizeAdapter()
         return view
     }
 
