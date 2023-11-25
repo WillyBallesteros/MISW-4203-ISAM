@@ -1,7 +1,6 @@
 package com.example.vinyls_equipo_16.network
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -17,6 +16,7 @@ import com.example.vinyls_equipo_16.models.Comment
 import com.example.vinyls_equipo_16.models.FavoritePerformer
 import com.example.vinyls_equipo_16.models.Musician
 import com.example.vinyls_equipo_16.models.MusicianDetail
+import com.example.vinyls_equipo_16.models.PerformerPrize
 import com.example.vinyls_equipo_16.models.Prize
 import com.example.vinyls_equipo_16.models.Track
 import org.json.JSONArray
@@ -149,12 +149,12 @@ class NetworkServiceAdapter(context: Context) {
                     albums.add(album)
                 }
 
-                val prizes = mutableListOf<Prize>()
+                val prizes = mutableListOf<PerformerPrize>()
                 val prizesItemArray = item.getJSONArray("performerPrizes")
                 var prizeItem:JSONObject?
                 for (i in 0 until prizesItemArray.length()) {
                     prizeItem = prizesItemArray.getJSONObject(i)
-                    val prize = Prize( prizeId = prizeItem.getInt("id"),
+                    val prize = PerformerPrize( prizeId = prizeItem.getInt("id"),
                         premiationDate = prizeItem.getString("premiationDate"))
                     prizes.add(prize)
                 }
@@ -348,6 +348,53 @@ class NetworkServiceAdapter(context: Context) {
 
         requestQueue.add(jsonRequest)
     }
+    suspend fun getPrizes()= suspendCoroutine<List<Prize>>{ cont ->
+        requestQueue.add(getRequest("prizes",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Prize>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Prize(prizeId = item.getInt("id"), name = item.getString("name"), description = item.getString("description"), organization = item.getString("organization")))
+                }
+                cont.resume(list)
+            },
+            {
+                cont.resumeWithException(it)
+            }))
+    }
+    suspend fun createPrize(name: String, description: String, organization: String) = suspendCoroutine { cont ->
+        val postData = JSONObject().apply {
+            put("name", name)
+            put("description", description)
+            put("organization", organization)
+        }
 
+        val jsonRequest = object : JsonObjectRequest(
+            Request.Method.POST, BASE_URL + "prizes", postData,
+            Response.Listener {
+                cont.resume(Unit)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.networkResponse?.let { networkResponse ->
+                    val responseBody = String(networkResponse.data, Charsets.UTF_8)
+                    try {
+                        JSONObject(responseBody).getString("message")
+                    } catch (e: JSONException) {
+                        "Error desconocido: ${networkResponse.statusCode}"
+                    }
+                } ?: error.localizedMessage ?: "Error desconocido"
 
+                cont.resumeWithException(Exception(errorMessage))
+            }
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+        }
+
+        requestQueue.add(jsonRequest)
+    }
 }

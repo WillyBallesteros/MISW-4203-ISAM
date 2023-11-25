@@ -6,19 +6,20 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinyls_equipo_16.R
-import com.example.vinyls_equipo_16.databinding.PrizeItemBinding
-import com.example.vinyls_equipo_16.models.Prize
+import com.example.vinyls_equipo_16.databinding.PerformerPrizeItemBinding
+import com.example.vinyls_equipo_16.models.PerformerPrize
 
-class PrizesAdapter : RecyclerView.Adapter<PrizesAdapter.PrizesViewHolder>(){
+class PerformerPrizeAdapter : RecyclerView.Adapter<PerformerPrizeAdapter.PrizesViewHolder>(){
+
     @SuppressLint("NotifyDataSetChanged")
-    var prizes :List<Prize> = emptyList()
+    var prizes :List<PerformerPrize> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PrizesViewHolder {
-        val withDataBinding: PrizeItemBinding = DataBindingUtil.inflate(
+        val withDataBinding: PerformerPrizeItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             PrizesViewHolder.LAYOUT,
             parent,
@@ -36,11 +37,14 @@ class PrizesAdapter : RecyclerView.Adapter<PrizesAdapter.PrizesViewHolder>(){
         return prizes.size
     }
 
-    class PrizesViewHolder(val viewDataBinding: PrizeItemBinding) :
+
+    class PrizesViewHolder(val viewDataBinding: PerformerPrizeItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {
             @LayoutRes
-            val LAYOUT = R.layout.prize_item
+            val LAYOUT = R.layout.performer_prize_item
         }
     }
+
+
 }
