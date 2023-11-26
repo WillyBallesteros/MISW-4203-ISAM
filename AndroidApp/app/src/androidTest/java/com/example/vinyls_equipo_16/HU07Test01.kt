@@ -81,20 +81,4 @@ class HU07Test01 {
         idlingResource.cleanup()
     }
 
-    private fun nthChildOf(parentMatcher: Matcher<View>, childPosition: Int): Matcher<View> {
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description) {
-                description.appendText("with $childPosition child view of type parentMatcher")
-            }
-
-            override fun matchesSafely(view: View): Boolean {
-                if (view.parent !is ViewGroup) {
-                    return parentMatcher.matches(view.parent)
-                }
-
-                val group = view.parent as ViewGroup
-                return parentMatcher.matches(view.parent) && group.getChildAt(childPosition) == view
-            }
-        }
-    }
 }
