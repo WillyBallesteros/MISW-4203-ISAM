@@ -93,6 +93,18 @@
         <argument
             android:name="collectorId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_collectorDetailFragment_to_collectorAddAlbumFragment"
+            app:destination="@id/collectorAddAlbumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorAddAlbumFragment"
+        android:name="com.example.vinyls_equipo_16.ui.CollectorAddAlbumFragment"
+        android:label="Asociar Álbum a Coleccionista"
+        tools:layout="@layout/collector_add_album_fragment" >
+        <action
+            android:id="@+id/action_collectorAddAlbumFragment_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/prizeFragment"

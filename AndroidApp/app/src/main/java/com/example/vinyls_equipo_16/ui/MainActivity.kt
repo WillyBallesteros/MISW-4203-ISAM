@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         // Definir los ID de los destinos de nivel superior en el DrawerLayout
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.albumFragment, R.id.musicianFragment, R.id.collectorFragment), binding.drawerLayout
+            setOf(R.id.albumFragment, R.id.musicianFragment, R.id.collectorFragment, R.id.prizeFragment), binding.drawerLayout
         )
 
         binding.navView.setupWithNavController(navController)

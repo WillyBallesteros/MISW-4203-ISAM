@@ -66,6 +66,7 @@
     <string name="genre">Género</string>
     <string name="recordLabel">Disquera</string>
     <string name="create">Crear</string>
+    <string name="save">Guardar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="collector_detail_title">Coleccionista</string>
@@ -92,6 +93,7 @@
 
     <string name="collector_album_price">Precio:</string>
     <string name="collector_album_status">Estado:</string>
+    <string name="collector_add_album">Seleccione un álbum:</string>
 
 
     <string name="album_item_content_descriptor">Carátula del álbum</string>
