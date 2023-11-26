@@ -47,7 +47,7 @@ class HU09Test01 {
     }
 
     @Test
-    fun addTrackToAlbum_And_VerifyInList() {
+    fun addCommentToAlbum_And_VerifyInList() {
         val randomId = Random().nextInt(1000)
         val description = "De los mejores albumes que he escuchado $randomId"
         val rating = 4
@@ -127,23 +127,6 @@ class HU09Test01 {
 
                 val group = view.parent as ViewGroup
                 return parentMatcher.matches(view.parent) && group.getChildAt(childPosition) == view
-            }
-        }
-    }
-
-    fun setNumberPickerValue(value: Int): ViewAction {
-        return object : ViewAction {
-            override fun getConstraints(): Matcher<View> {
-                return ViewMatchers.isAssignableFrom(NumberPicker::class.java)
-            }
-
-            override fun getDescription(): String {
-                return "Set the NumberPicker value to $value"
-            }
-
-            override fun perform(uiController: UiController?, view: View) {
-                val numberPicker = view as NumberPicker
-                numberPicker.value = value
             }
         }
     }
