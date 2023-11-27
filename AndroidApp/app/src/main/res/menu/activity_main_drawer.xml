@@ -18,7 +18,7 @@
             android:title="@string/title_collectors" />
         <item
             android:id="@+id/prizeFragment"
-            android:icon="@drawable/baseline_library_music_24"
+            android:icon="@drawable/baseline_emoji_events_24"
             android:title="@string/title_prizes" />
     </group>
 </menu>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Vinyls_Equipo_16</string>
-    <string name="title_albums">Albums</string>
+    <string name="title_albums">Álbums</string>
     <string name="title_musicians">Artistas</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
@@ -94,6 +94,13 @@
     <string name="collector_album_price">Precio:</string>
     <string name="collector_album_status">Estado:</string>
     <string name="collector_add_album">Seleccione un álbum:</string>
+    <string name="collector_add_price">Precio:</string>
+    <string name="collector_add_price_hint">100</string>
+
+    <string-array name="status_labels">
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
 
 
     <string name="album_item_content_descriptor">Carátula del álbum</string>
