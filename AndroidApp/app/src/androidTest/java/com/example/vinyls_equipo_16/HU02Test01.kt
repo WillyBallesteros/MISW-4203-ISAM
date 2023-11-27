@@ -66,6 +66,8 @@ class HU02Test01 {
         onView(withId(R.id.name)).check(matches(isDisplayed()))
         onView(withId(R.id.release_date)).check(matches(isDisplayed()))
         onView(withId(R.id.genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.album_scroll)).perform(swipeUp())
+        onView(withId(R.id.description)).check(matches(isDisplayed()))
 
     }
 
