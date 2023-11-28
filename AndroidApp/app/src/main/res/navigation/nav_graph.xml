@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_musicianDetailFragment_to_musicianAddPrizeFragment"
             app:destination="@id/musicianAddPrizeFragment" />
+        <action
+            android:id="@+id/action_musicianDetailFragment_to_musicianAddAlbumFragment"
+            app:destination="@id/musicianAddAlbumFragment" />
     </fragment>
     <fragment
         android:id="@+id/musicianAddPrizeFragment"
@@ -86,6 +89,15 @@
         tools:layout="@layout/musician_add_prize_fragment" >
         <action
             android:id="@+id/action_musicianAddPrizeFragment_to_musicianDetailFragment"
+            app:destination="@id/musicianDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicianAddAlbumFragment"
+        android:name="com.example.vinyls_equipo_16.ui.MusicianAddAlbumFragment"
+        android:label="Asociar Álbum a Artista"
+        tools:layout="@layout/musician_add_album_fragment" >
+        <action
+            android:id="@+id/action_musicianAddAlbumFragment_to_musicianDetailFragment"
             app:destination="@id/musicianDetailFragment" />
     </fragment>
     <fragment

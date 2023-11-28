@@ -109,7 +109,35 @@
                 tools:listitem="@layout/performer_prize_item"
                 android:layout_marginBottom="16dp">
             </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/albums"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/musician_title_albums"/>
+            <TextView
+                android:id="@+id/no_albums"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:text="@string/musician_detail_no_prizes"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/albumsRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/musician_album_item"
+                android:layout_marginBottom="16dp">
+            </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
+
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -122,5 +150,17 @@
         android:backgroundTint="@color/teal_700"
         android:contentDescription="@string/text_void"
         app:tint="@color/white"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/baseline_emoji_events_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_button_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/teal_700"
+        android:contentDescription="@string/text_void"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/baseline_album_24" />
 </FrameLayout>

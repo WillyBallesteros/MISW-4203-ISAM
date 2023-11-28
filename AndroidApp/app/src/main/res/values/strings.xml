@@ -105,6 +105,9 @@
 
     <string name="album_item_content_descriptor">Carátula del álbum</string>
     <string name="musician_item_content_descriptor">Imagen del artista</string>
+    <string name="musician_detail_no_albums">\u0020\u0020\u0020\u0020Sin álbumes registrados</string>
+    <string name="musician_title_albums">Álbums:</string>
+
 
     <string name="album_new_fragment_autofillHints_name">Nombre</string>
     <string name="album_new_fragment_autofillHints_cover">Carátula</string>
