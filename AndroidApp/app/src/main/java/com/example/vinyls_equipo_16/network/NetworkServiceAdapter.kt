@@ -431,4 +431,38 @@ class NetworkServiceAdapter(context: Context) {
 
         requestQueue.add(jsonRequest)
     }
+
+    suspend fun addPrizeToMusician(prizeId: Int, musicianId: Int, premiationDate: String) = suspendCoroutine { cont ->
+        val postData = JSONObject().apply {
+            put("premiationDate", premiationDate + "T00:00:00.000Z")
+        }
+
+        val jsonRequest = object : JsonObjectRequest(
+            //{{protocol}}://{{ip}}/collectors/{{new_id_c}}/albums/{{new_id_a}}
+            Request.Method.POST, BASE_URL + "prizes/${prizeId}/musicians/${musicianId}", postData,
+            Response.Listener {
+                cont.resume(Unit)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.networkResponse?.let { networkResponse ->
+                    val responseBody = String(networkResponse.data, Charsets.UTF_8)
+                    try {
+                        JSONObject(responseBody).getString("message")
+                    } catch (e: JSONException) {
+                        "Error desconocido: ${networkResponse.statusCode}"
+                    }
+                } ?: error.localizedMessage ?: "Error desconocido"
+
+                cont.resumeWithException(Exception(errorMessage))
+            }
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+        }
+
+        requestQueue.add(jsonRequest)
+    }
 }

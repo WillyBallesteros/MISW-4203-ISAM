@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.CollectorAddAlbumFragmentBinding
@@ -63,11 +64,6 @@ class CollectorAddAlbumFragment: Fragment() {
         val price = binding.priceAlbum.text.toString()
         val status = binding.spinnerStatus.selectedItem.toString()
 
-        Log.d("COLLECTOR", collectorId.toString())
-        Log.d("SPINNER", albumId.toString())
-        Log.d("PRICE", price)
-        Log.d("ESTADO", status)
-
         val networkServiceAdapter = NetworkServiceAdapter.getInstance(requireContext())
 
         lifecycleScope.launch {
@@ -76,7 +72,11 @@ class CollectorAddAlbumFragment: Fragment() {
                 Toast.makeText(context, "Asociación creada con éxito", Toast.LENGTH_SHORT).show()
                 val bundle = Bundle()
                 bundle.putInt("collectorId", collectorId)
-                findNavController().navigate(R.id.action_collectorAddAlbumFragment_to_collectorDetailFragment, bundle)
+                findNavController().navigate(R.id.action_collectorAddAlbumFragment_to_collectorDetailFragment, bundle,
+                    NavOptions.Builder()
+                        .setPopUpTo(R.id.collectorDetailFragment, true)
+                        .build()
+                )
             } catch (e: Exception) {
                 Toast.makeText(context, "Error al asociar Álbum a Coleccionista: ${e.message}", Toast.LENGTH_LONG).show()
             }

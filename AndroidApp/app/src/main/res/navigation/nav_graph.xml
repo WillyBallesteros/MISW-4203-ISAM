@@ -75,6 +75,18 @@
         <argument
             android:name="musicianId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_musicianDetailFragment_to_musicianAddPrizeFragment"
+            app:destination="@id/musicianAddPrizeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicianAddPrizeFragment"
+        android:name="com.example.vinyls_equipo_16.ui.MusicianAddPrizeFragment"
+        android:label="Asociar Premio a Artista"
+        tools:layout="@layout/musician_add_prize_fragment" >
+        <action
+            android:id="@+id/action_musicianAddPrizeFragment_to_musicianDetailFragment"
+            app:destination="@id/musicianDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/collectorFragment"

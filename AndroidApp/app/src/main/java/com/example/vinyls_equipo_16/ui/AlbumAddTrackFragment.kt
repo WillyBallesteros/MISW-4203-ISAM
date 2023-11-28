@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -78,7 +79,11 @@ class AlbumAddTrackFragment : Fragment() {
                 Toast.makeText(context, "Track agregada con éxito", Toast.LENGTH_SHORT).show()
                 val bundle = Bundle()
                 bundle.putInt("albumId", albumId)
-                findNavController().navigate(action_albumAddTrackFragment_to_albumDetailFragment, bundle)
+                findNavController().navigate(R.id.action_albumAddTrackFragment_to_albumDetailFragment, bundle,
+                    NavOptions.Builder()
+                        .setPopUpTo(R.id.albumDetailFragment, true)
+                        .build()
+                )
             } catch (e: Exception) {
                 Toast.makeText(context, "Error al agregar Track a el álbum: ${e.message}", Toast.LENGTH_LONG).show()
             }

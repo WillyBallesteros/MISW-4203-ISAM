@@ -13,6 +13,7 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -69,7 +70,11 @@ class AlbumAddCommentFragment : Fragment() {
                 Toast.makeText(context, "Comment agregada con éxito", Toast.LENGTH_SHORT).show()
                 val bundle = Bundle()
                 bundle.putInt("albumId", albumId)
-                findNavController().navigate(R.id.action_albumAddCommentFragment_to_albumDetailFragment, bundle)
+                findNavController().navigate(R.id.action_albumAddCommentFragment_to_albumDetailFragment, bundle,
+                    NavOptions.Builder()
+                        .setPopUpTo(R.id.albumDetailFragment, true)
+                        .build()
+                )
             } catch (e: Exception) {
                 Toast.makeText(context, "Error al agregar Comment a el álbum: ${e.message}", Toast.LENGTH_LONG).show()
             }
