@@ -125,7 +125,7 @@
                 android:textColor="@color/gray"
                 android:textSize="20sp"
                 android:textStyle="italic"
-                android:text="@string/musician_detail_no_prizes"
+                android:text="@string/musician_detail_no_albums"
                 android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
