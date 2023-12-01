@@ -56,7 +56,7 @@ class CollectorAddAlbumFragment: Fragment() {
         val collectorId = arguments?.getString("collectorId")?.toInt()
 
         if (collectorId == null || collectorId == 0) {
-            Toast.makeText(context, "Error al crear el álbum", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.create_error), Toast.LENGTH_LONG).show()
             return
         }
         val albumSeleccionado = miSpinner.selectedItem as Album
@@ -69,7 +69,7 @@ class CollectorAddAlbumFragment: Fragment() {
         lifecycleScope.launch {
             try {
                 networkServiceAdapter.addAlbumToCollector(collectorId, albumId, price.toInt(), status)
-                Toast.makeText(context, "Asociación creada con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.create_ok), Toast.LENGTH_SHORT).show()
                 val bundle = Bundle()
                 bundle.putInt("collectorId", collectorId)
                 findNavController().navigate(R.id.action_collectorAddAlbumFragment_to_collectorDetailFragment, bundle,
@@ -78,7 +78,7 @@ class CollectorAddAlbumFragment: Fragment() {
                         .build()
                 )
             } catch (e: Exception) {
-                Toast.makeText(context, "Error al asociar Álbum a Coleccionista: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "${getString(R.string.create_error)} ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -142,7 +142,7 @@ class CollectorAddAlbumFragment: Fragment() {
 
     private fun onNetworkError() {
         if(!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.network_error), Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }

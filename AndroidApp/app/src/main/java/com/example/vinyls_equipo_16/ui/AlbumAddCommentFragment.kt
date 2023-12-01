@@ -55,7 +55,7 @@ class AlbumAddCommentFragment : Fragment() {
         val albumId = arguments?.getString("albumId")?.toInt()
         /*var cover = arguments?.getString("cover")*/
         if (albumId == null || albumId == 0) {
-            Toast.makeText(context, "Error al crear el álbum", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.create_error), Toast.LENGTH_LONG).show()
             return
         }
         val comment = binding.textComment.text.toString()
@@ -67,7 +67,7 @@ class AlbumAddCommentFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 networkServiceAdapter.addCommentToAlbum(albumId, comment, rating, collectorId)
-                Toast.makeText(context, "Comment agregada con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.create_ok), Toast.LENGTH_SHORT).show()
                 val bundle = Bundle()
                 bundle.putInt("albumId", albumId)
                 findNavController().navigate(R.id.action_albumAddCommentFragment_to_albumDetailFragment, bundle,
@@ -76,18 +76,18 @@ class AlbumAddCommentFragment : Fragment() {
                         .build()
                 )
             } catch (e: Exception) {
-                Toast.makeText(context, "Error al agregar Comment a el álbum: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "${getString(R.string.create_error)} - ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
 
     private fun validateFields(): Boolean {
         if (binding.textComment.text.toString().trim().isEmpty()) {
-            binding.textComment.error = "Este campo es requerido"
+            binding.textComment.error = getString(R.string.validation_required)
             return false
         }
         if (binding.ratingBar.rating == 0f) {
-            Toast.makeText(context, "Por favor, selecciona una calificación", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.validation_selection_required), Toast.LENGTH_SHORT).show()
             return false
         }
         return true

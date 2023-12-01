@@ -135,4 +135,14 @@
 
     <string name="title_prizes">Premios</string>
     <string name="organization">Organización</string>
+    <string name="create_error">Error al crear</string>
+    <string name="create_ok">Creación exitosa</string>
+    <string name="validation_required">Campo requerido</string>
+    <string name="validation_selection_required">Debe seleccionar un valor</string>
+    <string name="validation_url">URL inválida</string>
+    <string name="validation_date">Formato de fecha inválido (yyyy-mm-dd)</string>
+    <string name="network_error">Error de red</string>
+    <string name="selected_by">Seleccione un elemento para</string>
+    <string name="association_error">Error de asociación</string>
+    <string name="association_ok">Asociación exitosa</string>
 </resources>

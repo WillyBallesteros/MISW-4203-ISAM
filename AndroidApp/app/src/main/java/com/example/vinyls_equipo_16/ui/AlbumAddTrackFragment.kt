@@ -65,7 +65,7 @@ class AlbumAddTrackFragment : Fragment() {
         val albumId = arguments?.getString("albumId")?.toInt()
         /*var cover = arguments?.getString("cover")*/
         if (albumId == null || albumId == 0) {
-            Toast.makeText(context, "Error al crear el álbum", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.create_error), Toast.LENGTH_LONG).show()
             return
         }
         val duration = binding.textTrackDuration.text.toString()
@@ -76,7 +76,7 @@ class AlbumAddTrackFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 networkServiceAdapter.addTrackToAlbum(albumId, name, duration)
-                Toast.makeText(context, "Track agregada con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.create_ok), Toast.LENGTH_SHORT).show()
                 val bundle = Bundle()
                 bundle.putInt("albumId", albumId)
                 findNavController().navigate(R.id.action_albumAddTrackFragment_to_albumDetailFragment, bundle,
@@ -85,7 +85,7 @@ class AlbumAddTrackFragment : Fragment() {
                         .build()
                 )
             } catch (e: Exception) {
-                Toast.makeText(context, "Error al agregar Track a el álbum: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "${getString(R.string.create_error)} - ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }

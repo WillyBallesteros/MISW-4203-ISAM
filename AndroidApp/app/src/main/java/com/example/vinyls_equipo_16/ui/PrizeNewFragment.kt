@@ -56,10 +56,10 @@ class PrizeNewFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 networkServiceAdapter.createPrize(name, description, organization)
-                Toast.makeText(context, "Premio creado con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.create_ok), Toast.LENGTH_SHORT).show()
                 findNavController().navigate(action_prizeNewFragment_to_prizeFragment)
             } catch (e: Exception) {
-                Toast.makeText(context, "Error al crear el premio: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "${getString(R.string.create_error)} - ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }

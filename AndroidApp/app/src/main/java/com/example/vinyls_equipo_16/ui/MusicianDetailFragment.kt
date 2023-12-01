@@ -110,7 +110,7 @@ class MusicianDetailFragment : Fragment() {
             val formattedDate: String = sdfOutput.format(date!!)
             binding.birthdate.text = formattedDate
             binding.description.text = it.description
-            bundle.putString("name", "Seleccione un premio para " + it.name + " :")
+            bundle.putString("name", "${getString(R.string.selected_by)} ${it.name}:")
 
             viewModelAdapter!!.prizes = it.performerPrizes
             if (it.performerPrizes.isEmpty()) {
@@ -146,7 +146,7 @@ class MusicianDetailFragment : Fragment() {
 
     private fun onNetworkError() {
         if (!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.network_error), Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }
