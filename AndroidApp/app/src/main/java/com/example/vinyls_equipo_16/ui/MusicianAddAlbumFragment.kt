@@ -61,7 +61,7 @@ class MusicianAddAlbumFragment: Fragment() {
         val musicianId = arguments?.getString("musicianId")?.toInt()
 
         if (musicianId == null || musicianId == 0) {
-            Toast.makeText(context, "Error al asociar Premio a Artista", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.association_error), Toast.LENGTH_LONG).show()
             return
         }
         val albumSeleccionado = miSpinner.selectedItem as Album
@@ -72,7 +72,7 @@ class MusicianAddAlbumFragment: Fragment() {
         lifecycleScope.launch {
             try {
                 networkServiceAdapter.addAlbumToMusician(albumId, musicianId)
-                Toast.makeText(context, "Asociación creada con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.association_ok), Toast.LENGTH_SHORT).show()
                 val bundle = Bundle()
                 bundle.putInt("musicianId", musicianId)
                 findNavController().navigate(R.id.action_musicianAddAlbumFragment_to_musicianDetailFragment, bundle,
@@ -81,7 +81,7 @@ class MusicianAddAlbumFragment: Fragment() {
                         .build()
                 )
             } catch (e: Exception) {
-                Toast.makeText(context, "Error al asociar Álbum a Artista: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "${getString(R.string.association_error)} - ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -125,7 +125,7 @@ class MusicianAddAlbumFragment: Fragment() {
 
     private fun onNetworkError() {
         if(!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.network_error), Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }

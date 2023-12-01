@@ -105,7 +105,7 @@ class CollectorDetailFragment : Fragment() {
             binding.telephone.text = it.telephone
             binding.email.text = it.email
 
-            bundle.putString("name", "Seleccione un álbum para " + it.name + " :")
+            bundle.putString("name", "${getString(R.string.selected_by)} ${it.name} :")
 
             viewModelAdapterComments!!.comments = it.comments
             if (it.comments.isEmpty()) {
@@ -149,7 +149,7 @@ class CollectorDetailFragment : Fragment() {
 
     private fun onNetworkError() {
         if (!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.network_error), Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }

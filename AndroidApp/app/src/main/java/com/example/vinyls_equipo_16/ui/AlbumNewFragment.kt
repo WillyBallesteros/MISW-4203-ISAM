@@ -97,42 +97,42 @@ class AlbumNewFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 networkServiceAdapter.createAlbum(name, cover, releaseDate, description, genre, recordLabel)
-                Toast.makeText(context, "Álbum creado con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.create_ok), Toast.LENGTH_SHORT).show()
                 findNavController().navigate(action_albumNewFragment_to_albumFragment)
             } catch (e: Exception) {
-                Toast.makeText(context, "Error al crear el álbum: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "${getString(R.string.create_error)} - ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
 
     private fun validateFields(): Boolean {
         if (binding.etName.text.toString().trim().isEmpty()) {
-            binding.etName.error = "Este campo es requerido"
+            binding.etName.error = getString(R.string.validation_required)
             return false
         }
 
         if (binding.etCoverUrl.text.toString().trim().isEmpty()) {
-            binding.etCoverUrl.error = "Este campo es requerido"
+            binding.etCoverUrl.error = getString(R.string.validation_required)
             return false
         }
 
         if (binding.etReleaseDate.text.toString().trim().isEmpty()) {
-            binding.etReleaseDate.error = "Este campo es requerido"
+            binding.etReleaseDate.error = getString(R.string.validation_required)
             return false
         }
 
         if (binding.etDescription.text.toString().trim().isEmpty()) {
-            binding.etDescription.error = "Este campo es requerido"
+            binding.etDescription.error = getString(R.string.validation_required)
             return false
         }
 
         if (!isValidUrl(binding.etCoverUrl.text.toString().trim())) {
-            binding.etCoverUrl.error = "Debe ser una URL válida"
+            binding.etCoverUrl.error = getString(R.string.validation_url)
             return false
         }
 
         if (!isValidDate(binding.etReleaseDate.text.toString().trim())) {
-            binding.etReleaseDate.error = "Formato de fecha inválido (yyyy-mm-dd)"
+            binding.etReleaseDate.error = getString(R.string.validation_date)
             return false
         }
 
