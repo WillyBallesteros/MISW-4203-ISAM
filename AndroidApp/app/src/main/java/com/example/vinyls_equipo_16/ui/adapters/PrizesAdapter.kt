@@ -10,7 +10,6 @@ import com.example.vinyls_equipo_16.databinding.PrizeItemBinding
 import com.example.vinyls_equipo_16.models.Prize
 
 class PrizesAdapter : RecyclerView.Adapter<PrizesAdapter.PrizesViewHolder>(){
-
     @SuppressLint("NotifyDataSetChanged")
     var prizes :List<Prize> = emptyList()
         set(value) {
@@ -37,7 +36,6 @@ class PrizesAdapter : RecyclerView.Adapter<PrizesAdapter.PrizesViewHolder>(){
         return prizes.size
     }
 
-
     class PrizesViewHolder(val viewDataBinding: PrizeItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {
@@ -45,6 +43,4 @@ class PrizesAdapter : RecyclerView.Adapter<PrizesAdapter.PrizesViewHolder>(){
             val LAYOUT = R.layout.prize_item
         }
     }
-
-
 }

@@ -17,6 +17,7 @@
 
 
         <LinearLayout
+            android:id="@+id/linear_layout_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -145,6 +146,30 @@
                 tools:listitem="@layout/track_item"
                 android:layout_marginBottom="16dp">
             </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/album_detail_record_comments"/>
+            <TextView
+                android:id="@+id/no_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:text="@string/album_detail_record_no_comments"
+                android:visibility="gone" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/comment_item"
+                android:layout_marginBottom="16dp">
+            </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/description"
@@ -167,8 +192,24 @@
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/teal_700"
-        android:contentDescription="@string/text_void"
+        android:contentDescription="@string/add_track"
         app:tint="@color/white"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:tooltipText="@string/add_track"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/comment_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/teal_700"
+        android:contentDescription="@string/add_comment"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/ic_comment"
+        android:tooltipText="@string/add_comment"/>
+
+
 
 </FrameLayout>

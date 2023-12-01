@@ -9,14 +9,21 @@ import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinyls_equipo_16.R
 import com.example.vinyls_equipo_16.databinding.MusicianDetailFragmentBinding
-import com.example.vinyls_equipo_16.ui.adapters.PrizesAdapter
+import com.example.vinyls_equipo_16.ui.adapters.AlbumsAdapter
+import com.example.vinyls_equipo_16.ui.adapters.CommentsAdapter
+import com.example.vinyls_equipo_16.ui.adapters.MusicianAlbumAdapter
+import com.example.vinyls_equipo_16.ui.adapters.PerformerPrizeAdapter
+import com.example.vinyls_equipo_16.ui.adapters.TracksAdapter
+import com.example.vinyls_equipo_16.viewmodels.AlbumViewModel
 import com.example.vinyls_equipo_16.viewmodels.MusicianDetailViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -28,11 +35,13 @@ class MusicianDetailFragment : Fragment() {
     private var _param1: Int? = null
     private val param1 get() = _param1!!
     private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerViewAlbums: RecyclerView
     private var _binding: MusicianDetailFragmentBinding? = null
     private val binding get() = _binding!!
-    private var viewModelAdapter: PrizesAdapter? = null
+    private var viewModelAdapter: PerformerPrizeAdapter? = null
+    private var viewModelAdapterAlbums: MusicianAlbumAdapter? = null
     private lateinit var viewModel: MusicianDetailViewModel
-
+    private val bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +59,8 @@ class MusicianDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = MusicianDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = PrizesAdapter()
+        viewModelAdapter = PerformerPrizeAdapter()
+        viewModelAdapterAlbums = MusicianAlbumAdapter()
         return view
     }
 
@@ -59,6 +69,20 @@ class MusicianDetailFragment : Fragment() {
         recyclerView = binding.prizesRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        recyclerViewAlbums = binding.albumsRv
+        recyclerViewAlbums.layoutManager = LinearLayoutManager(context)
+        recyclerViewAlbums.adapter = viewModelAdapterAlbums
+
+        bundle.putString("musicianId", arguments?.getInt("musicianId").toString())
+
+        view.findViewById<FloatingActionButton>(R.id.add_button_prize).setOnClickListener {
+            findNavController().navigate(R.id.action_musicianDetailFragment_to_musicianAddPrizeFragment, bundle)
+        }
+
+        view.findViewById<FloatingActionButton>(R.id.add_button_album).setOnClickListener {
+            findNavController().navigate(R.id.action_musicianDetailFragment_to_musicianAddAlbumFragment, bundle)
+        }
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -86,9 +110,7 @@ class MusicianDetailFragment : Fragment() {
             val formattedDate: String = sdfOutput.format(date!!)
             binding.birthdate.text = formattedDate
             binding.description.text = it.description
-            binding.description.text = it.description
-
-
+            bundle.putString("name", "Seleccione un premio para " + it.name + " :")
 
             viewModelAdapter!!.prizes = it.performerPrizes
             if (it.performerPrizes.isEmpty()) {
@@ -106,17 +128,14 @@ class MusicianDetailFragment : Fragment() {
                 )
                 .into(binding.image)
 
-
-            /*it.apply {
-                viewModelAdapter!!.album = this
-                if(this.isEmpty()){
-                    binding.txtNoComments.visibility = View.VISIBLE
-                }else{
-                    binding.txtNoComments.visibility = View.GONE
-                }
-                print(this)
-            }*/
+            viewModelAdapterAlbums!!.albums = it.albums
+            if (it.albums.isEmpty()) {
+                binding.noAlbums.visibility = View.VISIBLE
+            } else {
+                binding.noAlbums.visibility = View.GONE
+            }
         }
+
         viewModel.eventNetworkError.observe(
             viewLifecycleOwner)
             { isNetworkError ->
