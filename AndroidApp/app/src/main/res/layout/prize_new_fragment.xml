@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PrizeNewFragment">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.PrizeNewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
+                    android:id="@+id/tvName"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    style="@style/labelTextNew" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_background"
+                    android:inputType="textNoSuggestions"
+                    android:hint="@string/name"
+                    android:autofillHints="@string/name" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
+                    android:id="@+id/tvDescription"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    style="@style/labelTextNew" />
+
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_background"
+                    android:inputType="text"
+                    android:hint="@string/description"
+                    android:autofillHints="@string/description" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
+                    android:id="@+id/tvOrganization"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/organization"
+                    style="@style/labelTextNew" />
+
+                <EditText
+                    android:id="@+id/etOrganization"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_background"
+                    android:inputType="textUri"
+                    android:hint="@string/organization"
+                    android:autofillHints="@string/organization" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_width="167dp"
+                android:layout_height="45dp"
+                android:text="@string/create"
+                android:layout_gravity="center_horizontal"
+                style="@style/ButtonRounded" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

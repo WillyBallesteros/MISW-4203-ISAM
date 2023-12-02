@@ -11,8 +11,12 @@ import kotlinx.coroutines.withContext
 class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
     private val albumDetailRepository = AlbumDetailRepository(application)
+    private val _dataLoaded = MutableLiveData(false)
 
     private var _album: MutableLiveData<AlbumDetail> = MutableLiveData<AlbumDetail>()
+
+    val dataLoaded: LiveData<Boolean>
+        get() = _dataLoaded
 
     //  Album(0, "", "",     "",     "",     "",     "" )
 
@@ -38,9 +42,11 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
     private fun refreshDataFromNetwork() {
         try {
             viewModelScope.launch (Dispatchers.Default){
+                _dataLoaded.postValue(false)
                 withContext(Dispatchers.IO){
                     val data: AlbumDetail = albumDetailRepository.refreshData(id)
                     _album.postValue(data)
+                    _dataLoaded.postValue(true)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)

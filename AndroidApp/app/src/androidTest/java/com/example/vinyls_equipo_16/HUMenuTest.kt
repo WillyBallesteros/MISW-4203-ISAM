@@ -36,8 +36,40 @@ class HUMenuTest {
         onView(withId(R.id.musicianFragment))
             .check(matches(isDisplayed()))
 
+        // Check the presence of the third item
+        onView(withId(R.id.collectorFragment))
+            .check(matches(isDisplayed()))
+
+        // Check the presence of the third item
+        onView(withId(R.id.prizeFragment))
+            .check(matches(isDisplayed()))
+
         // Click on the first menu item
         onView(withId(R.id.musicianFragment)).perform(click())
+
+        // Open Drawer to click on navigation.
+        onView(withId(R.id.drawer_layout))
+            .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+            .perform(DrawerActions.open()) // Open Drawer
+
+        // Click on the second menu item
+        onView(withId(R.id.musicianFragment)).perform(click())
+
+        // Open Drawer to click on navigation.
+        onView(withId(R.id.drawer_layout))
+            .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+            .perform(DrawerActions.open()) // Open Drawer
+
+        // Click on the second menu item
+        onView(withId(R.id.collectorFragment)).perform(click())
+
+        // Open Drawer to click on navigation.
+        onView(withId(R.id.drawer_layout))
+            .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+            .perform(DrawerActions.open()) // Open Drawer
+
+        // Click on the second menu item
+        onView(withId(R.id.prizeFragment)).perform(click())
 
         // Open Drawer to click on navigation.
         onView(withId(R.id.drawer_layout))

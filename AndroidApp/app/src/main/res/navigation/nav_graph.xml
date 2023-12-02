@@ -24,6 +24,12 @@
         <argument
             android:name="albumId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_albumAddTrackFragment"
+            app:destination="@id/albumAddTrackFragment" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_albumAddCommentFragment"
+            app:destination="@id/albumAddCommentFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumNewFragment"
@@ -33,6 +39,24 @@
         <action
             android:id="@+id/action_albumNewFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumAddTrackFragment"
+        android:name="com.example.vinyls_equipo_16.ui.AlbumAddTrackFragment"
+        android:label="Agregar Track a Álbum"
+        tools:layout="@layout/album_add_track_fragment" >
+        <action
+            android:id="@+id/action_albumAddTrackFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumAddCommentFragment"
+        android:name="com.example.vinyls_equipo_16.ui.AlbumAddCommentFragment"
+        android:label="Agregar Comentario a Álbum"
+        tools:layout="@layout/album_add_comment_fragment" >
+        <action
+            android:id="@+id/action_albumAddCommentFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/musicianFragment"
@@ -51,6 +75,30 @@
         <argument
             android:name="musicianId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_musicianDetailFragment_to_musicianAddPrizeFragment"
+            app:destination="@id/musicianAddPrizeFragment" />
+        <action
+            android:id="@+id/action_musicianDetailFragment_to_musicianAddAlbumFragment"
+            app:destination="@id/musicianAddAlbumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicianAddPrizeFragment"
+        android:name="com.example.vinyls_equipo_16.ui.MusicianAddPrizeFragment"
+        android:label="Asociar Premio a Artista"
+        tools:layout="@layout/musician_add_prize_fragment" >
+        <action
+            android:id="@+id/action_musicianAddPrizeFragment_to_musicianDetailFragment"
+            app:destination="@id/musicianDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicianAddAlbumFragment"
+        android:name="com.example.vinyls_equipo_16.ui.MusicianAddAlbumFragment"
+        android:label="Asociar Álbum a Artista"
+        tools:layout="@layout/musician_add_album_fragment" >
+        <action
+            android:id="@+id/action_musicianAddAlbumFragment_to_musicianDetailFragment"
+            app:destination="@id/musicianDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/collectorFragment"
@@ -69,5 +117,35 @@
         <argument
             android:name="collectorId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_collectorDetailFragment_to_collectorAddAlbumFragment"
+            app:destination="@id/collectorAddAlbumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorAddAlbumFragment"
+        android:name="com.example.vinyls_equipo_16.ui.CollectorAddAlbumFragment"
+        android:label="Asociar Álbum a Coleccionista"
+        tools:layout="@layout/collector_add_album_fragment" >
+        <action
+            android:id="@+id/action_collectorAddAlbumFragment_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/prizeFragment"
+        android:name="com.example.vinyls_equipo_16.ui.PrizeFragment"
+        android:label="@string/title_prizes"
+        tools:layout="@layout/prize_fragment" >
+        <action
+            android:id="@+id/action_prizeFragment_to_prizeNewFragment"
+            app:destination="@id/prizeNewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/prizeNewFragment"
+        android:name="com.example.vinyls_equipo_16.ui.PrizeNewFragment"
+        android:label="Crear Premio"
+        tools:layout="@layout/prize_new_fragment" >
+        <action
+            android:id="@+id/action_prizeNewFragment_to_prizeFragment"
+            app:destination="@id/prizeFragment" />
     </fragment>
 </navigation>

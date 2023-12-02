@@ -8,5 +8,6 @@ data class AlbumDetail (
     val description:String,
     val genre:String,
     val recordLabel:String,
-    val tracks:List<Track>
+    val tracks:List<Track>,
+    val comments:List<Comment>
 )

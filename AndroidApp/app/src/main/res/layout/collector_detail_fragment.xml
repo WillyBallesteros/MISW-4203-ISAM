@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:layout_marginStart="16dp"
@@ -36,6 +37,8 @@
                 android:layout_marginBottom="16dp">
                 <TableRow>
                     <TextView
+                    	android:textDirection="locale"
+                    	android:textAlignment="gravity"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -44,6 +47,8 @@
                         android:textStyle="bold"
                         android:text="@string/collector_detail_name" />
                     <TextView
+                    	android:textDirection="locale"
+                    	android:textAlignment="gravity"
                         android:id="@+id/name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -55,6 +60,8 @@
                 </TableRow>
                 <TableRow>
                     <TextView
+                    	android:textDirection="locale"
+                    	android:textAlignment="gravity"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -63,6 +70,8 @@
                         android:textStyle="bold"
                         android:text="@string/collector_detail_telephone" />
                     <TextView
+                    	android:textDirection="locale"
+                    	android:textAlignment="gravity"
                         android:id="@+id/telephone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -74,6 +83,8 @@
                 </TableRow>
                 <TableRow>
                     <TextView
+                    	android:textDirection="locale"
+                    	android:textAlignment="gravity"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -82,6 +93,8 @@
                         android:textStyle="bold"
                         android:text="@string/collector_detail_email" />
                     <TextView
+                    	android:textDirection="locale"
+                    	android:textAlignment="gravity"
                         android:id="@+id/email"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -94,6 +107,8 @@
             </TableLayout>
 
             <TextView
+            	android:textDirection="locale"
+                android:textAlignment="gravity"
                 android:id="@+id/comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,6 +117,8 @@
                 android:textStyle="bold"
                 android:text="@string/collector_detail_comments"/>
             <TextView
+            	android:textDirection="locale"
+                android:textAlignment="gravity"
                 android:id="@+id/no_comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,6 +137,8 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
+            	android:textDirection="locale"
+                android:textAlignment="gravity"
                 android:id="@+id/favorite_performers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,6 +147,8 @@
                 android:textStyle="bold"
                 android:text="@string/collector_detail_favorite_performers"/>
             <TextView
+            	android:textDirection="locale"
+                android:textAlignment="gravity"
                 android:id="@+id/no_favorite_performers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,6 +167,8 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
+            	android:textDirection="locale"
+                android:textAlignment="gravity"
                 android:id="@+id/collector_albums"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,6 +177,8 @@
                 android:textStyle="bold"
                 android:text="@string/collector_detail_collector_albums"/>
             <TextView
+            	android:textDirection="locale"
+                android:textAlignment="gravity"
                 android:id="@+id/no_collectors_albums"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -171,9 +196,20 @@
                 android:layout_marginBottom="16dp">
             </androidx.recyclerview.widget.RecyclerView>
 
-
         </LinearLayout>
 
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_button_collector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/teal_700"
+        android:contentDescription="@string/text_void"
+        app:tint="@color/white"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </FrameLayout>

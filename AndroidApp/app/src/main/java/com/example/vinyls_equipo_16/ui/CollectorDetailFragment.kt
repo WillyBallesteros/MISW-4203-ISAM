@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinyls_equipo_16.R
@@ -15,6 +16,7 @@ import com.example.vinyls_equipo_16.ui.adapters.CollectorAlbumsAdapter
 import com.example.vinyls_equipo_16.ui.adapters.CommentsAdapter
 import com.example.vinyls_equipo_16.ui.adapters.FavoritePerformersAdapter
 import com.example.vinyls_equipo_16.viewmodels.CollectorDetailViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val ARG_PARAM1 = "collectorId"
 
@@ -31,6 +33,7 @@ class CollectorDetailFragment : Fragment() {
     private var viewModelAdapterFavoritePerformers: FavoritePerformersAdapter? = null
     private var viewModelAdapterCollectorAlbums: CollectorAlbumsAdapter? = null
     private lateinit var viewModel: CollectorDetailViewModel
+    private val bundle = Bundle()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +77,11 @@ class CollectorDetailFragment : Fragment() {
         recyclerViewCollectorAlbums.layoutManager = LinearLayoutManager(context)
         recyclerViewCollectorAlbums.adapter = viewModelAdapterCollectorAlbums
 
+        bundle.putString("collectorId", arguments?.getInt("collectorId").toString())
+
+        view.findViewById<FloatingActionButton>(R.id.add_button_collector).setOnClickListener {
+            findNavController().navigate(R.id.action_collectorDetailFragment_to_collectorAddAlbumFragment, bundle)
+        }
 
     }
 
@@ -96,6 +104,8 @@ class CollectorDetailFragment : Fragment() {
             binding.name.text = it.name
             binding.telephone.text = it.telephone
             binding.email.text = it.email
+
+            bundle.putString("name", "${getString(R.string.selected_by)} ${it.name} :")
 
             viewModelAdapterComments!!.comments = it.comments
             if (it.comments.isEmpty()) {
@@ -139,7 +149,7 @@ class CollectorDetailFragment : Fragment() {
 
     private fun onNetworkError() {
         if (!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.network_error), Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }

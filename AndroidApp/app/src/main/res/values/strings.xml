@@ -1,40 +1,39 @@
 <resources>
-    <string name="app_name">Vinyls_Equipo_16</string>
+    <string name="app_name">Vinyls_Team_16</string>
     <string name="title_albums">Albums</string>
-    <string name="title_musicians">Artistas</string>
-    <string name="title_collectors">Coleccionistas</string>
-    <string name="title_comments">Comentarios del álbum</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="album_detail_title">Detalle Álbum</string>
-    <string name="album_detail_name">Nombre:</string>
-    <string name="album_detail_release_date">Lanzamiento:</string>
-    <string name="album_detail_genre">Género:</string>
+    <string name="title_musicians">Artists</string>
+    <string name="title_collectors">Collectors</string>
+    <string name="title_comments">Album Comments</string>
+    <string name="title_addTrack">Add Track to Album</string>
+    <string name="album_detail_title">Album Detail</string>
+    <string name="album_detail_name">Name:</string>
+    <string name="album_detail_release_date">Release:</string>
+    <string name="album_detail_genre">Genre:</string>
     <string name="album_detail_record_label">Record:</string>
-    <string name="album_detail_record_songs">Canciones:</string>
-    <string name="album_detail_record_no_songs">\u0020\u0020\u0020\u0020Sin canciones registradas</string>
+    <string name="album_detail_record_songs">Songs:</string>
+    <string name="album_detail_record_comments">Comments:</string>
+    <string name="album_detail_record_no_songs">\u0020\u0020\u0020\u0020No registered songs</string>
+    <string name="album_detail_record_no_comments">\u0020\u0020\u0020\u0020No comments</string>
     <string name="album_detail_record_list">\u0020\u0020\u0020\u0020•\u0020</string>
     <string name="album_detail_record_separator">\u0020-\u0020</string>
     <string name="text_void">N/A</string>
-    <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="musician_detail_name">Nombre</string>
-    <string name="musician_detail_description">Descripcion:</string>
-    <string name="musician_detail_birthdate">Nacimiento:</string>
-    <string name="musician_detail_prizes">Premios:</string>
+    <string name="musician_detail_name">Name</string>
+    <string name="musician_detail_description">Description:</string>
+    <string name="musician_detail_birthdate">Birthdate:</string>
+    <string name="musician_detail_prizes">Awards:</string>
 
-    <string name="musician_detail_no_prizes">\u0020\u0020\u0020\u0020Sin premios registrados</string>
+    <string name="musician_detail_no_prizes">\u0020\u0020\u0020\u0020No registered awards</string>
     <string name="musician_detail_space">\u0020\u0020\u0020\u0020•\u0020</string>
-    <string name="musician_detail_prize_tittle">Premios del Artista</string>
-
+    <string name="musician_detail_prize_tittle">Artist Awards</string>
 
     <string name="nav_header_title">Vinyls</string>
     <string name="nav_header_subtitle">g16_vinyls@uniandes.edu.co</string>
-    <string name="nav_header_desc">Navegación</string>
+    <string name="nav_header_desc">Navigation</string>
 
     <string name="menu_catalog">Home</string>
-    <string name="menu_collectors">Coleccionistas</string>
-    <string name="menu_artists">Artistas</string>
-    <!-- Strings related to login -->
+    <string name="menu_collectors">Collectors</string>
+    <string name="menu_artists">Artists</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -56,51 +55,85 @@
         <item>Elektra</item>
         <item>Fania Records</item>
     </string-array>
-    <string name="name">Nombre</string>
-    <string name="cover">Carátula</string>
-    <string name="releaseDate">Lanzamiento</string>
-    <string name="description">Descripción</string>
-    <string name="genre">Género</string>
-    <string name="recordLabel">Disquera</string>
-    <string name="create">Crear</string>
+    <string name="name">Name</string>
+    <string name="cover">Cover</string>
+    <string name="releaseDate">Release</string>
+    <string name="description">Description</string>
+    <string name="genre">Genre</string>
+    <string name="recordLabel">Record Label</string>
+    <string name="create">Create</string>
+    <string name="save">Save</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="collector_detail_title">Coleccionista</string>
-    <string name="collector_detail_name">Nombre:</string>
-    <string name="collector_detail_telephone">Teléfono:</string>
-    <string name="collector_detail_email">Correo Electrónico:</string>
-    <string name="collector_detail_comments">Comentarios:</string>
-    <string name="collector_detail_favorite_performers">Intérpretes favoritos:</string>
-    <string name="collector_detail_collector_albums">Álbumes de coleccionista:</string>
+    <string name="collector_detail_title">Collector</string>
+    <string name="collector_detail_name">Name:</string>
+    <string name="collector_detail_telephone">Telephone:</string>
+    <string name="collector_detail_email">Email:</string>
+    <string name="collector_detail_comments">Comments:</string>
+    <string name="collector_detail_favorite_performers">Favorite Performers:</string>
+    <string name="collector_detail_collector_albums">Collector\'s Albums:</string>
 
-    <string name="collector_detail_no_comments">\u0020\u0020\u0020\u0020Sin comentarios</string>
-    <string name="collector_detail_no_favorite_performers">\u0020\u0020\u0020\u0020Sin intérpretes favoritos</string>
-    <string name="collector_detail_no_collector_albums">\u0020\u0020\u0020\u0020Sin álbumes de coleccionista</string>
+    <string name="collector_detail_no_comments">\u0020\u0020\u0020\u0020No comments</string>
+    <string name="collector_detail_no_favorite_performers">\u0020\u0020\u0020\u0020No favorite performers</string>
+    <string name="collector_detail_no_collector_albums">\u0020\u0020\u0020\u0020No collector\'s albums</string>
 
-
-    <string name="comment_detail_record_list">Descripción:</string>
-    <string name="comment_detail_record_rating">Calificación:</string>
+    <string name="comment_detail_record_list">Description:</string>
+    <string name="comment_detail_record_rating">Rating:</string>
     <string name="comment_detail_record_separator">\u0020\u0020\u0020\u0020•\u0020</string>
 
-    <string name="favorite_performer_name">Nombre:</string>
+    <string name="favorite_performer_name">Name:</string>
     <string name="favorite_performer_image">Image:</string>
-    <string name="favorite_performer_description">Descripción:</string>
-    <string name="favorite_performer_birthDate">Fecha Nacimiento:</string>
+    <string name="favorite_performer_description">Description:</string>
+    <string name="favorite_performer_birthDate">Birth Date:</string>
 
-    <string name="collector_album_price">Precio:</string>
-    <string name="collector_album_status">Estado:</string>
+    <string name="collector_album_price">Price:</string>
+    <string name="collector_album_status">Status:</string>
+    <string name="collector_add_album">Select an album:</string>
+    <string name="collector_add_price">Price:</string>
+    <string name="collector_add_price_hint">100</string>
 
+    <string-array name="status_labels">
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
 
-    <string name="album_item_content_descriptor">Carátula del álbum</string>
-    <string name="musician_item_content_descriptor">Imagen del artista</string>
+    <string name="album_item_content_descriptor">Album cover</string>
+    <string name="musician_item_content_descriptor">Artist image</string>
+    <string name="musician_detail_no_albums">\u0020\u0020\u0020\u0020No registered albums</string>
+    <string name="musician_title_albums">Albums:</string>
 
-    <string name="album_new_fragment_autofillHints_name">Nombre</string>
-    <string name="album_new_fragment_autofillHints_cover">Carátula</string>
-    <string name="album_new_fragment_autofillHints_release_date">Fecha lanzamiento</string>
-    <string name="album_new_fragment_autofillHints_description">Descripción</string>
-    <string name="album_title">Álbums</string>
-    <string name="album_new_title">Crear Álbum</string>
-    <string name="artistas_title">Artistas</string>
-    <string name="collector_title">Coleccionistas</string>
+    <string name="album_new_fragment_autofillHints_name">Name</string>
+    <string name="album_new_fragment_autofillHints_cover">Cover</string>
+    <string name="album_new_fragment_autofillHints_release_date">Release date</string>
+    <string name="album_new_fragment_autofillHints_description">Description</string>
+    <string name="album_title">Albums</string>
+    <string name="album_new_title">Create Album</string>
+    <string name="artistas_title">Artists</string>
+    <string name="collector_title">Collectors</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="label_track_name">Name</string>
+    <string name="album_add_track_fragment_autofillHints_name">Name</string>
+    <string name="label_track_duration">Duration</string>
+    <string name="album_add_track_fragment_autofillHints_duration">Duration</string>
+    <string name="label_add_track">Enter the Track:</string>
+    <string name="label_add_comment">Enter the Comment:</string>
+    <string name="add_comment">Add comment</string>
+    <string name="add_track">Add track</string>
+    <string name="label_comment_rating">Rating</string>
+    <string name="label_add_coment">Comment</string>
+    <string name="album_add_comment_fragment_autofillHints_comment">Leave your comment</string>
+    <string name="album_add_comment_fragment_autofillHints_rating">Rating</string>
+
+    <string name="title_prizes">Awards</string>
+    <string name="organization">Organization</string>
+    <string name="create_error">Error creating</string>
+    <string name="create_ok">Creation successful</string>
+    <string name="validation_required">Field required</string>
+    <string name="validation_selection_required">You must select a value</string>
+    <string name="validation_url">Invalid URL</string>
+    <string name="validation_date">Invalid date format (yyyy-mm-dd)</string>
+    <string name="network_error">Network error</string>
+    <string name="selected_by">Select an item for</string>
+    <string name="association_error">Association error</string>
+    <string name="association_ok">Association successful</string>
 </resources>

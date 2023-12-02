@@ -7,57 +7,55 @@
         <variable name="track" type="com.example.vinyls_equipo_16.models.Track"/>
     </data>
 
+    <!-- Utiliza un fondo oscuro definido en tus recursos como @color/background_dark -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="16dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
+
+        <ImageView
+            android:id="@+id/imageViewAlbumArt"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_album"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@{track.name}"
+        android:layout_marginEnd="16dp" />
+
+        <!-- Título de la canción -->
+        <TextView
+        	android:textDirection="locale"
+            android:textAlignment="gravity"
+            android:id="@+id/textViewName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeWidth="1dp">
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="@{track.name}"
+        app:layout_constraintStart_toEndOf="@id/imageViewAlbumArt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textViewDuration" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <!-- Duración de la canción -->
+        <TextView
+        	android:textDirection="locale"
+            android:textAlignment="gravity"
+            android:id="@+id/textViewDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+        android:textSize="14sp"
+        android:text="@{track.duration}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewName"
+        app:layout_constraintTop_toTopOf="@id/textViewName" />
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:text="@string/album_detail_record_list" />
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:text="@{track.name}" />
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:text="@string/album_detail_record_separator" />
-                <TextView
-                    android:id="@+id/album_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:text="@{track.duration}" />
-
-
-            </LinearLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
