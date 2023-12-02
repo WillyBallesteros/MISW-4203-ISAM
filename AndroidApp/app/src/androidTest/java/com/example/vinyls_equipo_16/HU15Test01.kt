@@ -71,8 +71,7 @@ class HU15Test01 {
 
         // Click on the first menu item
         onView(withId(R.id.musicianFragment)).perform(click())
-
-        Thread.sleep(1000)
+        Thread.sleep(2000)
 
         onView(withId(R.id.musiciansRv)).perform(
             RecyclerViewActions.scrollToPosition<CollectorsAdapter.CollectorViewHolder>(0)
@@ -90,7 +89,12 @@ class HU15Test01 {
         onView(withId(R.id.musiciansRv))
             .perform(RecyclerViewActions.actionOnItemAtPosition<CollectorsAdapter.CollectorViewHolder>(0, click()))
 
+        Thread.sleep(2000)
+
         onView(withId(R.id.add_button_album)).perform(click())
+
+        Thread.sleep(2000)
+
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             assertEquals(navController.currentDestination?.id, R.id.musicianAddAlbumFragment)
@@ -98,7 +102,7 @@ class HU15Test01 {
 
         onView(ViewMatchers.withId(R.id.btnCreate)).perform(ViewActions.click())
 
-        Thread.sleep(1000)
+        Thread.sleep(2000)
 
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)

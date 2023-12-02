@@ -28,8 +28,7 @@ import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter(context: Context) {
     companion object{
-        //const val BASE_URL=  "http://34.70.255.46/"
-         const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
+        const val BASE_URL=  "http://34.70.255.46/"
         private var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {

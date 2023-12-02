@@ -43,7 +43,7 @@
     <string name="invalid_password">Senha deve ter mais de 5 caracteres</string>
     <string name="login_failed">"Falha no login"</string>
     <string-array name="genres">
-        <item>Clássico</item>
+        <item>Classical</item>
         <item>Salsa</item>
         <item>Rock</item>
         <item>Folk</item>
@@ -92,8 +92,8 @@
     <string name="collector_add_price_hint">100</string>
 
     <string-array name="status_labels">
-        <item>Ativo</item>
-        <item>Inativo</item>
+        <item>Active</item>
+        <item>Inactive</item>
     </string-array>
 
     <string name="album_item_content_descriptor">Capa do Álbum</string>

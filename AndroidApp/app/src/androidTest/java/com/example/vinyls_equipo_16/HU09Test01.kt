@@ -78,12 +78,16 @@ class HU09Test01 {
                     ViewActions.click()
                 ))
 
+        Thread.sleep(2000)
+
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             TestCase.assertEquals(navController.currentDestination?.id, R.id.albumDetailFragment)
         }
 
         Espresso.onView(ViewMatchers.withId(R.id.comment_icon)).perform(ViewActions.click())
+
+        Thread.sleep(2000)
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             TestCase.assertEquals(navController.currentDestination?.id, R.id.albumAddCommentFragment)
@@ -94,11 +98,7 @@ class HU09Test01 {
         Espresso.onView(ViewMatchers.withId(R.id.ratingBar))
             .perform(ViewActions.click())
 
-        Thread.sleep(1000)
-
         Espresso.onView(ViewMatchers.withId(R.id.btnCreate)).perform(ViewActions.click())
-
-
 
         Thread.sleep(2000)
 

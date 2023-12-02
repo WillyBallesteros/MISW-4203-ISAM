@@ -60,7 +60,7 @@ class AlbumAddCommentFragment : Fragment() {
         }
         val comment = binding.textComment.text.toString()
         val rating = binding.ratingBar.rating.toInt()
-        val collectorId = 1
+        val collectorId = 100
 
         val networkServiceAdapter = NetworkServiceAdapter.getInstance(requireContext())
 

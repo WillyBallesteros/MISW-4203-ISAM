@@ -59,15 +59,20 @@ class MusicianAddPrizeFragment: Fragment() {
     }
 
     private fun mostrarDatePicker() {
-        val calendario = Calendar.getInstance()
-        val total = calendario.get(Calendar.YEAR)
-        val mes = calendario.get(Calendar.MONTH)
-        val dia = calendario.get(Calendar.DAY_OF_MONTH)
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val dpd = DatePickerDialog(requireContext(), { _, year, monthOfYear, dayOfMonth ->
-            val fechaSeleccionada = "$year-${monthOfYear + 1}-$dayOfMonth"
-            binding.premiationDate.setText(fechaSeleccionada)
-        }, total, mes, dia)
+        val dpd = DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
+            val selectedDate = Calendar.getInstance()
+            selectedDate.set(selectedYear, selectedMonth, selectedDay)
+
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val formattedDate = dateFormat.format(selectedDate.time)
+
+            binding.premiationDate.setText(formattedDate)
+        }, year, month, day)
 
         dpd.show()
     }

@@ -73,7 +73,7 @@ class HU14Test01 {
         // Click on the first menu item
         onView(withId(R.id.musicianFragment)).perform(click())
 
-        Thread.sleep(1000)
+        Thread.sleep(2000)
 
         onView(withId(R.id.musiciansRv)).perform(
             RecyclerViewActions.scrollToPosition<CollectorsAdapter.CollectorViewHolder>(0)
@@ -91,22 +91,33 @@ class HU14Test01 {
         onView(withId(R.id.musiciansRv))
             .perform(RecyclerViewActions.actionOnItemAtPosition<CollectorsAdapter.CollectorViewHolder>(0, click()))
 
+        Thread.sleep(2000)
+
         onView(withId(R.id.add_button_prize)).perform(click())
+
+        Thread.sleep(2000)
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             assertEquals(navController.currentDestination?.id, R.id.musicianAddPrizeFragment)
         }
 
         onView(withId(R.id.premiationDate)).perform(click())
+        Thread.sleep(2000)
 
         val calendar = Calendar.getInstance().apply {
             time = premiationDate // Asegúrate de que premiationDate es un objeto Date
         }
         onView(withClassName(equalTo(DatePicker::class.java.name))).perform(PickerActions.setDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH)))
+
+        Thread.sleep(2000)
+
         onView(withId(android.R.id.button1)).perform(click()) // ID para el botón "OK" en un DatePickerDialog estándar
+
+        Thread.sleep(2000)
+
         onView(ViewMatchers.withId(R.id.btnCreate)).perform(ViewActions.click())
 
-        Thread.sleep(1000)
+        Thread.sleep(2000)
 
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)

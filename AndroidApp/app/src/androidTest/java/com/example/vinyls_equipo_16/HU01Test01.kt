@@ -58,6 +58,8 @@ class HU01Test01 {
         onView(withId(R.id.albumsRv))
             .perform(RecyclerViewActions.actionOnItemAtPosition<AlbumsAdapter.AlbumViewHolder>(0, click()))
 
+        Thread.sleep(2000)
+
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             assertEquals(navController.currentDestination?.id, R.id.albumDetailFragment)
