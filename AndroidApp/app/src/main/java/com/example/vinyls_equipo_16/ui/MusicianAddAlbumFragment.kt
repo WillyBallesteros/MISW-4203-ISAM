@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavOptions
@@ -111,6 +112,10 @@ class MusicianAddAlbumFragment: Fragment() {
             spinnerAdapter.clear()
             spinnerAdapter.addAll(nombresDeAlbumes)
             spinnerAdapter.notifyDataSetChanged()
+
+            if (albumes.isNotEmpty()) {
+                binding.btnCreate.isEnabled = true
+            }
         }
 
         viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
