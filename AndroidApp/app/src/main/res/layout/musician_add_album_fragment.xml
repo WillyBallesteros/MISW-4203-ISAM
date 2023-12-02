@@ -8,6 +8,8 @@
     tools:context=".ui.MusicianAddAlbumFragment">
 
     <TextView
+    	android:textDirection="locale"
+        android:textAlignment="gravity"
         android:id="@+id/musicianName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -29,6 +29,8 @@
 
         <!-- Título de la canción -->
         <TextView
+        	android:textDirection="locale"
+            android:textAlignment="gravity"
             android:id="@+id/textViewName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,6 +45,8 @@
 
         <!-- Duración de la canción -->
         <TextView
+        	android:textDirection="locale"
+            android:textAlignment="gravity"
             android:id="@+id/textViewDuration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
