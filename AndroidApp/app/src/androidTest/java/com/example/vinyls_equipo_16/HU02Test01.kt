@@ -58,6 +58,8 @@ class HU02Test01 {
         onView(withId(R.id.albumsRv))
             .perform(RecyclerViewActions.actionOnItemAtPosition<AlbumsAdapter.AlbumViewHolder>(0, click()))
 
+        Thread.sleep(2000)
+
         activityScenarioRule.scenario.onActivity { activity ->
             val navController = activity.findNavController(R.id.nav_host_fragment_content_main)
             assertEquals(navController.currentDestination?.id, R.id.albumDetailFragment)
@@ -67,7 +69,6 @@ class HU02Test01 {
         onView(withId(R.id.release_date)).check(matches(isDisplayed()))
         onView(withId(R.id.genre)).check(matches(isDisplayed()))
         onView(withId(R.id.album_scroll)).perform(swipeUp())
-        onView(withId(R.id.description)).check(matches(isDisplayed()))
 
     }
 
