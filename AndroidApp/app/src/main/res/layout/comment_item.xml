@@ -38,7 +38,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_comment"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@{comment.description}"/>
                 <TextView
                 	android:textDirection="locale"
                 	android:textAlignment="gravity"
