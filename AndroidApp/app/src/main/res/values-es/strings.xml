@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">Vinyls_Equipo_16</string>
+    <string name="title_albums">Álbums</string>
+    <string name="title_musicians">Artistas</string>
+    <string name="title_collectors">Coleccionistas</string>
+    <string name="title_comments">Comentarios del álbum</string>
+    <string name="title_addTrack">Agregar track a álbum</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="album_detail_title">Detalle Álbum</string>
+    <string name="album_detail_name">Nombre:</string>
+    <string name="album_detail_release_date">Lanzamiento:</string>
+    <string name="album_detail_genre">Género:</string>
+    <string name="album_detail_record_label">Record:</string>
+    <string name="album_detail_record_songs">Canciones:</string>
+    <string name="album_detail_record_comments">Comentarios:</string>
+    <string name="album_detail_record_no_songs">\u0020\u0020\u0020\u0020Sin canciones registradas</string>
+    <string name="album_detail_record_no_comments">\u0020\u0020\u0020\u0020Sin comentarios</string>
+    <string name="album_detail_record_list">\u0020\u0020\u0020\u0020•\u0020</string>
+    <string name="album_detail_record_separator">\u0020-\u0020</string>
+    <string name="text_void">N/A</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="musician_detail_name">Nombre</string>
+    <string name="musician_detail_description">Descripcion:</string>
+    <string name="musician_detail_birthdate">Nacimiento:</string>
+    <string name="musician_detail_prizes">Premios:</string>
+
+    <string name="musician_detail_no_prizes">\u0020\u0020\u0020\u0020Sin premios registrados</string>
+    <string name="musician_detail_space">\u0020\u0020\u0020\u0020•\u0020</string>
+    <string name="musician_detail_prize_tittle">Premios del Artista</string>
+
+
+    <string name="nav_header_title">Vinyls</string>
+    <string name="nav_header_subtitle">g16_vinyls@uniandes.edu.co</string>
+    <string name="nav_header_desc">Navegación</string>
+
+    <string name="menu_catalog">Home</string>
+    <string name="menu_collectors">Coleccionistas</string>
+    <string name="menu_artists">Artistas</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string-array name="genres">
+        <item>Classical</item>
+        <item>Salsa</item>
+        <item>Rock</item>
+        <item>Folk</item>
+    </string-array>
+    <string-array name="record_labels">
+        <item>Sony Music</item>
+        <item>EMI</item>
+        <item>Discos Fuentes</item>
+        <item>Elektra</item>
+        <item>Fania Records</item>
+    </string-array>
+    <string name="name">Nombre</string>
+    <string name="cover">Carátula</string>
+    <string name="releaseDate">Lanzamiento</string>
+    <string name="description">Descripción</string>
+    <string name="genre">Género</string>
+    <string name="recordLabel">Disquera</string>
+    <string name="create">Crear</string>
+    <string name="save">Guardar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="collector_detail_title">Coleccionista</string>
+    <string name="collector_detail_name">Nombre:</string>
+    <string name="collector_detail_telephone">Teléfono:</string>
+    <string name="collector_detail_email">Correo Electrónico:</string>
+    <string name="collector_detail_comments">Comentarios:</string>
+    <string name="collector_detail_favorite_performers">Intérpretes favoritos:</string>
+    <string name="collector_detail_collector_albums">Álbumes de coleccionista:</string>
+
+    <string name="collector_detail_no_comments">\u0020\u0020\u0020\u0020Sin comentarios</string>
+    <string name="collector_detail_no_favorite_performers">\u0020\u0020\u0020\u0020Sin intérpretes favoritos</string>
+    <string name="collector_detail_no_collector_albums">\u0020\u0020\u0020\u0020Sin álbumes de coleccionista</string>
+
+
+    <string name="comment_detail_record_list">Descripción:</string>
+    <string name="comment_detail_record_rating">Calificación:</string>
+    <string name="comment_detail_record_separator">\u0020\u0020\u0020\u0020•\u0020</string>
+
+    <string name="favorite_performer_name">Nombre:</string>
+    <string name="favorite_performer_image">Image:</string>
+    <string name="favorite_performer_description">Descripción:</string>
+    <string name="favorite_performer_birthDate">Fecha Nacimiento:</string>
+
+    <string name="collector_album_price">Precio:</string>
+    <string name="collector_album_status">Estado:</string>
+    <string name="collector_add_album">Seleccione un álbum:</string>
+    <string name="collector_add_price">Precio:</string>
+    <string name="collector_add_price_hint">100</string>
+
+    <string-array name="status_labels">
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
+
+
+    <string name="album_item_content_descriptor">Carátula del álbum</string>
+    <string name="musician_item_content_descriptor">Imagen del artista</string>
+    <string name="musician_detail_no_albums">\u0020\u0020\u0020\u0020Sin álbumes registrados</string>
+    <string name="musician_title_albums">Álbums:</string>
+
+
+    <string name="album_new_fragment_autofillHints_name">Nombre</string>
+    <string name="album_new_fragment_autofillHints_cover">Carátula</string>
+    <string name="album_new_fragment_autofillHints_release_date">Fecha lanzamiento</string>
+    <string name="album_new_fragment_autofillHints_description">Descripción</string>
+    <string name="album_title">Álbums</string>
+    <string name="album_new_title">Crear Álbum</string>
+    <string name="artistas_title">Artistas</string>
+    <string name="collector_title">Coleccionistas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="label_track_name">Nombre</string>
+    <string name="album_add_track_fragment_autofillHints_name">Nombre</string>
+    <string name="label_track_duration">Duración</string>
+    <string name="album_add_track_fragment_autofillHints_duration">Duración</string>
+    <string name="label_add_track">Ingresa el Track:</string>
+    <string name="label_add_comment">Ingresa el Comentario:</string>
+    <string name="add_comment">Agregar comentario</string>
+    <string name="add_track">Agregar track</string>
+    <string name="label_comment_rating">Rating</string>
+    <string name="label_add_coment">Comentario</string>
+    <string name="album_add_comment_fragment_autofillHints_comment">Deja tu comentario</string>
+    <string name="album_add_comment_fragment_autofillHints_rating">Rating</string>
+
+    <string name="title_prizes">Premios</string>
+    <string name="organization">Organización</string>
+    <string name="create_error">Error al crear</string>
+    <string name="create_ok">Creación exitosa</string>
+    <string name="validation_required">Campo requerido</string>
+    <string name="validation_selection_required">Debe seleccionar un valor</string>
+    <string name="validation_url">URL inválida</string>
+    <string name="validation_date">Formato de fecha inválido (yyyy-mm-dd)</string>
+    <string name="network_error">Error de red</string>
+    <string name="selected_by">Seleccione un elemento para</string>
+    <string name="association_error">Error de asociación</string>
+    <string name="association_ok">Asociación exitosa</string>
+</resources>

@@ -36,6 +36,8 @@
                 android:padding="16dp">
 
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/album_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

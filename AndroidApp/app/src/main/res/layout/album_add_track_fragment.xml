@@ -26,6 +26,8 @@
                 android:padding="16dp">
 
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/album_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -50,6 +52,8 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="16dp">
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,6 +67,8 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="16dp">
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/label_track_name"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -84,6 +90,8 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="16dp">
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/labelTrackDuration"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"

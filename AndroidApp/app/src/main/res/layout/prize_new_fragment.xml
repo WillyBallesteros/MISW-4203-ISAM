@@ -25,6 +25,8 @@
                 android:layout_marginBottom="16dp">
 
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/tvName"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -47,6 +49,8 @@
                 android:layout_marginBottom="16dp">
 
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/tvDescription"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -69,6 +73,8 @@
                 android:layout_marginBottom="16dp">
 
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/tvOrganization"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"

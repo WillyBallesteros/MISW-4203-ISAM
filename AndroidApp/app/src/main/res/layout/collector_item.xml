@@ -23,6 +23,8 @@
                 android:padding="16dp">
 
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/collector_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -33,6 +35,8 @@
 
 
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/collector_telephone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -41,6 +45,8 @@
                     android:layout_marginEnd="8dp"
                      />
                 <TextView
+                	android:textDirection="locale"
+                	android:textAlignment="gravity"
                     android:id="@+id/collector_email"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
