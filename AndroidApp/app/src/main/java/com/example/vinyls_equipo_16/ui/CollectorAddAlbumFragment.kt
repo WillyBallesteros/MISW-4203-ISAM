@@ -118,6 +118,10 @@ class CollectorAddAlbumFragment: Fragment() {
             spinnerAdapter.clear()
             spinnerAdapter.addAll(nombresDeAlbumes)
             spinnerAdapter.notifyDataSetChanged()
+
+            if (albumes.isNotEmpty()) {
+                binding.btnCreate.isEnabled = true
+            }
         }
 
         val statusLabelAdapter = ArrayAdapter.createFromResource(
